@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-screen-md mx-auto rounded-t-lg">
+  <div class="max-w-screen-md mx-auto rounded-t-lg overflow-hidden">
     <HeaderImage />
     <h1 class="text-3xl text-center" style="font-variant: small-caps">
       What Have I Done?
