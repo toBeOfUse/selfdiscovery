@@ -21,10 +21,16 @@
     </div>
     <nuxt-content :document="post" class="max-w-screen-md prose text-black" />
     <nuxt-picture
-      v-if="post.image"
+      v-if="post.image && !post.image_preserve"
       :src="post.image"
       :alt="post.image_alt"
-      :img-attrs="{ style: 'max-height: 70vh; max-width: 100%' }"
+      :img-attrs="{ class: 'my-4 portfolio-item-image' }"
+    />
+    <img
+      v-else-if="post.image && post.image_preserve"
+      :src="post.image"
+      :alt="post.image_alt"
+      class="my-4 portfolio-item-image"
     />
     <iframe
       v-if="post.iframe"
@@ -49,8 +55,12 @@ export default Vue.extend({
   },
 })
 </script>
-<style scoped>
+<style>
 a {
   text-decoration: underline;
+}
+.portfolio-item-image {
+  max-height: 70vh;
+  max-width: 100%;
 }
 </style>
