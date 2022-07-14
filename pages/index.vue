@@ -7,9 +7,7 @@
       <div class="w-screen" />
     </div>
     <div class="w-full alpha-bg2">
-      <div
-        class="w-96 mx-auto p-5 bg-white inner-width rounded sm:rounded-full"
-      >
+      <div class="w-96 mx-auto p-5 bg-white inner-width aggressive-rounding">
         <div class="flex items-center justify-center">
           <nuxt-picture
             src="/avatar.png"
@@ -58,7 +56,7 @@ a {
 }
 .inner-width {
   width: 800px;
-  max-width: 90%;
+  max-width: 85%;
 }
 $starting-color: rgba(99, 206, 227, 0.2);
 @keyframes colors {
@@ -95,6 +93,12 @@ $starting-color: rgba(99, 206, 227, 0.2);
   @include color-haver;
   animation-duration: 5s;
   animation-delay: 3s;
+}
+.aggressive-rounding {
+  border-radius: 80px;
+  @media (max-width: 640px) {
+    border-radius: 40px;
+  }
 }
 </style>
 
