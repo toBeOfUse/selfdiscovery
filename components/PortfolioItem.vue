@@ -7,7 +7,7 @@
         v-if="post.github_link"
         class="mx-2 text-sm"
         :href="post.github_link"
-        _target="blank"
+        target="_blank"
         >Github</a
       >
       <span v-if="post.live_link && post.github_link">•</span>
@@ -15,17 +15,22 @@
         v-if="post.live_link"
         class="mx-2 text-sm"
         :href="post.live_link"
-        _target="blank"
+        target="_blank"
         >Live</a
       >
     </div>
     <nuxt-content :document="post" class="max-w-screen-md prose text-black" />
-    <img v-if="post.image" :src="post.image" :alt="post.image_alt" />
+    <nuxt-picture
+      v-if="post.image"
+      :src="post.image"
+      :alt="post.image_alt"
+      :img-attrs="{ style: 'max-height: 70vh; max-width: 100%' }"
+    />
     <iframe
       v-if="post.iframe"
       :src="post.iframe"
       class="w-full"
-      style="height: 50vh"
+      style="height: 60vh"
       loading="lazy"
     />
   </div>
