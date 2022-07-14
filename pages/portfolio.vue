@@ -1,20 +1,22 @@
 <template>
   <div class="m-6">
     <PortfolioHeader />
-    <portfolio-item :post="post" />
+    <portfolio-item v-for="post in posts" :key="post.slug" :post="post" />
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 import PortfolioItem from '~/components/PortfolioItem.vue'
-
+const posts = ['perspective', 'spelling_bee', 'discord', 'catullus']
 export default Vue.extend({
   name: 'PortfolioPage',
   components: { PortfolioItem },
   async asyncData({ $content }) {
     return {
-      post: await $content('projects/perspective').fetch(),
+      posts: await Promise.all(
+        posts.map((p) => $content('projects/' + p).fetch())
+      ),
     }
   },
 })
