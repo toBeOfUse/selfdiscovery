@@ -8,7 +8,13 @@
 <script lang="ts">
 import Vue from 'vue'
 import PortfolioItem from '~/components/PortfolioItem.vue'
-const posts = ['perspective', 'spelling_bee', 'discord', 'catullus']
+const posts = [
+  'perspective',
+  'spelling_bee',
+  'catullus',
+  'presentations',
+  'text_curve',
+]
 export default Vue.extend({
   name: 'PortfolioPage',
   components: { PortfolioItem },

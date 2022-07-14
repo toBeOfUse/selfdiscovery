@@ -6,4 +6,4 @@ github_link: https://github.com/toBeOfUse/poetry-version-control
 live_link: https://mitch.com.net.biz.org.zone.place/catullus/
 ---
 
-After stumbling across both Frank O. Copley's modernist translation of the ancient Roman poet Catullus and Daniel Lavery's contemporary take, I wanted to display them in contrast with each other, and ended up spending hours poring over fonts. The end result is a hopefully intriguing grasp for how existing and even ancient texts can be added to by interactivity.
+After stumbling across both Frank O. Copley's modernist translation of the ancient Roman poet Catullus and Daniel Lavery's contemporary take, I wanted to display them in contrast with each other, and ended up spending hours poring over fonts. The end result is a hopefully intriguing grasp at how existing and even ancient texts can be added to by interactivity.
