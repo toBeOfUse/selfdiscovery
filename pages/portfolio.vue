@@ -13,6 +13,7 @@ const posts = [
   'spelling_bee',
   'catullus',
   'presentations',
+  'corn',
   'text_curve',
 ]
 export default Vue.extend({
