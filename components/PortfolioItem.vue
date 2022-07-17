@@ -1,11 +1,11 @@
 <template>
   <div class="flex flex-col max-w-screen-md items-center mx-auto">
     <hr class="w-full m-4 border-t-2 border-gray-400" />
-    <div class="flex items-end py-4">
-      <h1 :id="post.slug" class="text-xl mx-4">{{ post.title }}</h1>
+    <div class="flex items-center sm:items-end py-4">
+      <h1 :id="post.slug" class="text-xl">{{ post.title }}</h1>
       <a
         v-if="post.github_link"
-        class="mx-2 text-sm"
+        class="mx-2 ml-6 text-sm"
         :href="post.github_link"
         target="_blank"
         >Github</a
