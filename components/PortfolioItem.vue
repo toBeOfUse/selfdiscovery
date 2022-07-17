@@ -24,13 +24,20 @@
       v-if="post.image && !post.image_preserve"
       :src="post.image"
       :alt="post.image_alt"
-      :img-attrs="{ class: 'my-4 portfolio-item-image' }"
+      :img-attrs="{
+        class: 'my-4 portfolio-item-image',
+        ...imageSize,
+        loading: 'lazy',
+      }"
     />
     <img
       v-else-if="post.image && post.image_preserve"
       :src="post.image"
       :alt="post.image_alt"
       class="my-4 portfolio-item-image"
+      :width="imageSize.width"
+      :height="imageSize.height"
+      loading="lazy"
     />
     <iframe
       v-if="post.iframe"
@@ -44,6 +51,8 @@
 
 <script lang="ts">
 // TODO: directional quation marks?
+import path from 'path'
+
 import Vue from 'vue'
 export default Vue.extend({
   name: 'PortfolioItem',
@@ -52,6 +61,28 @@ export default Vue.extend({
       type: Object,
       required: true,
     },
+  },
+  data: () => ({
+    imageSize: {
+      width: 0,
+      height: 0,
+    },
+  }),
+  fetchOnServer: true,
+  fetch() {
+    if (process.server) {
+      const getSize = require('image-size')
+      const image: string | null = this.post.image
+      if (image) {
+        const imagePath = path.join(process.cwd(), 'static', image)
+        const size = getSize(imagePath)
+        if (!size.width || !size.height) {
+          throw new Error('could not find image ' + image)
+        } else {
+          this.imageSize = { width: size.width, height: size.height }
+        }
+      }
+    }
   },
 })
 </script>
@@ -62,5 +93,6 @@ a {
 .portfolio-item-image {
   max-height: 70vh;
   max-width: 100%;
+  object-fit: contain;
 }
 </style>
