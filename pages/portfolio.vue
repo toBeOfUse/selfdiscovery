@@ -10,11 +10,11 @@ import Vue from 'vue'
 import PortfolioItem from '~/components/PortfolioItem.vue'
 const posts = [
   'perspective',
-  'spelling_bee',
+  'spelling-bee',
   'catullus',
   'presentations',
   'corn',
-  'text_curve',
+  'text-curve',
 ]
 export default Vue.extend({
   name: 'PortfolioPage',
