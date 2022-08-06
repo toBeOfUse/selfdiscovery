@@ -1,22 +1,26 @@
 <template>
   <div class="flex flex-col max-w-screen-md items-center mx-auto">
-    <hr v-if="showTopBar" class="w-full m-4 border-t-2 border-gray-400" />
-    <div class="flex items-center sm:items-end py-4">
-      <h1 :id="post.slug" class="text-xl">{{ post.title }}</h1>
-      <a
-        v-if="post.github_link"
-        class="mx-2 ml-6 text-sm"
-        :href="post.github_link"
-        target="_blank"
-        >Github</a
-      >
-      <span v-if="post.live_link && post.github_link">•</span>
-      <a
-        v-if="post.live_link"
-        class="mx-2 text-sm"
-        :href="post.live_link"
-        target="_blank"
-        >Live Version</a
+    <hr v-if="!standalone" class="w-full m-4 border-t-2 border-gray-400" />
+    <div class="flex flex-col-reverse sm:flex-row py-4 sm:items-baseline">
+      <h1 :id="post.slug" :class="standalone ? 'text-3xl' : 'text-xl'">
+        <a :href="`/projects/${post.slug}/`">{{ post.title }}</a>
+      </h1>
+      <span
+        ><a
+          v-if="post.github_link"
+          class="sm:ml-6 text-sm"
+          :href="post.github_link"
+          target="_blank"
+          >Github</a
+        >
+        <span v-if="post.live_link && post.github_link">•</span>
+        <a
+          v-if="post.live_link"
+          class="text-sm"
+          :href="post.live_link"
+          target="_blank"
+          >Live Version</a
+        ></span
       >
     </div>
     <nuxt-picture
@@ -61,10 +65,10 @@ export default Vue.extend({
       type: Object,
       required: true,
     },
-    showTopBar: {
+    standalone: {
       type: Boolean,
       required: false,
-      default: true,
+      default: false,
     },
   },
   data: () => ({
@@ -94,6 +98,9 @@ export default Vue.extend({
 <style>
 a {
   text-decoration: underline;
+}
+h1 > a {
+  text-decoration: none;
 }
 .portfolio-item-image {
   max-height: 70vh;

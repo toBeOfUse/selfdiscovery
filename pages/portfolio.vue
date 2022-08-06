@@ -12,9 +12,8 @@ const posts = [
   'perspective',
   'spelling-bee',
   'catullus',
-  'presentations',
   'corn',
-  'text-curve',
+  'presentations',
 ]
 export default Vue.extend({
   name: 'PortfolioPage',

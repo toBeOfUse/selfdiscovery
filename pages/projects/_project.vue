@@ -1,6 +1,6 @@
 <template>
   <div class="m-6">
-    <portfolio-item :post="post" :show-top-bar="false" />
+    <portfolio-item :post="post" :standalone="true" />
   </div>
 </template>
 

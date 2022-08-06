@@ -1,6 +1,6 @@
 <template>
-  <div class="max-w-screen-md mx-auto rounded-t-lg overflow-hidden">
-    <HeaderImage />
+  <div class="max-w-screen-md mx-auto overflow-hidden">
+    <HeaderImage class="rounded-lg sm:rounded-b-none" />
     <h1 class="text-3xl text-center" style="font-variant: small-caps">
       What Have I Done?
     </h1>
