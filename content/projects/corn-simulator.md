@@ -1,5 +1,5 @@
 ---
-title: Kernels of Truth
+title: Corn Simulator
 date: November 2021
 github_link: https://github.com/toBeOfUse/corn
 live_link: https://3d.corncob.world/

@@ -12,7 +12,7 @@ const posts = [
   'perspective',
   'spelling-bee',
   'catullus',
-  'corn',
+  'corn-simulator',
   'presentations',
 ]
 export default Vue.extend({
