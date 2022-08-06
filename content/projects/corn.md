@@ -1,5 +1,6 @@
 ---
 title: Kernels of Truth
+date: November 2021
 github_link: https://github.com/toBeOfUse/corn
 live_link: https://3d.corncob.world/
 image: /corn.jpg
@@ -7,6 +8,8 @@ image_alt: A 3D model of a corncob with some kernels missing. A mouse cursor hov
 ---
 
 I created a website that simulates the experience of eating an ear of corn. One kernel at a time.
+
+<!--more-->
 
 This website was created using the popular [Three.js](https://threejs.org/) library to streamline the process of rendering 3D graphics in the browser with WebGL. Not being the world's greatest artist, I took a few steps outside of my comfort zone to create a 3D model of an ear of corn using the computer graphics program [Blender](https://blender.org/), which needed to be comprised of many separate pieces that would be independent in the final product. The graphics tricks include a simple shape key animation created in Blender that plays at the beginning as well a dynamic, randomized, infinite animation of raining down corn kernels that plays at the end, after you finally eat the cob, and also final secret kernel hidden within. (If you really want to go through the process without clicking every kernel, you can go to the live demo page and type `cheat()` into the browser console a few times.)
 

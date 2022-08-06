@@ -1,7 +1,9 @@
 ---
 title: Improved NYT Spelling Bee Graphics
+date: November 2021 - July 2022
 github_link: https://github.com/toBeOfUse/SpellingBeeBot
 iframe: https://mitch.website/spellingbeegallery/
+description: A project to create new graphics for the New York Times Spelling Bee puzzle.
 ---
 
 The New York Times' [Spelling Bee](https://www.nytimes.com/puzzles/spelling-bee) is a fun puzzle game with uninspired graphics, so I designed some new ones. If you click on that link to the official website, you might notice that the gallery displayed here is up-to-date with today's puzzle.
