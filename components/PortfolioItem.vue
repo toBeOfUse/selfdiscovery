@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col max-w-screen-md items-center mx-auto">
-    <hr class="w-full m-4 border-t-2 border-gray-400" />
+    <hr v-if="showTopBar" class="w-full m-4 border-t-2 border-gray-400" />
     <div class="flex items-center sm:items-end py-4">
       <h1 :id="post.slug" class="text-xl">{{ post.title }}</h1>
       <a
@@ -60,6 +60,11 @@ export default Vue.extend({
     post: {
       type: Object,
       required: true,
+    },
+    showTopBar: {
+      type: Boolean,
+      required: false,
+      default: true,
     },
   },
   data: () => ({
