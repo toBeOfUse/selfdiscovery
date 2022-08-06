@@ -16,10 +16,9 @@
         class="mx-2 text-sm"
         :href="post.live_link"
         target="_blank"
-        >Live</a
+        >Live Version</a
       >
     </div>
-    <nuxt-content :document="post" class="max-w-screen-md prose text-black" />
     <nuxt-picture
       v-if="post.image && !post.image_preserve"
       :src="post.image"
@@ -46,6 +45,7 @@
       style="height: 60vh"
       loading="lazy"
     />
+    <nuxt-content :document="post" class="max-w-screen-md prose text-black" />
   </div>
 </template>
 
