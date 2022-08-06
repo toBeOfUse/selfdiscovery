@@ -1,3 +1,6 @@
+import * as fs from 'fs/promises'
+import path from 'path'
+
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
@@ -43,6 +46,12 @@ export default {
 
   // Content module configuration: https://go.nuxtjs.dev/config-content
   content: {},
+  generate: {
+    async routes() {
+      const projectPages = await fs.readdir('./content/projects/')
+      return projectPages.map((p) => '/projects/' + path.parse(p).name)
+    },
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
