@@ -1,14 +1,25 @@
 <template>
   <div class="flex flex-col max-w-screen-md items-center mx-auto">
     <hr v-if="!standalone" class="w-full m-4 border-t-2 border-gray-400" />
-    <div class="flex flex-col-reverse sm:flex-row py-4 sm:items-baseline">
-      <h1 :id="post.slug" :class="standalone ? 'text-3xl' : 'text-xl'">
+    <div
+      class="
+        flex flex-col-reverse
+        sm:flex-row
+        py-2
+        sm:items-baseline
+        w-full
+        sm:w-auto
+      "
+    >
+      <h1 :id="post.slug" :class="standalone ? 'text-4xl' : 'text-2xl'">
         <a :href="`/projects/${post.slug}/`">{{ post.title }}</a>
       </h1>
-      <span
-        ><a
+      <span class="sm:ml-6">
+        <h2 v-if="post.date" class="text-md inline">{{ post.date }}</h2>
+        <span v-if="post.date">•</span>
+        <a
           v-if="post.github_link"
-          class="sm:ml-6 text-sm"
+          class="text-sm"
           :href="post.github_link"
           target="_blank"
           >Github</a
@@ -20,15 +31,15 @@
           :href="post.live_link"
           target="_blank"
           >Live Version</a
-        ></span
-      >
+        >
+      </span>
     </div>
     <nuxt-picture
       v-if="post.image && !post.image_preserve"
       :src="post.image"
       :alt="post.image_alt"
       :img-attrs="{
-        class: 'my-4 portfolio-item-image',
+        class: 'my-2 sm:my-4 portfolio-item-image',
         ...imageSize,
         loading: 'lazy',
       }"

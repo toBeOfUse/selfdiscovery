@@ -1,5 +1,6 @@
 ---
 title: Perspective Editor
+date: July 2022
 image: /perspective_demo.jpg
 image_alt: A picture of Times Square on the left; the same picture with the billboards covered by a variety of other images on the right.
 github_link: https://github.com/toBeOfUse/aaffine/
