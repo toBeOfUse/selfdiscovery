@@ -6,4 +6,6 @@ github_link: https://github.com/toBeOfUse/poetry-version-control
 live_link: https://mitch.com.net.biz.org.zone.place/catullus/
 ---
 
-After stumbling across both Frank O. Copley's modernist translation of the ancient Roman poet Catullus and Daniel Lavery's contemporary take, I wanted to display them in contrast with each other, and ended up spending hours poring over fonts. The end result is a hopefully intriguing grasp at how existing and even ancient texts can be added to by interactivity.
+After stumbling across both Frank O. Copley's [modernist translation](https://www.google.com/books/edition/_/7OFnjgEACAAJ?hl=en) of the ancient Roman poet Catullus and Daniel Lavery's [contemporary take](https://www.thechatner.com/p/dirtbag-catullus), I wanted to display them in contrast with each other, and ended up spending hours poring over fonts.
+
+This web page was developed and built using Vue and its command-line interface. Although I wasn't going for this at the time, the result is something like the ubiquitous Unix diff, with similar lines displayed next to each other so that you can see the changes. The font sizes are carefully adjusted with variables in SCSS to keep everything visually at one scale, and the line heights are specified absolutely to prevent layout shift when switching fonts.
