@@ -1,5 +1,5 @@
 ---
-title: 3d.corncob.world
+title: Kernels of Truth
 github_link: https://github.com/toBeOfUse/corn
 live_link: https://3d.corncob.world/
 image: /corn.jpg
