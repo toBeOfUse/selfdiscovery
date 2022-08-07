@@ -111,7 +111,7 @@ $fill-starting-color: color.adjust($starting-color, $alpha: 0.6);
 .logo-color-shift {
   @include color-shifter;
   animation-name: fill-colors;
-  animation-duration: 5s;
+  animation-duration: 8s;
 }
 .diagonal {
   height: 300px;
