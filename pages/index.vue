@@ -1,15 +1,26 @@
 <template>
-  <div class="w-full h-full flex items-center content-center">
+  <div class="w-full h-full flex items-center content-center overflow-hidden">
     <div
       class="h-full absolute left-1/2 top-0 alpha-bg1 inner-width"
       style="transform: translateX(-50%); z-index: -1"
     >
       <div class="w-screen" />
     </div>
+    <div
+      v-for="i in 2"
+      :key="i"
+      class="diagonal"
+      :style="{
+        transform: `translate(-50%, -50%) rotate(${
+          (i == 1 ? 1 : -1) * leftTopRightBottomAngle
+        }rad)`,
+        opacity: isNaN(leftTopRightBottomAngle) ? 0 : 1,
+      }"
+    />
     <div class="w-full alpha-bg2">
-      <div class="w-96 mx-auto p-5 bg-white inner-width aggressive-rounding">
+      <div class="w-96 mx-auto p-5 bg-white inner-width">
         <div class="flex items-center justify-center" style="height: 200px">
-          <LogoAttempt style="height: 200px; width: auto" />
+          <Logo style="height: 200px; width: auto" />
         </div>
         <ul class="list-disc my-4 px-4 sm:px-40">
           <li class="text-xl sm:text-2xl">Born 1997</li>
@@ -32,8 +43,21 @@
 
 <script>
 import Vue from 'vue'
+import { vueWindowSizeMixin } from 'vue-window-size/option-api'
+import Logo from 'assets/logo.svg'
 export default Vue.extend({
   name: 'IndexPage',
+  components: { Logo },
+  mixins: [vueWindowSizeMixin()],
+  computed: {
+    leftTopRightBottomAngle() {
+      if (process.browser) {
+        return Math.atan2(this.$windowHeight, this.$windowWidth)
+      } else {
+        return NaN
+      }
+    },
+  },
 })
 </script>
 
@@ -53,75 +77,61 @@ a {
   max-width: 85%;
 }
 $starting-color: rgba(99, 206, 227, 0.2);
-@keyframes colors {
-  0% {
-    background-color: $starting-color;
-  }
-  20% {
-    background-color: color.adjust($starting-color, $hue: 36deg * 2);
-  }
-  40% {
-    background-color: color.adjust($starting-color, $hue: 36deg * 4);
-  }
-  60% {
-    background-color: color.adjust($starting-color, $hue: 36deg * 6);
-  }
-  80% {
-    background-color: color.adjust($starting-color, $hue: 36deg * 8);
-  }
-  100% {
-    background-color: $starting-color;
+@keyframes background-colors {
+  @for $i from 0 through 10 {
+    #{$i*10}% {
+      background-color: color.adjust($starting-color, $hue: 36deg * $i);
+    }
   }
 }
-$fill-starting-color: rgba(99, 206, 227, 0.8);
+$fill-starting-color: color.adjust($starting-color, $alpha: 0.6);
 @keyframes fill-colors {
-  0% {
-    fill: $fill-starting-color;
-  }
-  20% {
-    fill: color.adjust($fill-starting-color, $hue: 36deg * 2);
-  }
-  40% {
-    fill: color.adjust($fill-starting-color, $hue: 36deg * 4);
-  }
-  60% {
-    fill: color.adjust($fill-starting-color, $hue: 36deg * 6);
-  }
-  80% {
-    fill: color.adjust($fill-starting-color, $hue: 36deg * 8);
-  }
-  100% {
-    fill: $fill-starting-color;
+  @for $i from 0 through 10 {
+    #{$i*10}% {
+      fill: color.adjust($fill-starting-color, $hue: 36deg * $i);
+    }
   }
 }
-@mixin color-haver {
-  animation-name: colors;
+@mixin color-shifter {
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   animation-fill-mode: both;
 }
 .alpha-bg1 {
-  @include color-haver;
+  @include color-shifter;
+  animation-name: background-colors;
   animation-duration: 3s;
 }
 .alpha-bg2 {
-  @include color-haver;
+  @include color-shifter;
+  animation-name: background-colors;
   animation-duration: 5s;
   animation-delay: 3s;
 }
-.color-shift {
+.logo-color-shift {
+  @include color-shifter;
   animation-name: fill-colors;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-fill-mode: both;
   animation-duration: 5s;
 }
-.aggressive-rounding {
-  border-radius: 80px;
-  @media (max-width: 640px) {
-    border-radius: 40px;
-  }
+.diagonal {
+  height: 300px;
+  position: absolute;
+  width: 200vw;
+  left: 50%;
+  top: 50%;
+  z-index: -1;
+  @include color-shifter;
+  animation-name: background-colors;
+  animation-duration: 5s;
+  animation-delay: 6s;
+  transition: opacity 1s;
 }
+// .aggressive-rounding {
+//   border-radius: 80px;
+//   @media (max-width: 640px) {
+//     border-radius: 40px;
+//   }
+// }
 </style>
 
 <style>
@@ -131,5 +141,6 @@ body,
 #__layout {
   height: 100%;
   width: 100%;
+  overflow: hidden;
 }
 </style>
