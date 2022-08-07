@@ -8,14 +8,8 @@
     </div>
     <div class="w-full alpha-bg2">
       <div class="w-96 mx-auto p-5 bg-white inner-width aggressive-rounding">
-        <div class="flex items-center justify-center">
-          <nuxt-picture
-            src="/avatar.png"
-            width="360"
-            height="360"
-            :img-attrs="{ class: 'max-h-12 w-auto mx-2' }"
-          />
-          <h1 class="text-3xl sm:text-5xl">Mitch Jacovetty</h1>
+        <div class="flex items-center justify-center" style="height: 200px">
+          <LogoAttempt style="height: 200px; width: auto" />
         </div>
         <ul class="list-disc my-4 px-4 sm:px-40">
           <li class="text-xl sm:text-2xl">Born 1997</li>
@@ -43,7 +37,7 @@ export default Vue.extend({
 })
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @use 'sass:color';
 li {
   margin-top: 10px;
@@ -79,6 +73,27 @@ $starting-color: rgba(99, 206, 227, 0.2);
     background-color: $starting-color;
   }
 }
+$fill-starting-color: rgba(99, 206, 227, 0.8);
+@keyframes fill-colors {
+  0% {
+    fill: $fill-starting-color;
+  }
+  20% {
+    fill: color.adjust($fill-starting-color, $hue: 36deg * 2);
+  }
+  40% {
+    fill: color.adjust($fill-starting-color, $hue: 36deg * 4);
+  }
+  60% {
+    fill: color.adjust($fill-starting-color, $hue: 36deg * 6);
+  }
+  80% {
+    fill: color.adjust($fill-starting-color, $hue: 36deg * 8);
+  }
+  100% {
+    fill: $fill-starting-color;
+  }
+}
 @mixin color-haver {
   animation-name: colors;
   animation-timing-function: linear;
@@ -93,6 +108,13 @@ $starting-color: rgba(99, 206, 227, 0.2);
   @include color-haver;
   animation-duration: 5s;
   animation-delay: 3s;
+}
+.color-shift {
+  animation-name: fill-colors;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+  animation-duration: 5s;
 }
 .aggressive-rounding {
   border-radius: 80px;
