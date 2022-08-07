@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts">
-import { FetchReturn } from '@nuxt/content/types/query-builder'
+import type { FetchReturn } from '@nuxt/content/types/query-builder'
 import type { MetaPropertyName, MetaPropertyProperty } from 'vue-meta'
 
 import Vue from 'vue'
@@ -23,12 +23,12 @@ export default Vue.extend({
   },
   head() {
     const post: FetchReturn = (this as any).post
-    const title = post.title
+    const pageTitle = post.title
     const meta: (MetaPropertyName | MetaPropertyProperty)[] = [
       {
         hid: 'og:title',
         property: 'og:title',
-        content: title,
+        content: pageTitle + " - Mitch's Home Page",
       },
       {
         hid: 'og:type',
@@ -60,7 +60,7 @@ export default Vue.extend({
         content: 'summary_large_image',
       })
     }
-    return { title, meta }
+    return { title: pageTitle, meta }
   },
 })
 </script>
