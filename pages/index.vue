@@ -44,7 +44,7 @@
 <script>
 import Vue from 'vue'
 import { vueWindowSizeMixin } from 'vue-window-size/option-api'
-import Logo from 'assets/logo.svg'
+import Logo from 'assets/logo.vue.svg'
 export default Vue.extend({
   name: 'IndexPage',
   components: { Logo },

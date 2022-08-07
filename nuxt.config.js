@@ -57,10 +57,10 @@ export default {
     extend: (config) => {
       const svgRule = config.module.rules.find((rule) => rule.test.test('.svg'))
 
-      svgRule.test = /\.(png|jpe?g|gif|webp)$/
+      svgRule.test = /\.(png|jpe?g|gif|webp|(?<!vue\.)svg)$/
 
       config.module.rules.push({
-        test: /\.svg$/,
+        test: /\.vue\.svg$/,
         use: ['babel-loader', 'vue-svg-loader'],
       })
     },
