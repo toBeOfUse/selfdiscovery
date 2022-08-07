@@ -56,6 +56,7 @@
     <iframe
       v-if="post.iframe"
       :src="post.iframe"
+      :title="post.iframe_title"
       class="w-full"
       style="height: 60vh"
       loading="lazy"

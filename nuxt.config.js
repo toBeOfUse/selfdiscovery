@@ -15,6 +15,10 @@ export default {
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { name: 'format-detection', content: 'telephone=no' },
+      {
+        property: 'og:description',
+        content: 'The personal website of me, Mitch.',
+      },
     ],
     link: [{ rel: 'icon', type: 'image/png', href: '/micon.png' }],
   },

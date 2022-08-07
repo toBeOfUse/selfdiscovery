@@ -25,6 +25,17 @@ export default Vue.extend({
       ),
     }
   },
+  head: {
+    title: "Portfolio - Mitch's Home Page",
+    meta: [
+      {
+        hid: 'og:description',
+        property: 'og:description',
+        content:
+          'A list of the programming projects I, Mitch, have worked on over the last few years.',
+      },
+    ],
+  },
 })
 </script>
 
