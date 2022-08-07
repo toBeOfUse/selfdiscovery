@@ -11,7 +11,7 @@
         sm:w-auto
       "
     >
-      <h1 :id="post.slug" :class="standalone ? 'text-4xl' : 'text-2xl'">
+      <h1 :id="post.slug" class="text-2xl">
         <a :href="`/projects/${post.slug}/`">{{ post.title }}</a>
       </h1>
       <span class="sm:ml-6">
