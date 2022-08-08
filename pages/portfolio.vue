@@ -1,13 +1,22 @@
 <template>
-  <div class="m-6 mx-auto bg-white max-w-screen-md">
-    <PortfolioHeader />
+  <div>
+    <h1 class="text-3xl text-center" style="font-variant: small-caps">
+      <NuxtLink to="/portfolio" class="no-underline">
+        What Have I Done?
+      </NuxtLink>
+    </h1>
+    <p>
+      This is the question we must all ask ourselves from time to time, and here
+      is the page where I'm recording my answers. Also, hi, I'm
+      <NuxtLink to="/">some kind of software developer</NuxtLink>. To learn
+      more, read on, and/or <a href="mailto:mitchjacov@gmail.com">email me</a>.
+    </p>
     <portfolio-item v-for="post in posts" :key="post.slug" :post="post" />
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import PortfolioItem from '~/components/PortfolioItem.vue'
 const posts = [
   'perspective',
   'spelling-bee',
@@ -17,7 +26,7 @@ const posts = [
 ]
 export default Vue.extend({
   name: 'PortfolioPage',
-  components: { PortfolioItem },
+  layout: 'PortfolioLayout',
   async asyncData({ $content }) {
     return {
       posts: await Promise.all(
@@ -32,7 +41,7 @@ export default Vue.extend({
         hid: 'og:description',
         property: 'og:description',
         content:
-          'A list of the programming projects I, Mitch, have worked on over the last few years.',
+          'A list of the programming projects that I, Mitch, have worked on over the last few years.',
       },
     ],
   },

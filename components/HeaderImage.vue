@@ -1,6 +1,6 @@
 <template>
   <div
-    class="relative overflow-hidden"
+    class="relative overflow-hidden rounded-lg sm:rounded-b-none"
     role="img"
     aria-label="Me looking up contemplatively as a circular frame fades in around my face."
   >

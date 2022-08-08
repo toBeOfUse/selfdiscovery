@@ -1,5 +1,8 @@
 <template>
-  <div class="m-6">
+  <div>
+    <h1 class="text-3xl text-center" style="font-variant: small-caps">
+      <NuxtLink to="/portfolio" class="underline">⯇ What Have I Done?</NuxtLink>
+    </h1>
     <portfolio-item :post="post" :standalone="true" />
   </div>
 </template>
@@ -9,10 +12,9 @@ import type { FetchReturn } from '@nuxt/content/types/query-builder'
 import type { MetaPropertyName, MetaPropertyProperty } from 'vue-meta'
 
 import Vue from 'vue'
-import PortfolioItem from '~/components/PortfolioItem.vue'
 export default Vue.extend({
   name: 'PortfolioPage',
-  components: { PortfolioItem },
+  layout: 'PortfolioLayout',
   async asyncData({ params, $content }) {
     const post = (await $content(
       'projects/' + params.project
@@ -64,15 +66,3 @@ export default Vue.extend({
   },
 })
 </script>
-
-<style>
-body {
-  background: linear-gradient(
-    0deg,
-    rgba(0, 0, 0, 0.05) 0%,
-    rgba(0, 0, 0, 0.15) 100%
-  );
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-}
-</style>
