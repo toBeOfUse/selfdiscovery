@@ -65,7 +65,17 @@ export default {
 
       config.module.rules.push({
         test: /\.vue\.svg$/,
-        use: ['babel-loader', 'vue-svg-loader'],
+        use: [
+          'babel-loader',
+          {
+            loader: 'vue-svg-loader',
+            options: {
+              svgo: {
+                plugins: [{ mergePaths: false }],
+              },
+            },
+          },
+        ],
       })
     },
   },
