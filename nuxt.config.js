@@ -77,6 +77,11 @@ export default {
           },
         ],
       })
+
+      config.node = {
+        fs: 'empty',
+        path: 'empty',
+      }
     },
   },
   image: {},

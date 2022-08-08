@@ -67,8 +67,6 @@
 
 <script lang="ts">
 // TODO: directional quation marks?
-import path from 'path'
-
 import Vue from 'vue'
 export default Vue.extend({
   name: 'PortfolioItem',
@@ -83,27 +81,11 @@ export default Vue.extend({
       default: false,
     },
   },
-  data: () => ({
-    imageSize: {
-      width: 0,
-      height: 0,
+  computed: {
+    imageSize(): { width: number; height: number } {
+      const size = this.$store.getters.getImageSize(this.post.image)
+      return size || { width: 0, height: 0 }
     },
-  }),
-  fetchOnServer: true,
-  fetch() {
-    if (process.server) {
-      const getSize = require('image-size')
-      const image: string | null = this.post.image
-      if (image) {
-        const imagePath = path.join(process.cwd(), 'static', image)
-        const size = getSize(imagePath)
-        if (!size.width || !size.height) {
-          throw new Error('could not find image ' + image)
-        } else {
-          this.imageSize = { width: size.width, height: size.height }
-        }
-      }
-    }
   },
 })
 </script>
