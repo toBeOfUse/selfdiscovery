@@ -38,10 +38,14 @@ import Angles from 'assets/angles.vue.svg'
 export default Vue.extend({
   name: 'IndexPage',
   components: { Logo, Angles },
+  head: {
+    link: [{ rel: 'stylesheet', href: 'fullscreen.css' }],
+  },
 })
 </script>
 
-<style lang="scss">
+
+<style scoped lang="scss">
 @use 'sass:color';
 @use 'sass:math';
 @font-face {
@@ -51,19 +55,12 @@ export default Vue.extend({
   font-weight: normal;
   font-style: normal;
 }
-html,
-body,
-#__nuxt,
-#__layout {
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
-  font-family: OpenSauceOne, sans-serif;
-}
 li {
   margin-top: 10px;
 }
 ul {
+  font-family: OpenSauceOne, sans-serif;
+
   list-style-type: ' - ';
 }
 a {
