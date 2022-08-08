@@ -51,8 +51,8 @@ export default Vue.extend({
 
 
 <style scoped lang="scss">
-@use 'sass:color';
 @use 'sass:math';
+@import 'assets/multicolor.scss';
 @font-face {
   font-family: 'OpenSauceOne';
   src: url('assets/opensauceone-regular-webfont.woff2') format('woff2'),
@@ -75,19 +75,6 @@ a {
   width: 800px;
   max-width: 85%;
 }
-$fill-starting-color: rgb(99, 206, 227);
-@keyframes fill-colors {
-  @for $i from 0 through 10 {
-    #{$i*10}% {
-      fill: color.adjust($fill-starting-color, $hue: 36deg * $i);
-    }
-  }
-}
-@mixin color-shifter {
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-fill-mode: both;
-}
 .angles-group > path {
   opacity: 0.2;
   @include color-shifter;
@@ -101,8 +88,8 @@ $fill-starting-color: rgb(99, 206, 227);
 }
 .logo-color-shift {
   @include color-shifter;
-  opacity: 0.8;
   animation-name: fill-colors;
+  opacity: 0.8;
   animation-duration: 8s;
 }
 .aggressive-rounding {
