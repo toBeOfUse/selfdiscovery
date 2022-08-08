@@ -23,6 +23,9 @@
           >Live Version</a
         >
       </span>
+      <h1 :id="post.slug" class="text-2xl">
+        <NuxtLink :to="`/projects/${post.slug}/`">{{ post.title }}</NuxtLink>
+      </h1>
     </div>
     <nuxt-picture
       v-if="post.image && !post.image_preserve"

@@ -24,7 +24,7 @@
         <li>Software Enthusiast and Som'times-Do-Well</li>
         <li>Aspiring Towards Greatness</li>
         <li>
-          <a href="/portfolio">My Portfolio</a>
+          <NuxtLink to="/portfolio">My Portfolio</NuxtLink>
         </li>
         <li>
           <a href="https://github.com/toBeOfUse">My Github</a>
