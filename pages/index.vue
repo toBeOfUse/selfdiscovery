@@ -1,5 +1,7 @@
 <template>
-  <div class="w-full h-full flex items-center content-center overflow-hidden">
+  <div
+    class="w-screen h-screen flex items-center content-center overflow-hidden"
+  >
     <div
       class="h-full w-full absolute top-0 left-0 overflow-hidden"
       style="z-index: -1"
@@ -44,9 +46,6 @@ import Angles from 'assets/angles.vue.svg'
 export default Vue.extend({
   name: 'IndexPage',
   components: { Logo, Angles },
-  head: {
-    link: [{ rel: 'stylesheet', href: 'fullscreen.css' }],
-  },
 })
 </script>
 
