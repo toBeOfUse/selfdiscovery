@@ -1,8 +1,8 @@
 <template>
   <div class="w-full h-full flex items-center content-center overflow-hidden">
     <div
-      class="h-full w-full absolute top-0 left-1/2 overflow-hidden"
-      style="z-index: -1; transform: translateX(-50%)"
+      class="h-full w-full absolute top-0 left-0 overflow-hidden"
+      style="z-index: -1"
     >
       <Angles
         class="h-full w-auto absolute top-0 left-1/2"
@@ -13,17 +13,17 @@
       <div class="flex items-center justify-center" style="height: 200px">
         <Logo class="h-full w-auto" />
       </div>
-      <ul class="list-disc my-4 px-4 sm:px-40">
-        <li class="text-xl sm:text-2xl">Born 1997</li>
-        <li class="text-xl sm:text-2xl">Programmer and Som'times-Do-Well</li>
-        <li class="text-xl sm:text-2xl">Aspiring Towards Greatness</li>
-        <li class="text-xl sm:text-2xl">
+      <ul class="list-disc my-4 px-4 sm:px-28 text-xl sm:text-2xl">
+        <li>Born 1997</li>
+        <li>Software Enthusiast and Som'times-Do-Well</li>
+        <li>Aspiring Towards Greatness</li>
+        <li>
           <a href="/portfolio">My Portfolio</a>
         </li>
-        <li class="text-xl sm:text-2xl">
+        <li>
           <a href="https://github.com/toBeOfUse">My Github</a>
         </li>
-        <li class="text-xl sm:text-2xl">
+        <li>
           <a href="mailto:mitchjacov@gmail.com">My Email Address</a>
         </li>
       </ul>
@@ -44,6 +44,13 @@ export default Vue.extend({
 <style lang="scss">
 @use 'sass:color';
 @use 'sass:math';
+@font-face {
+  font-family: 'OpenSauceOne';
+  src: url('assets/opensauceone-regular-webfont.woff2') format('woff2'),
+    url('assets/opensauceone-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
 html,
 body,
 #__nuxt,
@@ -51,6 +58,7 @@ body,
   height: 100%;
   width: 100%;
   overflow: hidden;
+  font-family: OpenSauceOne, sans-serif;
 }
 li {
   margin-top: 10px;
