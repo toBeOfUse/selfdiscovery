@@ -7,11 +7,17 @@
       <Angles
         class="h-full w-auto absolute top-0 left-1/2"
         style="transform: translateX(-50%)"
+        role="img"
+        aria-label="A background consisting of diagonal stripes with shifting light colors."
       />
     </div>
     <div class="mx-auto p-5 bg-white inner-width aggressive-rounding">
       <div class="flex items-center justify-center" style="height: 200px">
-        <Logo class="h-full w-auto" />
+        <Logo
+          class="h-full w-auto"
+          role="img"
+          aria-label="A logo that says 'Mitch Jacovetty; Programmer' with a speech bubble containing curly braces coming out of it."
+        />
       </div>
       <ul class="list-disc my-4 px-4 sm:px-28 text-xl sm:text-2xl">
         <li>Born 1997</li>

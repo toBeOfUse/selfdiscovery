@@ -1,5 +1,5 @@
 <template>
-  <div class="m-6">
+  <div class="m-6 mx-auto bg-white max-w-screen-md">
     <PortfolioHeader />
     <portfolio-item v-for="post in posts" :key="post.slug" :post="post" />
   </div>
@@ -38,15 +38,3 @@ export default Vue.extend({
   },
 })
 </script>
-
-<style>
-body {
-  background: linear-gradient(
-    0deg,
-    rgba(0, 0, 0, 0.05) 0%,
-    rgba(0, 0, 0, 0.15) 100%
-  );
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-}
-</style>

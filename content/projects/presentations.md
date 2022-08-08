@@ -5,6 +5,7 @@ image: /presentation_demo.webp
 image_alt: Two browsers are open, side-by-side. A mouse goes from one to the other, clicking "next" and "previous" buttons, checking a "laser pointer" checkbox, and waving itself over some slides. When one browser goes to the next or previous slide, so does the other, and the laser point is visible in both browsers.
 image_preserve: true
 description: A project to synchronize a slide presentation across multiple computers.
+date: April 2020
 ---
 
 This program simply synchronizes a slide show between multiple people who view it through a website, letting each of them control the next and previous slide controls as well as a laser pointer.

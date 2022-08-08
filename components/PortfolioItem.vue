@@ -1,21 +1,11 @@
 <template>
-  <div class="flex flex-col max-w-screen-md items-center mx-auto">
+  <div class="flex flex-col items-center mx-auto">
     <hr v-if="!standalone" class="w-full m-4 border-t-2 border-gray-400" />
     <div
-      class="
-        flex flex-col-reverse
-        sm:flex-row
-        py-2
-        sm:items-baseline
-        w-full
-        sm:w-auto
-      "
+      class="flex flex-col items-start sm:items-center py-2 w-full sm:w-auto"
     >
-      <h1 :id="post.slug" class="text-2xl">
-        <a :href="`/projects/${post.slug}/`">{{ post.title }}</a>
-      </h1>
-      <span class="sm:ml-6">
-        <h2 v-if="post.date" class="text-md inline">{{ post.date }}</h2>
+      <span>
+        <h2 v-if="post.date" class="text-sm inline">{{ post.date }}</h2>
         <span v-if="post.date">•</span>
         <a
           v-if="post.github_link"
@@ -61,7 +51,7 @@
       style="height: 60vh"
       loading="lazy"
     />
-    <nuxt-content :document="post" class="max-w-screen-md prose text-black" />
+    <nuxt-content :document="post" class="prose text-black" />
   </div>
 </template>
 

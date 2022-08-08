@@ -1,5 +1,9 @@
 <template>
-  <div class="relative overflow-hidden">
+  <div
+    class="relative overflow-hidden"
+    role="img"
+    aria-label="Me looking up contemplatively as a circular frame fades in around my face."
+  >
     <nuxt-picture
       quality="85"
       width="1920"
@@ -8,13 +12,8 @@
       src="/wide.jpg"
       :img-attrs="{
         class: 'w-full h-auto',
-        alt: 'Me looking up contemplatively.',
       }"
     />
-    <img
-      src="~/assets/arc.svg"
-      class="absolute left-0 top-0 h-full w-full"
-      alt="A circular frame that fades in around my face."
-    />
+    <img src="~/assets/arc.svg" class="absolute left-0 top-0 h-full w-full" />
   </div>
 </template>
