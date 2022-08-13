@@ -22,6 +22,7 @@ const posts = [
   'spelling-bee',
   'catullus',
   'corn-simulator',
+  'minecraft-maps',
   'presentations',
 ]
 export default Vue.extend({
