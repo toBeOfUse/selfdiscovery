@@ -89,5 +89,10 @@ export default {
     },
   },
   image: {},
-  tailwindcss: { config: { plugins: [require('@tailwindcss/typography')] } },
+  tailwindcss: {
+    config: {
+      plugins: [require('@tailwindcss/typography')],
+      content: ['./content/**/*.md'],
+    },
+  },
 }
