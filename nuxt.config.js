@@ -7,7 +7,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: "Mitch's Home Page",
+    title: "Mitch Jacovetty's Home Page",
     htmlAttrs: {
       lang: 'en',
     },
@@ -17,7 +17,11 @@ export default {
       { name: 'format-detection', content: 'telephone=no' },
       {
         property: 'og:description',
-        content: 'The personal website of me, Mitch.',
+        content: 'The personal website of me, Mitch Jacovetty.',
+      },
+      {
+        name: 'description',
+        content: 'The personal website of me, Mitch Jacovetty.',
       },
     ],
     link: [{ rel: 'icon', type: 'image/png', href: '/micon.png' }],
