@@ -92,7 +92,7 @@ export default {
   tailwindcss: {
     config: {
       plugins: [require('@tailwindcss/typography')],
-      content: ['./content/**/*.md'],
+      purge: { content: ['content/**/*.md'] },
     },
   },
 }
