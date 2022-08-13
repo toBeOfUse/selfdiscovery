@@ -29,6 +29,6 @@ I also wanted to display organically curved paths on the map that went from poin
 <figure class="my-4 bg-gray-200 p-2 w-4/5 mx-auto">
     <img src="/path-interpolation.svg" class="max-w-sm w-full h-auto mx-auto max-h-96" loading="lazy" alt="Described in caption below." />
     <figcaption class="w-full text-sm rounded my-2">
-        This simple demo shows how a smooth curve can be derived from a sequence of line segments (which can be derived from a sequence of points) just by keeping the slopes of the tangents constant. In other words, the slopes of the tangents of the corners become the slope of the final curve at those same points. To achieve this, the control points of the final cubic Bezier curve should be at the ends of the dashed line segments here.
+        This simple animation shows how a smooth curve can be derived from a sequence of line segments (which can be derived from a sequence of points) just by keeping the slopes of the tangents constant. In other words, the slopes of the tangents of the corners become the slope of the final curve at those same points. To achieve this, the control points of the final cubic Bezier curve should be at the ends of the dashed line segments here.
     </figcaption>
 </figure>

@@ -1,5 +1,5 @@
 ---
-title: Improved NYT Spelling Bee Graphics
+title: Variations on the NYT Spelling Bee
 date: November 2021 - July 2022
 github_link: https://github.com/toBeOfUse/bee-engine
 iframe: https://mitch.website/spellingbeegallery/
