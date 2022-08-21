@@ -83,15 +83,15 @@ export default Vue.extend({
   },
 })
 </script>
-<style>
+<style lang="scss">
+@import '~/assets/content.scss';
 .portfolio-item-image {
   max-height: 70vh;
   max-width: 100%;
   object-fit: contain;
 }
-.portfolio-post p {
-  margin-top: 1.25em;
-  margin-bottom: 1.25em;
+.portfolio-post {
+  @include content;
 }
 </style>
 <style scoped>

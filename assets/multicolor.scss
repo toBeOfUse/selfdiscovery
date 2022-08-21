@@ -10,7 +10,7 @@ $fill-starting-color: rgb(99, 206, 227);
 @keyframes bg-colors {
   @for $i from 0 through 10 {
     #{$i*10}% {
-      background-color: color.adjust($fill-starting-color, $hue: 36deg * $i);
+      background-color: color.adjust($fill-starting-color, $hue: 36deg * $i, $lightness: 25%);
     }
   }
 }
