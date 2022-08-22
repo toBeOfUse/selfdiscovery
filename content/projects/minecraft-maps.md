@@ -17,18 +17,18 @@ There already exists a lot of software that generates maps from _Minecraft_ worl
 
 The more interesting problem was stopping users from panning away from a high-detail island and into low-detail territory while they were zoomed in. To do this, the build step generates data for polygons that enclose all the maps of each island and the front end treats the sides of these as collision bounds that interact with an imaginary point at the center of the user's screen, with the goal of keeping this point from escaping the current island (except when "cutting across" a concave corner; the polygons are altered to leave room for that.) To do this, I perform a simple point-in-polygon test to see if a user's interaction kept the center-of-the-screen point inside the polygon and, if not, I find the closest point on the polygon to the one the user was aiming towards and move the map so that the screen is centered on that. (This method of projecting the collision point back onto the polygon means that the component of its movement vector that wasn't responsible for trying to leave the polygon is preserved (i.e. if you try to pan the map diagonally off an island you will slide along its edge instead of just stopping.))
 
-<figure class="my-4 bg-gray-200 p-2 w-4/5 mx-auto">
-    <img src="/panandcollision.svg" class="max-w-sm w-full h-auto mx-auto" loading="lazy" alt="Described in caption below." />
-    <figcaption class="w-full text-sm rounded my-2">
+<figure>
+    <img src="/panandcollision.svg" loading="lazy" alt="Described in caption below." />
+    <figcaption>
         As we pan diagonally across this verdant green island, the point at the center of our view (red) is successfully pulled across a concave corner but then collides with the collision polygon (also red), eventually halting the panning motion.
     </figcaption>
 </figure>
 
 I also wanted to display organically curved paths on the map that went from point to point without having to manually draw them. To do this, I connected the points with imaginary line segments, calculated the slopes of the tangents of the corners where those line segments meet, and created Bezier curves that had the same slopes at the same points but interpolated them smoothly in between.
 
-<figure class="my-4 bg-gray-200 p-2 w-4/5 mx-auto">
-    <img src="/path-interpolation.svg" class="max-w-sm w-full h-auto mx-auto max-h-96" loading="lazy" alt="Described in caption below." />
-    <figcaption class="w-full text-sm rounded my-2">
+<figure>
+    <img src="/path-interpolation.svg" loading="lazy" alt="Described in caption below." />
+    <figcaption>
         This simple animation shows how a smooth curve can be derived from a sequence of line segments (which can be derived from a sequence of points) just by keeping the slopes of the tangents constant. In other words, the slopes of the tangents of the corners become the slope of the final curve at those same points. To achieve this, the control points of the final cubic Bezier curve should be at the ends of the dashed line segments here.
     </figcaption>
 </figure>
