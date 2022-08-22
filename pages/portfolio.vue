@@ -26,6 +26,7 @@ const posts = [
   'corn-simulator',
   'minecraft-maps',
   'presentations',
+  'this-website',
 ]
 export default Vue.extend({
   name: 'PortfolioPage',

@@ -1,9 +1,9 @@
 <template>
   <div class="flex flex-col items-center mx-auto">
-    <hr v-if="!standalone" class="w-full m-4 border-t-2 border-gray-400" />
+    <hr class="w-full m-4 border-t-2 border-gray-400" />
     <div
-      class="flex flex-col items-start sm:items-center w-full sm:w-auto"
-      :class="standalone ? 'pt-4' : 'py-2'"
+      :id="post.slug"
+      class="flex flex-col items-start sm:items-center w-full sm:w-auto py-2"
     >
       <span>
         <h2 v-if="post.date" class="text-sm inline">{{ post.date }}</h2>
@@ -21,10 +21,10 @@
           class="text-sm"
           :href="post.live_link"
           target="_blank"
-          >Live Version</a
+          >{{ post.live_link_title || 'Live Version' }}</a
         >
       </span>
-      <h1 :id="post.slug" class="text-2xl">
+      <h1 class="text-2xl" :class="{ 'my-2': noMainVisual }">
         <NuxtLink :to="`/projects/${post.slug}/`">{{ post.title }}</NuxtLink>
       </h1>
     </div>
@@ -48,14 +48,18 @@
       loading="lazy"
     />
     <iframe
-      v-if="post.iframe"
+      v-else-if="post.iframe"
       :src="post.iframe"
       :title="post.iframe_title"
       class="w-full"
       style="height: 60vh"
       loading="lazy"
     />
-    <nuxt-content :document="post" class="portfolio-post leading-relaxed" />
+    <nuxt-content
+      :document="post"
+      class="portfolio-post leading-relaxed"
+      :class="{ '-mt-6': noMainVisual }"
+    />
   </div>
 </template>
 
@@ -79,6 +83,9 @@ export default Vue.extend({
     imageSize(): { width: number; height: number } {
       const size = this.$store.getters.getImageSize(this.post.image)
       return size || { width: 0, height: 0 }
+    },
+    noMainVisual(): boolean {
+      return !this.post.image && !this.post.iframe
     },
   },
 })

@@ -1,8 +1,13 @@
 <template>
   <div>
-    <h1 class="text-3xl text-center" style="font-variant: small-caps">
-      <NuxtLink to="/portfolio" class="underline">⯇ What Have I Done?</NuxtLink>
-    </h1>
+    <span class="text-center block">
+      <h1 class="text-3xl inline" style="font-variant: small-caps">
+        What Have I Done?
+      </h1>
+      <NuxtLink :to="'/portfolio#' + post.slug" class="underline"
+        >(back to main page)</NuxtLink
+      >
+    </span>
     <portfolio-item :post="post" :standalone="true" />
   </div>
 </template>
