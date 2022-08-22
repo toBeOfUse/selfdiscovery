@@ -4,17 +4,22 @@
   </div>
 </template>
 <script lang="ts">
+import type { FetchReturn } from '@nuxt/content/types/query-builder'
 import Vue from 'vue'
-const posts = ['test']
 export default Vue.extend({
   name: 'NotesPage',
   layout: 'NotesLayout',
   async asyncData({ $content }) {
-    return {
-      posts: await Promise.all(
-        posts.map((p) => $content('notes/' + p).fetch())
-      ),
+    const posts = [(await $content('notes/intro').fetch()) as FetchReturn]
+    while (posts[posts.length - 1].next) {
+      posts.push(
+        (await $content(
+          'notes/' + posts[posts.length - 1].next
+        ).fetch()) as FetchReturn
+      )
     }
+    // TODO: warning if posts.lengths != $content('notes/*').fetch() length?
+    return { posts }
   },
 })
 </script>
