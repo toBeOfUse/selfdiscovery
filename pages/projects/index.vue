@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1 class="text-3xl text-center" style="font-variant: small-caps">
-      <NuxtLink to="/portfolio" class="no-underline">
+      <NuxtLink to="/projects/" class="no-underline">
         What Have I Done?
       </NuxtLink>
     </h1>

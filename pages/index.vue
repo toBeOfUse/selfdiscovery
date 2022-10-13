@@ -26,10 +26,10 @@
         <li>Software Enthusiast and Som'times-Do-Well</li>
         <li>Aspiring Towards Greatness</li>
         <li>
-          <NuxtLink to="/portfolio">My Portfolio</NuxtLink>
+          <NuxtLink to="/projects/">My Portfolio</NuxtLink>
         </li>
         <li>
-          <NuxtLink to="/blog">My Notes</NuxtLink>
+          <NuxtLink to="/notes/">My Notes</NuxtLink>
         </li>
         <li>
           <a href="https://github.com/toBeOfUse">My Github</a>

@@ -1,7 +1,7 @@
 <template>
   <div>
     <span class="text-center block">
-      <NuxtLink :to="'/blog#' + post.slug" class="underline"
+      <NuxtLink :to="'/notes/#' + post.slug" class="underline"
         >(back to main page)</NuxtLink
       >
     </span>

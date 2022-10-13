@@ -1,10 +1,10 @@
 <template>
   <div>
     <span class="text-center block">
-      <h1 class="text-3xl inline" style="font-variant: small-caps">
+      <h1 class="text-3xl" style="font-variant: small-caps">
         What Have I Done?
       </h1>
-      <NuxtLink :to="'/portfolio#' + post.slug" class="underline"
+      <NuxtLink :to="'/projects/#' + post.slug" class="underline"
         >(back to main page)</NuxtLink
       >
     </span>
