@@ -1,7 +1,7 @@
 <template>
   <div>
     <hr class="w-full my-4 border-t-2 border-gray-400" />
-    <h2 v-if="post.title" class="text-2xl">
+    <h2 v-if="post.title" :id="post.slug" class="text-2xl">
       <NuxtLink :to="'/notes/' + post.slug">{{ post.title }}</NuxtLink>
     </h2>
     <nuxt-content :document="post" class="notes-post leading-relaxed" />

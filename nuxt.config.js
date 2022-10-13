@@ -56,7 +56,10 @@ export default {
   generate: {
     async routes() {
       const projectPages = await fs.readdir('./content/projects/')
-      return projectPages.map((p) => '/projects/' + path.parse(p).name)
+      const projectRoutes = projectPages.map((p) => '/projects/' + path.parse(p).name)
+      const blogPages = await fs.readdir("./content/notes/")
+      const blogRoutes = blogPages.map((p)=>"/notes/"+path.parse(p).name)
+      return projectRoutes.concat(blogRoutes)
     },
   },
 

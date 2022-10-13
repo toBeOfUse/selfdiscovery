@@ -29,7 +29,7 @@
           <NuxtLink to="/portfolio">My Portfolio</NuxtLink>
         </li>
         <li>
-          <NuxtLink to="/notes">My Math Notes</NuxtLink>
+          <NuxtLink to="/blog">My Notes</NuxtLink>
         </li>
         <li>
           <a href="https://github.com/toBeOfUse">My Github</a>
