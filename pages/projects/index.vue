@@ -20,6 +20,8 @@
 <script lang="ts">
 import Vue from 'vue'
 const posts = [
+  'bundle-md',
+  'singlehanded',
   'perspective',
   'spelling-bee',
   'catullus',
