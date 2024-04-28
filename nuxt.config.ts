@@ -15,7 +15,7 @@ export default defineNuxtConfig({
       meta: [
         { charset: "utf-8" },
         { name: "viewport", content: "width=device-width, initial-scale=1" },
-        { name: "format-detection", content: "telephone=no" },
+        { name: "format-detection", content: "telephone=no" },  // tf
         {
           property: "og:description",
           content: "The personal website of me, Mitch Jacovetty.",
