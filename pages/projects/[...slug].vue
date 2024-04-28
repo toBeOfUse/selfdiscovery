@@ -16,7 +16,7 @@ import type { Meta } from "@unhead/vue";
 const route = useRoute();
 
 const { data: post } = await useAsyncData(
-  "project",
+  "project:" + route.path,
   () => queryContent(route.path).findOne()
 );
 
