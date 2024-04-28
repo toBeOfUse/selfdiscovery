@@ -1,5 +1,5 @@
 ---
-title: Forks of Catullus
+title: Catullus
 date: October 2021
 image: /catullus.jpg
 image_alt: '"Catullus, it’s too bad, but don’t be silly/you see it’s gone; well, gone is gone, that’s all" in normal text. "[A deep shuddering inhale] My new thing is infinite resignation./I’m extremely reserved now, and just, I hold everything loosely" in text that''s fading as it gets further from the mouse cursor.'

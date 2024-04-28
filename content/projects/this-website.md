@@ -6,4 +6,4 @@ live_link: /
 live_link_title: Live Version (do you really need this link?)
 ---
 
-Eventually, after developing several projects, I decided to create a website in their honor.<!--more--> This site was made with Nuxt.js. It makes extensive use of the Nuxt Content plugin to plug posts written in Markdown into Vue components. It is styled with Tailwind CSS. The initial static version of the logo on the front page was made by my friend Hannah.
+Eventually, after developing several projects, I decided to create this website in their honor.<!--more--> This site was made with Nuxt.js. It makes extensive use of the Nuxt Content plugin to display posts written in Markdown within Vue components. It is styled with Tailwind CSS. The design for the logo on the front page was made by my friend Hannah.
