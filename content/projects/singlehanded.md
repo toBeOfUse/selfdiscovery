@@ -1,7 +1,7 @@
 ---
 title: Singlehanded Typing
 github_link: https://github.com/toBeOfUse/SingleHandedTypist
-live_link: https://singlehanded.tech
+live_link: https://singlehanded.mitch.website/
 date: October 2022
 ---
 

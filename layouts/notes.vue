@@ -7,8 +7,8 @@
       These things have been discovered before, but I'm discovering them again
       anyway.
     </h2>
-    <img src="~/assets/multiwave.svg" class="w-full my-4" />
-    <Nuxt />
+    <img src="~/assets/multiwave.svg?url_encode" class="w-full my-4">
+    <slot />
     <BasicFooter />
   </div>
 </template>

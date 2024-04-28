@@ -42,20 +42,15 @@
   </div>
 </template>
 
-<script>
-import Vue from 'vue'
-import Logo from 'assets/logo.vue.svg'
-import Angles from 'assets/angles.vue.svg'
-export default Vue.extend({
-  name: 'IndexPage',
-  components: { Logo, Angles },
-})
+<script setup>
+import Logo from '~/assets/logo.vue.svg';
+import Angles from '~/assets/angles.vue.svg';
 </script>
 
 
 <style scoped lang="scss">
 @use 'sass:math';
-@import 'assets/multicolor.scss';
+@import '~/assets/multicolor.scss';
 @font-face {
   font-family: 'OpenSauceOne';
   src: url('assets/opensauceone-regular-webfont.woff2') format('woff2'),
@@ -68,7 +63,6 @@ li {
 }
 ul {
   font-family: OpenSauceOne, sans-serif;
-
   list-style-type: ' - ';
 }
 a {
@@ -78,7 +72,7 @@ a {
   width: 800px;
   max-width: 85%;
 }
-.angles-group > path {
+:deep(svg .angles-group rect) {
   opacity: 0.2;
   @include color-shifter;
   animation-name: fill-colors;
@@ -89,7 +83,7 @@ a {
     }
   }
 }
-.logo-color-shift {
+:deep(svg .logo-color-shift) {
   @include color-shifter;
   animation-name: fill-colors;
   opacity: 0.8;

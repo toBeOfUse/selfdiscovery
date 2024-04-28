@@ -14,6 +14,6 @@
         class: 'w-full h-auto',
       }"
     />
-    <img src="~/assets/arc.svg" class="absolute left-0 top-0 h-full w-full" />
+    <img src="~/assets/arc.svg?url_encode" class="absolute left-0 top-0 h-full w-full">
   </div>
 </template>
