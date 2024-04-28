@@ -18,10 +18,12 @@ export default defineNuxtConfig({
         { name: "format-detection", content: "telephone=no" },  // tf
         {
           property: "og:description",
+          hid: "og:description",
           content: "The personal website of me, Mitch Jacovetty.",
         },
         {
           name: "description",
+          hid: "description",
           content: "The personal website of me, Mitch Jacovetty.",
         },
       ],
