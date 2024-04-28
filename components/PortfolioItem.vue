@@ -7,7 +7,7 @@
     >
       <span>
         <h2 v-if="post.date" class="text-sm inline">{{ post.date }}</h2>
-        <span v-if="post.date"> • </span>
+        <span v-if="post.date && (post.live_link || post.github_link)"> • </span>
         <a
           v-if="post.github_link"
           class="text-sm"
@@ -26,6 +26,7 @@
         <NuxtLink :to="`/projects/${name}/`">{{ post.title }}</NuxtLink>
       </h1>
     </div>
+    <!-- TODO: see if the assets folder can be used instead of public -->
     <nuxt-picture
       v-if="post.image && !post.image_preserve"
       :src="post.image"
