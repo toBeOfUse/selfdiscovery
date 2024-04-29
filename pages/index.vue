@@ -1,13 +1,13 @@
 <template>
   <div
-    class="w-screen h-screen flex items-center content-center overflow-hidden"
+    class="h-dvh w-screen flex items-center content-center overflow-hidden"
   >
     <div
-      class="h-full w-full absolute top-0 left-0 overflow-hidden"
+      class="h-dvh w-full absolute top-0 left-0 overflow-hidden"
       style="z-index: -1"
     >
       <Angles
-        class="h-full w-auto absolute top-0 left-1/2"
+        class="h-dvh w-auto absolute top-0 left-1/2"
         style="transform: translateX(-50%)"
         role="img"
         aria-label="A background consisting of diagonal stripes with shifting light colors."
