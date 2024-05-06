@@ -8,8 +8,8 @@
       </h1>
       <p>
         This is the question we must all ask ourselves from time to time, and
-        here is the page where I'm recording my answers. Also, hi, I'm
-        <NuxtLink class="underline" to="/" >some kind of programmer</NuxtLink >.
+        this is the page where I'm recording my answers. Also, hi, I'm
+        <NuxtLink class="underline" to="/about" >some kind of programmer</NuxtLink >.
         To learn more, read on, and/or
         <a class="underline" href="mailto:mitchjacov@gmail.com">email me</a>.
       </p>
@@ -21,9 +21,13 @@
 <script setup lang="ts">
 const orderedPostNames = [
   "hacksu-lessons",
+  "khe-io",
+  "libsrcml-js",
+  "research-folder",
   "bundle-md",
   "singlehanded",
   "perspective",
+  // "mitchbot-streams",
   "spelling-bee",
   "catullus",
   "corn-simulator",

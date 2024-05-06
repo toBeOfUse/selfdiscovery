@@ -3,12 +3,10 @@
     class="h-dvh w-screen flex items-center content-center overflow-hidden"
   >
     <div
-      class="h-dvh w-full absolute top-0 left-0 overflow-hidden"
-      style="z-index: -1"
+      class="h-dvh w-full absolute top-0 left-0 overflow-hidden -z-10"
     >
       <Angles
-        class="h-dvh w-auto absolute top-0 left-1/2"
-        style="transform: translateX(-50%)"
+        class="h-dvh w-auto absolute top-0 left-1/2 -translate-x-1/2"
         role="img"
         aria-label="A background consisting of diagonal stripes with shifting light colors."
       />
@@ -26,16 +24,16 @@
         <li>Software Enthusiast and Som'times-Do-Well</li>
         <li>Aspiring Towards Greatness</li>
         <li>
-          <NuxtLink to="/projects/">My Portfolio</NuxtLink>
+          <NuxtLink to="/about/">About Me</NuxtLink>
+        </li>
+        <li>
+          <NuxtLink to="/projects/">My Projects</NuxtLink>
         </li>
         <li>
           <NuxtLink to="/notes/">My Notes</NuxtLink>
         </li>
         <li>
           <a href="https://github.com/toBeOfUse">My Github</a>
-        </li>
-        <li>
-          <a href="mailto:mitchjacov@gmail.com">My Email Address</a>
         </li>
       </ul>
     </div>
