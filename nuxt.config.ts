@@ -8,7 +8,7 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
-      title: "Mitch Jacovetty's Home Page",
+      title: "Mitch's Web Page",
       htmlAttrs: {
         lang: "en",
       },

@@ -13,29 +13,35 @@
           class="text-sm"
           :href="post.github_link"
           target="_blank"
-          >Github</a>
+        >
+          Github
+        </a>
         <span v-if="post.live_link && post.github_link"> • </span>
         <a
           v-if="post.live_link"
           class="text-sm"
           :href="post.live_link"
           target="_blank"
-          >{{ post.live_link_title || 'Live Version' }}</a>
+        >
+          {{ post.live_link_title || 'Live Version' }}
+        </a>
       </span>
       <h1 class="text-2xl" :class="{ 'my-2': noMainVisual }">
         <NuxtLink :to="`/projects/${name}/`">{{ post.title }}</NuxtLink>
       </h1>
     </div>
     <!-- TODO: see if the assets folder can be used instead of public -->
-    <nuxt-picture
+    <NuxtImg
       v-if="post.image && !post.image_preserve"
       :src="post.image"
       :alt="post.image_alt"
-      :img-attrs="{
-        class: 'my-2 portfolio-item-image',
-        // ...imageSize,
-        loading: 'lazy',
-      }"
+      class="my-2 portfolio-item-image"
+      loading="lazy"
+      v-bind="(imageSize ? {
+        width: imageSize.width,
+        height: imageSize.height,
+      } : {})"
+      :quality="95"
     />
     <img
       v-else-if="post.image && post.image_preserve"
@@ -43,6 +49,10 @@
       :alt="post.image_alt"
       class="my-2 portfolio-item-image"
       loading="lazy"
+      v-bind="(imageSize ? {
+        width: imageSize.width,
+        height: imageSize.height,
+      } : {})"
     >
     <iframe
       v-else-if="post.iframe"
@@ -55,12 +65,15 @@
     <ContentRenderer
       :value="post"
       class="portfolio-post leading-relaxed"
-      :class="{ '-mt-6': noMainVisual }" />
+      :class="{ '-mt-6': noMainVisual }"
+    />
   </div>
 </template>
 
 <script setup lang="ts">
 import type { ParsedContent } from '@nuxt/content/types';
+// import { useWindowSize } from "@vueuse/core";
+import getImageSize from "image-size";
 
 // TODO: directional quotation marks?
 
@@ -70,13 +83,13 @@ const props = defineProps<{
   standalone?: boolean
 }>();
 
-// const imageSize = computed(() => {
-//   // imageSize(): { width: number; height: number } {
-//   //   const size = this.$store.getters.getImageSize(this.post.image)
-//   //   return size || { width: 0, height: 0 }
-//   // },
-//   return {width: 100, height: 100}; // TODO: figure out wtf
-// });
+const { data: imageSize } = await useAsyncData(
+  props.post.image + "size",
+  async () => {
+    return props.post.image ?
+      getImageSize("./public/" + props.post.image) :
+      { width: 0, height: 0 };
+});
 
 const noMainVisual = computed(() => !props.post.image && !props.post.iframe);
 </script>
@@ -84,9 +97,10 @@ const noMainVisual = computed(() => !props.post.image && !props.post.iframe);
 <style lang="scss">
 @import '~/assets/content.scss';
 .portfolio-item-image {
-  max-height: 70vh;
   max-width: 100%;
-  object-fit: contain;
+  max-height: 70vh;
+  height: auto;
+  width: auto;
 }
 .portfolio-post {
   @include content;
