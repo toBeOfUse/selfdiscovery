@@ -1,5 +1,5 @@
 <template>
-  <NuxtLayout name="portfolio">
+  <NuxtLayout name="projects">
     <div>
       <h1 class="text-3xl text-center" style="font-variant: small-caps">
         <NuxtLink to="/projects/" class="no-underline">
@@ -13,7 +13,10 @@
         To learn more, read on, and/or
         <a class="underline" href="mailto:mitchjacov@gmail.com">email me</a>.
       </p>
-      <portfolio-item v-for="post, i in posts" :name="orderedPostNames[i]" :key="orderedPostNames[i]" :post="post" />
+      <ProjectItem
+        v-for="post, i in posts" :key="orderedPostNames[i]" :name="orderedPostNames[i]"
+        :post="post"
+      />
     </div>
   </NuxtLayout>
 </template>
@@ -44,13 +47,12 @@ const { data: posts } = await useAsyncData(
 );
 
 definePageMeta({
-  title: "Portfolio - Mitch's Home Page",
+  title: "Projects",
   meta: [
     {
       hid: "og:description",
       property: "og:description",
-      content:
-        "Programming projects that I, Mitch, have worked on or created.",
+      content: "Stuff I've worked on or made.",
     },
   ],
 });

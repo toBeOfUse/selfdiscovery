@@ -1,11 +1,11 @@
 <template>
-  <NuxtLayout name="portfolio">
+  <NuxtLayout name="projects">
     <div>
       <span class="text-center block">
         <h1 class="text-3xl" style="font-variant: small-caps">What Have I Done?</h1>
         <NuxtLink :to="'/projects/#' + name" class="underline">(back to main page)</NuxtLink>
       </span>
-      <portfolio-item :post="post!" :name="name" :standalone="true" />
+      <ProjectItem :post="post!" :name="name" :standalone="true" />
     </div>
   </NuxtLayout>
 </template>
@@ -40,7 +40,7 @@ const meta: Meta[] = [
     property: 'og:type',
     content: 'article',
   },
-]
+];
 if (post.value?.description) {
   meta.push({
     hid: 'description',
@@ -70,8 +70,5 @@ if (post.value?.image) {
     content: 'summary_large_image',
   });
 }
-useHead({
-  title: pageTitle,
-  meta
-});
+useHead({ title: pageTitle, meta });
 </script>

@@ -27,7 +27,9 @@
         </a>
       </span>
       <h1 class="text-2xl" :class="{ 'my-2': noMainVisual }">
-        <NuxtLink :to="`/projects/${name}/`">{{ post.title }}</NuxtLink>
+        <NuxtLink :to="`/projects/${name}/`">
+          {{ post.title }}
+        </NuxtLink>
       </h1>
     </div>
     <!-- TODO: see if the assets folder can be used instead of public -->
@@ -35,7 +37,7 @@
       v-if="post.image && !post.image_preserve"
       :src="post.image"
       :alt="post.image_alt"
-      class="my-2 portfolio-item-image"
+      class="my-2 project-image"
       loading="lazy"
       v-bind="(imageSize ? {
         width: imageSize.width,
@@ -47,7 +49,7 @@
       v-else-if="post.image && post.image_preserve"
       :src="post.image"
       :alt="post.image_alt"
-      class="my-2 portfolio-item-image"
+      class="my-2 project-image"
       loading="lazy"
       v-bind="(imageSize ? {
         width: imageSize.width,
@@ -64,7 +66,7 @@
     />
     <ContentRenderer
       :value="post"
-      class="portfolio-post leading-relaxed"
+      class="project-post leading-relaxed"
       :class="{ '-mt-6': noMainVisual }"
     />
   </div>
@@ -96,13 +98,13 @@ const noMainVisual = computed(() => !props.post.image && !props.post.iframe);
 
 <style lang="scss">
 @import '~/assets/content.scss';
-.portfolio-item-image {
+.project-image {
   max-width: 100%;
   max-height: 70vh;
   height: auto;
   width: auto;
 }
-.portfolio-post {
+.project-post {
   @include content;
 }
 </style>
