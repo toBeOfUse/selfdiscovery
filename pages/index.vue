@@ -24,13 +24,19 @@
         <li>Software Enthusiast and Som'times-Do-Well</li>
         <li>Aspiring Towards Greatness</li>
         <li>
-          <NuxtLink to="/about/">About Me</NuxtLink>
+          <NuxtLink to="/about/">
+            About Me
+          </NuxtLink>
         </li>
         <li>
-          <NuxtLink to="/projects/">My Projects</NuxtLink>
+          <NuxtLink to="/projects/">
+            My Projects
+          </NuxtLink>
         </li>
         <li>
-          <NuxtLink to="/notes/">My Notes</NuxtLink>
+          <NuxtLink to="/notes/">
+            My Notes
+          </NuxtLink>
         </li>
         <li>
           <a href="https://github.com/toBeOfUse">My Github</a>

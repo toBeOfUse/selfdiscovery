@@ -5,8 +5,9 @@
   >
     <p class="text-center">
       <nuxt-link class="underline" to="/">Home</nuxt-link> -
+      <nuxt-link class="underline" to="/about">About</nuxt-link> -
       <nuxt-link class="underline" to="/projects/">Projects</nuxt-link> -
-      <nuxt-link class="underline" to="/notes/">Re-Research</nuxt-link> -
+      <nuxt-link class="underline" to="/notes/">Notes</nuxt-link> -
       <a class="underline" href="mailto:mitchjacov@gmail.com">Email</a>
     </p>
   </div>
