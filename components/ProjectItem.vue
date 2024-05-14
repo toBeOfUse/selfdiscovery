@@ -3,7 +3,7 @@
     <hr class="w-full m-4 border-t-2 border-gray-400" />
     <div
       :id="name"
-      class="flex flex-col items-start sm:items-center w-full sm:w-auto py-2"
+      class="flex flex-col items-start items-center w-full sm:w-auto py-2"
     >
       <span>
         <h2 v-if="post.date" class="text-sm inline">{{ post.date }}</h2>
