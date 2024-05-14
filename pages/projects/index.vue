@@ -46,13 +46,13 @@ const { data: posts } = await useAsyncData(
   )
 );
 
-definePageMeta({
+useHead({
   title: "Projects",
   meta: [
     {
       hid: "og:description",
       property: "og:description",
-      content: "Stuff I've worked on or made.",
+      content: "Stuff that I've worked on or made.",
     },
   ],
 });
