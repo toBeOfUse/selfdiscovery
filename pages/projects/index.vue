@@ -36,6 +36,7 @@ const orderedPostNames = [
   "corn-simulator",
   "minecraft-maps",
   "presentations",
+  "sweet-sh",
   "this-website",
 ];
 
