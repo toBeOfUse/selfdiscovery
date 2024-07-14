@@ -1,19 +1,23 @@
-
 @mixin content {
-    & p {
-        margin-top: 1.25em;
-        margin-bottom: 1.25em;
+  & h2 {
+    @apply text-xl;
+    a {
+      @apply no-underline;
     }
-    & a {
-        text-decoration: underline;
+  }
+  & p {
+    @apply my-5;
+  }
+  & a {
+    @apply underline;
+  }
+  & figure {
+    @apply my-4 bg-gray-200 p-2 w-4/5 mx-auto;
+    & img {
+      @apply max-w-sm w-full h-auto mx-auto max-h-96;
     }
-    & figure {
-        @apply my-4 bg-gray-200 p-2 w-4/5 mx-auto;
-        & img {
-            @apply max-w-sm w-full h-auto mx-auto max-h-96;
-        }
-        & figcaption {
-            @apply w-full text-sm rounded my-2;
-        }
+    & figcaption {
+      @apply w-full text-sm rounded my-2;
     }
+  }
 }

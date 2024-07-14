@@ -1,21 +1,21 @@
 <template>
-  <div>
-    <hr class="w-full my-4 border-t-2 border-gray-400" />
-    <h2 v-if="post.title" :id="post.slug" class="text-2xl">
-      <NuxtLink :to="'/notes/' + post.slug">{{ post.title }}</NuxtLink>
+  <template v-if="post">
+    <h2 v-if="post.title" :id="post._file" class="text-2xl">
+      <NuxtLink :to="post._path">{{ post.title }}</NuxtLink>
     </h2>
     <p>{{ new Date(post.date).toLocaleDateString() }}</p>
     <ContentRenderer :value="post" class="notes-post leading-relaxed" />
-  </div>
+  </template>
+  <p v-else>ERROR: post not found D:</p>
 </template>
 <script setup lang="ts">
-import type { ParsedContent } from '@nuxt/content';
+import type { ParsedContent } from "@nuxt/content";
 
-defineProps<{post: ParsedContent}>();
+const { post } = defineProps<{ post: ParsedContent | null }>();
 </script>
 
 <style lang="scss">
-@import '~/assets/content.scss';
+@import "~/assets/content.scss";
 .notes-post {
   @include content;
 }
