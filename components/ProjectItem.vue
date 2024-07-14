@@ -3,7 +3,7 @@
     <hr class="w-full m-4 border-t-2 border-gray-400" />
     <div
       :id="name"
-      class="flex flex-col items-start items-center w-full sm:w-auto py-2"
+      class="flex flex-col items-center w-full sm:w-auto py-2"
     >
       <span>
         <h2 v-if="post.date" class="text-sm inline">{{ post.date }}</h2>
@@ -35,10 +35,10 @@
     <!-- TODO: see if the assets folder can be used instead of public -->
     <NuxtImg
       v-if="post.image && !post.image_preserve"
+      loading="lazy"
       :src="post.image"
       :alt="post.image_alt"
       class="my-2 project-image"
-      loading="lazy"
       v-bind="(imageSize ? {
         width: imageSize.width,
         height: imageSize.height,
@@ -47,14 +47,14 @@
     />
     <img
       v-else-if="post.image && post.image_preserve"
-      :src="post.image"
+      loading="lazy"
       :alt="post.image_alt"
       class="my-2 project-image"
-      loading="lazy"
       v-bind="(imageSize ? {
         width: imageSize.width,
         height: imageSize.height,
       } : {})"
+      :src="post.image"
     >
     <iframe
       v-else-if="post.iframe"
@@ -73,9 +73,8 @@
 </template>
 
 <script setup lang="ts">
-import type { ParsedContent } from '@nuxt/content/types';
+import type { ParsedContent } from '@nuxt/content';
 // import { useWindowSize } from "@vueuse/core";
-import getImageSize from "image-size";
 
 // TODO: directional quotation marks?
 
@@ -88,9 +87,11 @@ const props = defineProps<{
 const { data: imageSize } = await useAsyncData(
   props.post.image + "size",
   async () => {
+    if (import.meta.server) {
     return props.post.image ?
-      getImageSize("./public/" + props.post.image) :
+      (await import("image-size")).default("./public/" + props.post.image) :
       { width: 0, height: 0 };
+    }
 });
 
 const noMainVisual = computed(() => !props.post.image && !props.post.iframe);
