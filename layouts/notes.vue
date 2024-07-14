@@ -6,8 +6,8 @@
       </nuxt-link>
     </h1>
     <h2 class="text-lg text-center my-2">
-      These things have been discovered before, but I'm discovering them again
-      anyway.
+      These things may have been discovered before, but I'm figuring them out again
+      anyway
     </h2>
     <img src="~/assets/multiwave.svg?url_encode" class="w-full my-4">
     <slot />

@@ -4,16 +4,14 @@
     <h2 v-if="post.title" :id="post.slug" class="text-2xl">
       <NuxtLink :to="'/notes/' + post.slug">{{ post.title }}</NuxtLink>
     </h2>
-    <nuxt-content :document="post" class="notes-post leading-relaxed" />
+    <p>{{ new Date(post.date).toLocaleDateString() }}</p>
+    <ContentRenderer :value="post" class="notes-post leading-relaxed" />
   </div>
 </template>
-<script lang="ts">
-import Vue from 'vue'
-export default Vue.extend({
-  props: {
-    post: { type: Object, required: true },
-  },
-})
+<script setup lang="ts">
+import type { ParsedContent } from '@nuxt/content';
+
+defineProps<{post: ParsedContent}>();
 </script>
 
 <style lang="scss">
