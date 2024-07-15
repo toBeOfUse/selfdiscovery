@@ -7,7 +7,7 @@
     </h1>
     <h2 class="text-lg text-center my-2">
       These things may have been discovered before, but I'm figuring them out again
-      anyway
+      anyway.
     </h2>
     <img src="~/assets/multiwave.svg?url_encode" class="w-full my-4">
     <slot />
