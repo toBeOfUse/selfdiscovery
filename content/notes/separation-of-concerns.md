@@ -38,15 +38,15 @@ The first paradigm, the one that splits up content and presentation and client a
 
 ## Fault Lines: The Continental Approach
 
-Or, on the other hand, you could divide up your code the other way - group code so that each thing responsible for one specific page, or API route, or whatever is grouped together. If this code is responsible for handling an HTTP request for a user object, the request body validation schema, the database calls to get the user, the function for filtering out the plaintext password from the user object, the function to calculate the appropriate greeting for them based on their demographic data and social status, the 
+Or, on the other hand, you could divide up your code the other way - group code so that each thing responsible for one specific page, or API route, or whatever is grouped together. If this code is responsible for handling an HTTP request for a user object, the request body validation schema, the database calls to get the user, the function for filtering out the plaintext password from the user object, the function to calculate the appropriate greeting for them based on their demographic data and social status, the code that generates a message formatted according to the HTTP 1.1 protocol, and the network card device driver that sends packets out over the wire are all in the same place.
 
-<!-- image with fault lines separating the labeled layers -->
+<!-- image with fault lines separating new, different labeled layers -->
 
 <!-- you could also call these "silos" compared to "layers of the stack" -->
 
 ## The Ultimate Question: How To Organize Code
 
-generally a good idea to organize code by putting units thereof next to other units that will use them. often this will be influenced by the type of technology they use. database schemas for different tables go next to each other in part just because tables reference each other. this creates a small amount of natural stratification by itself. on the other hand, the homogeneity approach can be a trap where you're debugging one thing and it touches 5 million files. also, you might end up trying to separate things, like content and presentation, that aren't actually separate, and the tailwind guy will find you and kick your ass.
+generally a good idea to organize code by putting units thereof next to other units that will use them. often this will be influenced by the type of technology they use. database schemas for different tables go next to each other in part just because tables reference each other. this creates a small amount of natural stratification by itself. on the other hand, the homogeneity approach can be a trap where you're debugging one thing and it touches 5 million files. also, you might end up trying to separate things, like content and presentation, that aren't actually separate, and the tailwind guy will find you and kick your ass. also, you can't have packet-sending code in your page file. abstract out layers - but only where you actually can!
 
 <!--
 
