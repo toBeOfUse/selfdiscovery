@@ -1,0 +1,41 @@
+---
+title: Floating Point Numbers Aren't the Problem, They're the Solution
+subtitle: The real reason you should use whole numbers for prices
+date: 2024-08-31
+---
+
+There's a lot of superstition and folklore around floating-point numbers in computer science, built around occult-sounding terms like "mantissa" and "significand." "Floating-point math is imprecise," people will say. But the "floating-point" part gets way too much emphasis. "Math is imprecise" is a better way to put it.
+
+## "Floating-point math" is just normal math
+
+"Floating-point" just means "a number where the decimal point can appear at any location, i.e. between any two arbitrary digits." But that's just normal math. We do that whenever we write down a number. Historically, people have used the term "floating-point" to contrast with "fixed-point math," but fixed-point math has been used by almost no-one in the last 20 years. It's as if we still called our phones "camera phones" to distinguish them from old camera-less cell phones, or "tigers" "non-saber-tooth tigers" to distinguish them from saber-tooth tigers.
+
+"Floating-point" also often seems to be used to refer to a specific way of storing numbers in a computer's memory as specified by the IEEE 754 standard, but in my experience, the implementation details actually don't help that much to understand the unusual behaviors you might see when working with non-whole numbers in computer science - focusing on IEEE 754 is missing the forest for the trees. The relevant math is easier to understand without it, and thus I won't be using the term "floating-point" again in this post until the very end.
+
+## Binary math is also just math
+
+Let's say we want to create a number system that only uses two digits, 0 and 1. This really isn't any weirder than having a number system with exactly 10 digits, like the normal one, which is probably only ubiquitous because humans happen to have 10 fingers. Binary math is important because computers' memory is made out of tiny switches that can either be flipped on or flipped off, and similar to the fingers thing, we'll want to be able to do math with two unique digits to correspond to the two states that those switches can have.
+
+Trying to do `1 + 1` in binary sometimes throws people off, since the answer is unfortunately not written "2". Instead, it's written `10`, since adding 1 and 1 in binary overflows the ones digit, forcing us to carry a 1. Similar constraints apply to calculating `0.1 + 0.1`. The answer can't be 0.2, since we're not using the digit "2." For extremely similar reasons, the answer also cannot be 0.3 or 0.4, etc. The answer must be `0.1 + 0.1 = 1.0`, since we're overflowing the first digit after the point and thus we have to carry a one to the left. This means that `0.1` must signify what we'd typically refer to as one-half. For the same reason, `0.01` must signify one-fourth, since `0.01 + 0.01` must equal `0.1`, and so `0.01` is half of one-half. Similarly, `0.11` must mean "three-fourths", since it's `0.1 + 0.01`, or one half plus one-fourth.
+
+Note that you can look at binary math as being math with fewer digits than normal, or you can look at normal (decimal, base 10) math as being math with extra digits compared to binary. It's just easier to present it in the first way since normal math is what everyone's used to.
+
+## Unrepresentable states
+
+"Make illegal states unrepresentable" is a reasonable thing to say in computer science, usually used to mean something like "if a user account in your app can only have the role 'staff member' or the role 'customer', use an enum to store their role instead of a string, because a string could possibly represent the illegal state 'staf member'." Unfortunately, in math, there are lots of states that are unrepresentable despite being perfectly legal. Famously, one-third cannot be represented by a single normal decimal number with a finite amount of digits it's 0.333333 with an infinite number of 3s. Similarly, in binary, it's very difficult to represent three-tenths. In decimal, 0.1 is one-tenth, and so it's easy to represent three-tens by just adding 0.1 to itself three times, getting 0.3. But in binary, `0.1` is not one-tenth: it is one-half. All binary numbers between 0 and 1 logically have to be creatable by adding together `0.1`, `0.01`, `0.001`, `0.0001`, and so on; in words, that means that you're adding together one-half, one-fourth, one-eighth, one-sixteenth, and so on. Trying to finesse that process to reach three-tenths is how you get a number like 0.0100110011.
+
+0.0100110011 is pretty close to three-tenths, but it's not quite there - precisely translating back to normal decimal numbers gets you `0.2998046875`. Representing three-tenths exactly would take an infinite number of digits - the `0011` part repeats infinitely, just like the `3` in `0.333333...`. In general, numbers that can be represented very easily in one number system can't necessarily be represented at all in another. For example, one-third is impossible to write in decimal and binary, but can be written very easily, as `0.1`, in ternary (i.e. base 3, the number system that uses the digits 0, 1, and 2.)
+
+This is a problem because of the ubiquitous use of number like 0.3 in our everyday lives. For example, we divide currencies up into 100 equal pieces called cents, and write things like "30 cents" to mean 0.3 dollars. This amount of money can't be precisely represented by computers in binary, since it would take an infinite number of digits, and computers have a finite number of little switches to represent digits with.
+
+But, since we generally only subdivide dollars or euros into 100 units each, if we want to store prices precisely, we can just multiply them by 100 and store them as whole numbers of cents. Easy. So that's why and how you should use whole numbers for prices.
+
+So, floating-point math isn't the problem; math is the problem. "Floating-point" just means we're storing numbers in the way we're used to, albeit with a fixed amount of digits since computers can only store so many of those. A computer will store a certain number of digits to represent a number, like perhaps eight: `0000.0000`. Floating point lets us put the point close to the end of the digits if we need to store a large number, like 64.5 (`1000000.1`), or close to the beginning if we need to store a small number, like three-sixty-fourths (`0.0000110`). Yes, the system used to achieve this result is complicated and involves stuff like a "mantissa," but that is like, rarely important.
+
+## Appendix A: Floating-point numbers are the problem actually
+
+One caveat that's ended up being kind of obscure knowledge but is pretty obvious if you take the above paragraph seriously is that floating-point numbers do give you vastly more precision when storing non-whole numbers between e.g. 1 and 0 than they do when storing numbers between e.g. 10000 and 100000. The reason is simple: when you have the decimal point all the way to the left, then you get access to many digits after the decimal point and can get really precise, whereas when the decimal point is all the way to the right, there are few digits after the decimal point, and so you can't represent the fractional part of the number as precisely.
+
+[A blog post](https://chadnauseam.com/coding/random/floating-points-between-zero-and-one) recently ended up pretty high up on Hacker News for showing that there are as many unique numbers between 0 and 1 in typical floating-point systems as there are between 1 and infinity, and the details of that are kind of complicated and have to be presented with some experimental analysis and math and such, but the ultimate reason for it is really very simple - you'd get the same basic property in any system that had a fixed number of digits and where you could place the point anywhere between them.
+
+So that's the one thing about this basic system that I would say is pretty weird in a way that normal math isn't, but it ultimately comes from the fact that computers store numbers using a specific number of digits, not because of anything arcane.
