@@ -1,10 +1,10 @@
 ---
 title: Floating Point Numbers Aren't the Problem, They're the Solution
 subtitle: The real reason you should use whole numbers for prices
-date: 2024-08-31
+# date: 2024-08-31
 ---
 
-There's a lot of superstition and folklore around floating-point numbers in computer science, plausibly due to occult-sounding terms like "mantissa" and "significand." "Floating-point math is imprecise," people will say. But the "floating-point" part gets way too much emphasis. "Math is imprecise" is a better way to put it. The poor floating-point number is merely misunderstood.
+There's a lot of superstition and folklore around floating-point numbers in computer science, plausibly due to occult-sounding terms like "mantissa" and "significand." "Floating-point math is imprecise," people will say. But the "floating-point" part gets way too much emphasis. "Math is imprecise" is a better way to put it. The poor floating-point number is just chronically misunderstood.
 
 ## "Floating-point math" is just normal math
 
@@ -24,7 +24,7 @@ Note that you can look at binary math as being math with fewer digits than norma
 
 "Make illegal states unrepresentable" is a reasonable thing to say in computer science, usually used to mean something like "if a user account in your app can only have the role 'staff member' or the role 'customer', use an enum to store their role instead of a string, because a string could potentially represent the illegal state 'staf member'." Unfortunately, in math, there are lots of states that are unrepresentable despite being perfectly legal. Famously, one-third cannot be represented by a single normal decimal number with a finite amount of digits; it's 0.333333 with an infinite number of 3s. Similarly, in binary, it's very difficult to represent one-tenth. In decimal, it's easy: you just write 0.1; but in binary, `0.1` is one-half. `0.001` is one-eighth, which is close, but not that close; a more precise representation would be something like  `0.000110011`, which consists of the binary for one sixteenth plus one thirty-second plus one two-hundred-and-fifty-sixth plus one five-hundred-and-twelfth. Combining all of these increasingly precise fractions gets you a number that's equal to 0.099609375. Which is close!
 
-Tragically, representing one-tenth in binary exactly would take an infinite number of digits - the `0011` part repeats infinitely, just like the `3` in `0.333333...`. In general, numbers that can be represented very easily in one number system can't necessarily be represented at all in another. For example, one-third is impossible to write in decimal and binary, but can be written very easily, as `0.1`, in ternary (i.e. base 3, the number system that uses the digits 0, 1, and 2.)
+Tragically, representing one-tenth in binary exactly would take an infinite number of digits - the `0011` part repeats infinitely, just like the 3 in "0.333333...". In general, numbers that can be represented very easily in one number system can't necessarily be represented at all in another. For example, one-third is impossible to write in decimal and binary, but can be written very easily, as "0.1", in ternary (i.e. base 3, the number system that uses the digits 0, 1, and 2.)
 
 This is a problem because of the ubiquitous use of number like 0.1 in our everyday lives. For example, we divide currencies up into 100 equal pieces called cents, and write things like "$0.10" to mean "ten cents." This amount of money can't be precisely represented by computers in binary, since it would take an infinite number of digits, and computers have a finite number of little switches to represent digits with.
 
@@ -42,4 +42,4 @@ So that's the one thing about this basic system that I would say is pretty weird
 
 ## Appendix B: Is fixed-point math actually that obscure?
 
-Technically, the scheme for storing currencies where you multiply dollar amounts by 100 before storing them, which practically everyone uses, is a "fixed-point math" situation: functionally, the point is always positioned two places from the right of the number, making it fixed. However, no-one calls that "fixed-point math", possibly because all this terminology is just confusing. (Also, you could claim that that system is integer math that just uses cents as the unit.) Byt, you could certainly make a case that fixed-point math is alive and well and all around us, just in this kind of edge-case form, despite the fact that previous use cases for it like "all math on the PlayStation 1" have faded away into history.
+Technically, the scheme for storing currencies where you multiply dollar amounts by 100 before storing them, which practically everyone uses, is a "fixed-point math" situation: functionally, the point is always positioned two places from the right of the number, making it fixed. However, no-one calls that "fixed-point math", possibly because all this terminology is just confusing. (Also, you could claim that that system is integer math that just uses cents as the unit.) But, you could certainly make a case that fixed-point math is alive and well and all around us, albeit in this kind of edge-case form, even while previous use cases for it like "all math on the PlayStation 1" have faded away into history.

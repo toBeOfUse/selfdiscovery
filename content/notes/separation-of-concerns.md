@@ -1,6 +1,6 @@
 ---
 title: Separation of Concerns and State
-date: 2024-07-13
+# date: 2024-07-13
 description: This post is about two fundamental ways that we organize code in programming projects.
 ---
 
