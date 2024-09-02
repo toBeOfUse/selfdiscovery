@@ -8,7 +8,7 @@
 </template>
 
 <script setup lang="ts">
-const { data: posts } = await useAsyncData("projects", () =>
+const { data: posts } = await useAsyncData("notes", () =>
   queryContent("/notes")
     .where({ date: { $exists: true } })
     .sort({ date: -1 })
