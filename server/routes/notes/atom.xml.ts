@@ -16,7 +16,7 @@ export default defineEventHandler(async (event) => {
     description: "Atom feed for Re-Research",
     link: blogUrl,
     copyright: "2024 - Present, Mitch",
-    updated: new Date(posts[0].date),
+    updated: posts.length ? new Date(posts[0].date) : new Date(),
   });
 
   for (const doc of posts) {

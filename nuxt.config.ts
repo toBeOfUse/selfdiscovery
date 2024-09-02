@@ -3,7 +3,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   nitro: {
     prerender: {
-      routes: ["/", "/atom.xml"]
+      routes: ["/", "/notes/atom.xml"]
     }
   },
   // experimental: {
