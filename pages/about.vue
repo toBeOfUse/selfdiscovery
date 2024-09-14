@@ -1,5 +1,3 @@
 <template>
-  <NuxtLayout name="about">
-    I 
-  </NuxtLayout>
+  <NuxtLayout name="about">I - </NuxtLayout>
 </template>
