@@ -3,7 +3,7 @@
     <h2 v-if="post.title" :id="post._file" class="text-2xl">
       <NuxtLink :to="post._path">{{ post.title }}</NuxtLink>
     </h2>
-    <p>{{ new Date(post.date).toLocaleDateString() }}</p>
+    <p>{{ date }}</p>
     <ContentRenderer :value="post" class="notes-post leading-relaxed" />
   </template>
   <p v-else>ERROR: post not found D:</p>
@@ -12,6 +12,7 @@
 import type { ParsedContent } from "@nuxt/content";
 
 const { post } = defineProps<{ post: ParsedContent | null }>();
+const date = post && new Date(...(post.publish_date.split("-").map(Number) as [number, number, number])).toDateString();
 </script>
 
 <style lang="scss">
