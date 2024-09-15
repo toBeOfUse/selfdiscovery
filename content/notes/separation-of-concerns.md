@@ -8,6 +8,8 @@ description: This post is about two fundamental axes of code organization in pro
 
 If you create an app and it's one 10,000-line function, then you probably have not achieved much modularity, and your concerns are most likely not separated too well. But the nature of the good code that theoretically exists on the opposite end of the spectrum is harder to pin down. It's like trying to hammer out a universal definition of "beauty," or attempting to describe the mouthfeel of a Michelin star sushi roll. There are two main ways that I see "separation of concerns" applied, and unfortunately they're somewhat orthogonal to each other, and it's not obvious that either is "right."
 
+<!-- talk version: folks, idk if you've noticed, but we're not allowed to just be software engineers anymore; we have to be intellectuals. you can't log into linkedin without tripping over a rickety pile of syllables like "separation of concerns." what does separation of concerns mean? anyone? -->
+
 ## One Language Per Concern
 
 Unfortunately, we're going to illustrate this by talking about web development. But don't worry, we're going to start simple, with an example of how things worked in the good old days. Some of us remember when a very simple form of organization was in force. Code was separated out according to whether it corresponded to "content," "presentation," or "logic." It was easy to tell which part of the code was which, because each concern was addressed by a different language. The HTML created the content, the CSS established the styling, and the JavaScript added some interactivity.
@@ -36,29 +38,41 @@ In web development, some of the code is running on [some server in Virginia that
 
 Why is this approach so popular, and rising? What happened to the old way of organizing code?
 
-## Geological Strata: The Homogenous Layers Approach
+## Geological Strata: The Pangaea Approach
 
-The first paradigm, the one that splits up content and presentation and client and server, consists of layers of code that are in some way homogenous. Each layer might have its own language; it almost certainly has its own specific vocabulary in that language. It might be implemented by splitting code up into HTML and CSS; it might also consist of something as simple as putting all your schemas for validating request bodies in one file and importing them in each request handler in which they're used.
+The first paradigm, the one that splits up content and presentation and client and server, consists of layers of code that are in some way homogenous. Each layer might have its own language; it almost certainly has its own specific vocabulary in that language. You might fall into it by splitting code up into HTML, CSS, JavaScript, and Python; you might end up using it by having a frontend, a backend, and a database; or you might implement it yourself by splitting the "create a page for the user to look at" process into steps and grouping the code for each step. This is the kind of organization that is pointed to by the concept of a technology stack.
 
-<!-- todo: more approachable example of a within-request layer. grouping all your database query functions together? -->
-
-<!-- image of app with horizontal slices. ideally this would be an image of labeled layers of rock  -->
+<!-- image of app with horizontal slices. ideally this would be an image of labeled layers of rock. put diagrams of stacks like lamp, mern, etc next to it  -->
 
 ## Fault Lines: The Continental Approach
 
-Or, on the other hand, you could divide up your code the other way - group code so that each thing responsible for one specific page, or API route, or whatever is grouped together. A very basic and very impactful example of this approach is Next.js' file system-based routing. It used to be that you'd have an HTML file, a JavaScript file, and a CSS file; now those elements are mixed together, but you literally have one file for each page and each basic API request that can be viewed or made.
+Or, on the other hand, you could divide up your code the other way - group code so that each thing responsible for one specific page, or API route, or whatever is grouped together. A very basic and very impactful example of this approach is Next.js' file system-based routing. It used to be that you'd have an HTML file, a JavaScript file, and a CSS file; now, as we've seen, those elements are mixed together, but you literally have one file for each page and each basic API request that can be viewed or made.
 
-<!-- wtf did i write here: If this code is responsible for handling an HTTP request for a user object, the request body validation schema, the database calls to get the user, the function for filtering out the plaintext password from the user object, the function to calculate the appropriate greeting for them based on their demographic data and social status, the code that generates a message formatted according to the HTTP 1.1 protocol, and the network card device driver that sends packets out over the wire are all in the same place. -->
+In the old model, separation of concerns is applied to \*technical\* concerns; code is organized and architected so that the backend code that addresses shared data and persistence is separate from the frontend code that addresses organization and presentation, and even the content is separate from the code that makes it interactive, since static content and dynamic content were kind of considered separate technical concerns.
 
-<!-- image with fault lines separating new, different labeled layers -->
+In the new model, separation of concerns is applied to \*logical\* concerns.
 
-<!-- you could also call these "silos" compared to "layers of the stack" -->
+<!-- TODO: contrast this model with the other. say "in that paradigm, the concerns to be separated are the technical ones: the 'content' concern, the 'presentation' concern, and the 'logic' concern; but in this paradigm, the concerns are 'show the user a login page', 'show the user the home page', 'respond to a password reset request', etc." -->
+
+<!-- image with fault lines cracking the top few layers. each new "island" has a name like "home page", "login page", etc -->
+
+<!-- you could also call these "silos" or "pipelines" compared to "layers of the stack" -->
 
 <!-- or "modularity" instead of "separation of concerns" -->
 
-## The Ultimate Question: How To Organize Code
+## The Case For Fault Lines
 
-generally a good idea to organize code by putting units thereof next to other units that will use them. often this will be influenced by the type of technology they use. database schemas for different tables go next to each other in part just because tables reference each other. this creates a small amount of natural stratification by itself. on the other hand, the homogeneity approach can be a trap where you're debugging one thing and it touches 5 million files. also, you might end up trying to separate things, like content and presentation, that aren't actually separate, and the tailwind guy will find you and kick your ass. also, you can't have packet-sending code in your page file. abstract out layers - but only where you actually can!
+<!-- story about routing. logical dependency prevents separation of concerns from working - nothing gets abstracted away. you just build a new structure in a different place that mirrors the other structure. it's the same thing as happens with css classes if you're not careful, as illustrated in the blog post explaining tailwindcss. tailwind is a weird example though since you end up with such granular pieces - it's like the "show the user a div" concern gets split up into many concerns, about layout and border and background and text color, etc. but for the blog post, would still be nice to be all like "here's why the content vs. presentation separation doesn't really work" in a more compact way than the tailwind blog post managed -->
+
+<!-- de-separating concerns usually means trying to abstract them away. even content vs. presentation attempts to abstract away presentation - look at the CSS garden. many technical concerns can be abstracted away, especially these days - even us-east-1 vs iphone se. that's why the layers of the stack work relatively well. user-centric concerns can't be abstracted away, and you should not try. ideally, focus on implementing the greatest number of user concerns, not the fewest. technical abstractions are kind of crazy - why do none of us know how databases work? -->
+
+## The Case For Continents
+
+<!-- microservices are the ultimate islands and they make things really complicated. -->
+
+## What You're Deciding
+
+When you organize code or architect a system, what you're ultimately deciding is which layers will live in the bedrock and be shared across the different entrypoints and paths through your code, and which layers will be separate and contained within their own islands.
 
 <!--
 
