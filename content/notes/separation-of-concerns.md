@@ -62,6 +62,8 @@ Code is also heavily split at the page level these days, to the point where ever
 
 <!-- you could also call these "silos" or "pipelines" compared to "layers of the stack" -->
 
+<!-- define concerns as things that cause groups of things that need each other, very specifically each other? are coupled? are dependent on each other? database can be a separate concern, because you can theoreticaly use any database and it will do about the same stuff. modal and navbar can be a separate concern, and even homepage can be a separate concern, because they could all be replaced relative to each other.  -->
+
 ## The Case For Fault Lines
 
 So, why is this such a common approach? Let me tell a quick story about some code I stumbled across at work. I was getting redirected back and forth between some pages when I wasn't expecting to be, but I couldn't find any redirect code in the pages I was looking at themselves. Eventually, I figured out that every page was calling a function called `isAuthorized`, and that function was trying to figure out if I was allowed to be on a page based on my user account and triggering redirects if not. What that function was trying to do was abstract away the concern of "should the user be on the current page, and where should they go if not;" but in practice, it consisted of a bunch of if statements going like, "if the current URL is the one for this one particular dashboard, check this cookie, and if it says this, redirect them here. if the current URL is this other particular dashboard, check this cookie, and redirect them over there if it doesn't exist." And so on.
