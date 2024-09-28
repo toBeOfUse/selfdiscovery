@@ -1,0 +1,61 @@
+---
+import ProjectItem from "../../components/ProjectItem.vue";
+import Projects from "../../layouts/Projects.astro";
+
+import { getEntry } from "astro:content";
+
+const allProjects = await Promise.all(
+  [
+    "hacksu-lessons",
+    "khe-io",
+    "libsrcml-js",
+    "research-folder",
+    "bundle-md",
+    "singlehanded",
+    "perspective",
+    // "mitchbot-streams",
+    "spelling-bee",
+    "catullus",
+    "corn-simulator",
+    "minecraft-maps",
+    // "twitter-archive-browser",
+    // scattered single pages - progress meter, v-arcs, mail, etc.
+    "presentations",
+    "sweet-sh",
+    "this-website",
+  ].map(async (title) => {
+    const e = await getEntry("projects", title);
+    if (!e) {
+      throw new Error("could not find project entry: " + title);
+    }
+    return { ...e, rendered: await e.render() };
+  })
+);
+const { Content } = allProjects[0].rendered;
+---
+
+<Projects>
+  <div>
+    <h1 class="text-3xl text-center" style="font-variant: small-caps">
+      <a href="/projects/" class="no-underline"> What Have I Done? </a>
+    </h1>
+    <p>
+      This is the question we must all ask ourselves from time to time, and this is the page where
+      I'm recording my answers. Also, hi, I'm
+      <a class="underline" href="/about">some kind of programmer</a>. To learn more, read on, and/or <a
+        class="underline"
+        href="mailto:mitchjacov@gmail.com">email me</a
+      >.
+    </p>
+    {
+      allProjects.map((p, i) => {
+        const { Content } = p.rendered;
+        return (
+          <ProjectItem entry={p}>
+            <Content />
+          </ProjectItem>
+        );
+      })
+    }
+  </div>
+</Projects>

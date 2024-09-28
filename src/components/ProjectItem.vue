@@ -1,104 +1,81 @@
 <template>
   <div class="flex flex-col items-center mx-auto">
     <hr class="w-full m-4 border-t-2 border-gray-400" />
-    <div
-      :id="name"
-      class="flex flex-col items-center w-full sm:w-auto py-2"
-    >
+    <div :id="entry.slug" class="flex flex-col items-center w-full sm:w-auto py-2">
       <span>
-        <h2 v-if="post.date" class="text-sm inline">{{ post.date }}</h2>
-        <span v-if="post.date && (post.live_link || post.github_link)"> • </span>
-        <a
-          v-if="post.github_link"
-          class="text-sm"
-          :href="post.github_link"
-          target="_blank"
-        >
+        <h2 v-if="meta.date" class="text-sm inline">{{ meta.date }}</h2>
+        <span v-if="meta.date && (meta.live_link || meta.github_link)"> • </span>
+        <a v-if="meta.github_link" class="text-sm" :href="meta.github_link" target="_blank">
           Github
         </a>
-        <span v-if="post.live_link && post.github_link"> • </span>
-        <a
-          v-if="post.live_link"
-          class="text-sm"
-          :href="post.live_link"
-          target="_blank"
-        >
-          {{ post.live_link_title || 'Live Version' }}
+        <span v-if="meta.live_link && meta.github_link"> • </span>
+        <a v-if="meta.live_link" class="text-sm" :href="meta.live_link" target="_blank">
+          {{ meta.live_link_title || "Live Version" }}
         </a>
       </span>
       <h1 class="text-2xl" :class="{ 'my-2': noMainVisual }">
-        <NuxtLink :to="`/projects/${name}/`">
-          {{ post.title }}
-        </NuxtLink>
+        <a :href="`/projects/${entry.slug}/`">
+          {{ meta.title }}
+        </a>
       </h1>
     </div>
     <!-- TODO: see if the assets folder can be used instead of public -->
-    <NuxtImg
-      v-if="post.image && !post.image_preserve"
+    <img
+      v-if="meta.image && !meta.image_preserve"
       loading="lazy"
-      :src="post.image"
-      :alt="post.image_alt"
+      :src="meta.image"
+      :alt="meta.image_alt"
       class="my-2 project-image"
-      v-bind="(imageSize ? {
-        width: imageSize.width,
-        height: imageSize.height,
-      } : {})"
-      :quality="95"
     />
     <img
-      v-else-if="post.image && post.image_preserve"
+      v-else-if="meta.image && meta.image_preserve"
       loading="lazy"
-      :alt="post.image_alt"
+      :alt="meta.image_alt"
       class="my-2 project-image"
-      v-bind="(imageSize ? {
-        width: imageSize.width,
-        height: imageSize.height,
-      } : {})"
-      :src="post.image"
-    >
+      :src="meta.image"
+    />
     <iframe
-      v-else-if="post.iframe"
-      :src="post.iframe"
-      :title="post.iframe_title"
+      v-else-if="meta.iframe"
+      :src="meta.iframe"
+      :title="meta.iframe_title"
       class="w-full"
       style="height: 60vh"
       loading="lazy"
     />
-    <ContentRenderer
-      :value="post"
-      class="project-post leading-relaxed"
-      :class="{ '-mt-6': noMainVisual }"
-    />
+    <div class="project-post leading-relaxed" :class="{ '-mt-6': noMainVisual }">
+      <slot />
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import type { ParsedContent } from '@nuxt/content';
+import type { CollectionEntry } from "astro:content";
+import { computed } from "vue";
+
 // import { useWindowSize } from "@vueuse/core";
 
 // TODO: directional quotation marks?
 
 const props = defineProps<{
-  name: string,
-  post: ParsedContent,
-  standalone?: boolean
+  entry: CollectionEntry<"projects">;
+  standalone?: boolean;
 }>();
 
-const { data: imageSize } = await useAsyncData(
-  props.post.image + "size",
-  async () => {
-    if (import.meta.server) {
-    return props.post.image ?
-      (await import("image-size")).default("./public/" + props.post.image) :
-      { width: 0, height: 0 };
-    }
-});
+const meta = props.entry.data;
 
-const noMainVisual = computed(() => !props.post.image && !props.post.iframe);
+// const { data: imageSize } = await useAsyncData(props.entry.data.image + "size", async () => {
+//   if (import.meta.server) {
+//     return props.entry.data.image
+//       ? (await import("image-size")).default("./public/" + props.entry.data.image)
+//       : { width: 0, height: 0 };
+//   }
+// });
+
+const noMainVisual = computed(() => !props.entry.data.image && !props.entry.data.iframe);
 </script>
 
 <style lang="scss">
-@import '~/assets/content.scss';
+@import "../../assets/content.scss";
 .project-image {
   max-width: 100%;
   max-height: 70vh;

@@ -13,7 +13,7 @@ export default [
       parserOptions: {
         parser: ts,
         project: "./tsconfig.json",
-        extraFileExtensions: ['.vue']
+        extraFileExtensions: [".vue"],
       },
     },
     rules: {
@@ -21,14 +21,17 @@ export default [
       "vue/multi-word-component-names": 0,
       "vue/singleline-html-element-content-newline": 0,
       "vue/html-self-closing": 0,
-      "vue/max-attributes-per-line": ["error", {
-        "singleline": {
-          "max": 3
-        },      
-        "multiline": {
-          "max": 3
-        }
-      }]
+      "vue/max-attributes-per-line": [
+        "warning",
+        {
+          singleline: {
+            max: 5,
+          },
+          multiline: {
+            max: 3,
+          },
+        },
+      ],
     },
   },
 ];
