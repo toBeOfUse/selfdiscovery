@@ -1,15 +1,15 @@
-@use 'sass:color';
+@use "sass:color";
 $fill-starting-color: rgb(99, 206, 227);
 @keyframes fill-colors {
   @for $i from 0 through 10 {
-    #{$i*10}% {
+    #{$i*10%} {
       fill: color.adjust($fill-starting-color, $hue: 36deg * $i);
     }
   }
 }
 @keyframes bg-colors {
   @for $i from 0 through 10 {
-    #{$i*10}% {
+    #{$i*10%} {
       background-color: color.adjust($fill-starting-color, $hue: 36deg * $i, $lightness: 25%);
     }
   }
