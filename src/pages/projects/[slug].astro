@@ -1,0 +1,26 @@
+---
+import ProjectItem from "../../components/ProjectItem.vue";
+import Projects from "../../layouts/Projects.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const blogEntries = await getCollection("projects");
+  return blogEntries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<Projects>
+  <div>
+    <span class="text-center block">
+      <h1 class="text-3xl" style="font-variant: small-caps">What Have I Done?</h1>
+      <a href={"/projects/#" + entry.slug} class="underline">(back to main page)</a>
+    </span>
+    <ProjectItem entry={entry} :standalone="true"><Content /></ProjectItem>
+  </div>
+</Projects>

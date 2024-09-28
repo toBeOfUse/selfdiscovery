@@ -1,4 +1,5 @@
 ---
+import { SEO } from "astro-seo";
 import ProjectItem from "../../components/ProjectItem.vue";
 import Projects from "../../layouts/Projects.astro";
 
@@ -35,6 +36,7 @@ const { Content } = allProjects[0].rendered;
 ---
 
 <Projects>
+  <SEO slot="head" title="Projects" description="Stuff I've made." />
   <div>
     <h1 class="text-3xl text-center" style="font-variant: small-caps">
       <a href="/projects/" class="no-underline"> What Have I Done? </a>
