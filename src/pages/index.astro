@@ -3,7 +3,7 @@ import Angles from "../../assets/angles.html.svg?raw";
 import Logo from "../../assets/logo.html.svg?raw";
 ---
 
-<div class="h-dvh w-screen flex items-center content-center overflow-hidden">
+<div class="font-home h-dvh w-screen flex items-center content-center overflow-hidden">
   <div class="h-dvh w-full absolute top-0 left-0 overflow-hidden -z-10" set:html={Angles} />
   <div class="mx-auto p-5 bg-white inner-width aggressive-rounding">
     <div set:html={Logo} class="flex items-center justify-center" style="height: 200px" />
@@ -33,16 +33,16 @@ import Logo from "../../assets/logo.html.svg?raw";
   @font-face {
     font-family: "OpenSauceOne";
     src:
-      url("assets/opensauceone-regular-webfont.woff2") format("woff2"),
-      url("assets/opensauceone-regular-webfont.woff") format("woff");
+      url("/fonts/opensauceone-regular-webfont.woff2") format("woff2"),
+      url("/fonts/assets/opensauceone-regular-webfont.woff") format("woff");
     font-weight: normal;
     font-style: normal;
+    font-display: swap;
   }
   li {
     margin-top: 10px;
   }
   ul {
-    font-family: OpenSauceOne, sans-serif;
     list-style-type: " - ";
   }
   a {

@@ -11,4 +11,13 @@ import sitemap from "@astrojs/sitemap";
 export default defineConfig({
   site: "https://mitch.website",
   integrations: [tailwind(), vue(), robotsTxt(), sitemap()],
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          api: "modern-compiler",
+        },
+      },
+    },
+  },
 });
