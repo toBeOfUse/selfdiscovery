@@ -10,6 +10,7 @@ import { SEO } from "astro-seo";
     slot="head"
     title="Mitch's Website <3"
     description="Accumulating evidence for the insanity plea."
+    openGraph={{ basic: { image: "/sine.png", title: "Mitch's Website <3", type: "website" } }}
   />
   <div class="font-home h-dvh w-screen flex items-center content-center overflow-hidden">
     <div class="h-dvh w-full absolute top-0 left-0 overflow-hidden -z-10" set:html={Angles} />
@@ -43,7 +44,7 @@ import { SEO } from "astro-seo";
     font-family: "OpenSauceOne";
     src:
       url("/fonts/opensauceone-regular-webfont.woff2") format("woff2"),
-      url("/fonts/assets/opensauceone-regular-webfont.woff") format("woff");
+      url("/fonts/opensauceone-regular-webfont.woff") format("woff");
     font-weight: normal;
     font-style: normal;
     font-display: swap;

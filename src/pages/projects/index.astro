@@ -49,7 +49,7 @@ const allProjects = await Promise.all(
       >.
     </p>
     {
-      allProjects.map((p, i) => {
+      allProjects.map((p) => {
         const { Content } = p.rendered;
         return (
           <ProjectItem entry={p}>

@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import { getImage } from "astro:assets";
+import { imageAsset } from "../images";
 
 const props = defineProps<{ assetPath: string }>();
-const { default: importedImage }: { default: ImageMetadata } = await import(
-  /* @vite-ignore */ props.assetPath
-);
+const importedImage = await imageAsset(props.assetPath);
 const image = await getImage({ src: importedImage, quality: 90 });
 </script>
 

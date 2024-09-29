@@ -21,7 +21,7 @@
     </div>
     <Image
       v-if="meta.image"
-      :assetPath="'/assets/projects' + meta.image"
+      :assetPath="'projects' + meta.image"
       :alt="meta.image_alt"
       class="my-2 project-image"
     />
