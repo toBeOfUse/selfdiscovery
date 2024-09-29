@@ -75,7 +75,7 @@ const noMainVisual = computed(() => !props.entry.data.image && !props.entry.data
 </script>
 
 <style lang="scss">
-@import "../../assets/content.scss";
+@import "../scss/content.scss";
 .project-image {
   max-width: 100%;
   max-height: 70vh;

@@ -10,7 +10,7 @@
 </template>
 
 <style lang="scss">
-@import "assets/multicolor.scss";
+@import "../scss/multicolor.scss";
 #footer {
   @include color-shifter;
   animation-name: bg-colors;
