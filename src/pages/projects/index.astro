@@ -32,7 +32,6 @@ const allProjects = await Promise.all(
     return { ...e, rendered: await e.render() };
   })
 );
-const { Content } = allProjects[0].rendered;
 ---
 
 <Projects>

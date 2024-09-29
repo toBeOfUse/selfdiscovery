@@ -3,7 +3,6 @@ title: Remote Group Presentation Synchronization
 github_link: https://github.com/toBeOfUse/MultiUserSlidePresenter
 image: /presentation_demo.webp
 image_alt: Two browsers are open, side-by-side. A mouse goes from one to the other, clicking "next" and "previous" buttons, checking a "laser pointer" checkbox, and waving itself over some slides. When one browser goes to the next or previous slide, so does the other, and the laser point is visible in both browsers.
-image_preserve: true
 description: A project to synchronize a slide presentation between multiple computers.
 date: April 2020
 ---

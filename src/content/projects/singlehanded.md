@@ -4,7 +4,6 @@ github_link: https://github.com/toBeOfUse/SingleHandedTypist
 live_link: https://singlehanded.mitch.website/
 date: October 2022
 image: /one-handed-typing.gif
-image_preserve: true
 ---
 
 This project allows you to reach all the letters of the alphabet while touch-typing with one hand.

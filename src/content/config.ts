@@ -10,7 +10,6 @@ const projects = defineCollection({
     image_alt: z.string().optional(),
     iframe: z.string().optional(),
     iframe_title: z.string().optional(),
-    image_preserve: z.boolean().optional(),
     // description should always be present, but, need to get some kind of <!--
     // more --> thing working
     description: z.string().optional(),

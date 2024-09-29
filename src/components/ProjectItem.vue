@@ -19,20 +19,11 @@
         </a>
       </h1>
     </div>
-    <!-- TODO: see if the assets folder can be used instead of public -->
-    <img
-      v-if="meta.image && !meta.image_preserve"
-      loading="lazy"
-      :src="meta.image"
+    <Image
+      v-if="meta.image"
+      :assetPath="'/assets/projects' + meta.image"
       :alt="meta.image_alt"
       class="my-2 project-image"
-    />
-    <img
-      v-else-if="meta.image && meta.image_preserve"
-      loading="lazy"
-      :alt="meta.image_alt"
-      class="my-2 project-image"
-      :src="meta.image"
     />
     <iframe
       v-else-if="meta.iframe"
@@ -51,6 +42,7 @@
 <script setup lang="ts">
 import type { CollectionEntry } from "astro:content";
 import { computed } from "vue";
+import Image from "./Image.vue";
 
 // import { useWindowSize } from "@vueuse/core";
 
