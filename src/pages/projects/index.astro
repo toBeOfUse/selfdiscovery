@@ -42,8 +42,8 @@ const allProjects = await Promise.all(
   <!-- <SEO slot="head" title="Projects" description="Stuff I've made." /> -->
   <Fragment slot="island">
     <p class="my-2">
-      This is the question we must all ask ourselves from time to time, and this is the page where
-      I'm recording my answers.
+      This is a question we must all ask ourselves from time to time, and this is the page where I'm
+      recording my answers.
     </p>
     <p class="my-2">
       Herein lie loose descriptions of various projects I've created or worked on for fun, for
@@ -60,7 +60,7 @@ const allProjects = await Promise.all(
       }
     </select>
   </Fragment>
-  <div class="my-8 md:my-20">
+  <div class="my-8 md:my-10">
     {
       allProjects.map((p, i) => {
         const { Content } = p.rendered;
