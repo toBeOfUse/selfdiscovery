@@ -5,15 +5,16 @@ import NavIsland from "../components/NavIsland.vue";
 interface Props {
   title?: string;
   image?: string;
+  imageLink?: string;
 }
 
-const { title, image } = Astro.props;
+const { title, image, imageLink } = Astro.props;
 ---
 
 <Html>
   <div class="flex flex-col md:flex-row lg:px-8 xl:px-28">
     <div class="h-auto md:w-1/4 md:min-w-[300px] mx-6 lg:mx-4">
-      <NavIsland title={title} image={image}>
+      <NavIsland title={title} image={image} imageLink={imageLink}>
         <slot name="island" />
       </NavIsland>
     </div>
@@ -21,21 +22,4 @@ const { title, image } = Astro.props;
       <slot />
     </div>
   </div>
-  <script>
-    // this halts the multiwave svg that acts as an <hr /> in the nav island
-    // if the user has operating system settings that disable animations
-
-    let reducedMotion = window.matchMedia(`(prefers-reduced-motion: reduce)`).matches === true;
-
-    if (reducedMotion) {
-      stopSmilAnimations();
-    }
-
-    function stopSmilAnimations() {
-      let svgs = document.querySelectorAll("svg");
-      svgs.forEach((svg) => {
-        svg.pauseAnimations();
-      });
-    }
-  </script>
 </Html>

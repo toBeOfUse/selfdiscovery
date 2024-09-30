@@ -2,10 +2,18 @@
   <div
     class="shadow-dark text-center rounded-lg border border-black sticky md:top-1/2 md:-translate-y-1/2 mx-auto mt-8 md:mt-0 overflow-hidden"
   >
-    <Image v-if="image" :asset-path="image" class="w-full" />
+    <template v-if="image">
+      <a :href="imageLink" target="_blank">
+        <Image :assetPath="image" class="w-full" />
+      </a>
+    </template>
     <div class="p-3">
       <template v-if="title">
-        <h1 class="text-3xl text-center my-4" style="font-variant: small-caps">
+        <h1
+          class="text-3xl text-center my-4"
+          :class="{ 'mt-1': !!image }"
+          style="font-variant: small-caps"
+        >
           {{ title }}
         </h1>
         <div class="mx-2 my-4 mt-6" v-html="multiwave" />
@@ -25,5 +33,5 @@
 <script lang="ts" setup>
 import Image from "./Image.vue";
 import multiwave from "../../assets/multiwave-once.svg?raw";
-defineProps<{ title?: string; image?: string }>();
+defineProps<{ title?: string; image?: string; imageLink?: string }>();
 </script>

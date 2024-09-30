@@ -60,7 +60,7 @@ import { SEO } from "astro-seo";
   }
   .inner-width {
     width: 800px;
-    max-width: 85%;
+    max-width: 95%;
   }
   :global(svg .angles-group rect) {
     opacity: 0.2;
@@ -72,12 +72,18 @@ import { SEO } from "astro-seo";
         animation-delay: $i * math.div($i * 6, 10) * -1s;
       }
     }
+    @media (prefers-reduced-motion) {
+      animation-iteration-count: 0;
+    }
   }
   :global(svg .logo-color-shift) {
     @include color-shifter;
     animation-name: fill-colors;
     opacity: 0.8;
     animation-duration: 8s;
+    @media (prefers-reduced-motion) {
+      animation-iteration-count: 0;
+    }
   }
   .aggressive-rounding {
     border-radius: 60px;

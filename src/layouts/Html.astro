@@ -12,3 +12,21 @@
     <slot />
   </body>
 </html>
+
+<script>
+  // this halts animated svgs if the user has operating system settings that
+  // disable animations
+
+  let reducedMotion = window.matchMedia(`(prefers-reduced-motion: reduce)`).matches === true;
+
+  if (reducedMotion) {
+    stopSmilAnimations();
+  }
+
+  function stopSmilAnimations() {
+    let svgs = document.querySelectorAll("svg");
+    svgs.forEach((svg) => {
+      svg.pauseAnimations();
+    });
+  }
+</script>

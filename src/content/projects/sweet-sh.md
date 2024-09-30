@@ -1,5 +1,5 @@
 ---
-title: Sweet.sh - A Utopian Social Network
+title: Sweet.sh
 date: Spring 2019 - Summer 2019
 github_link: https://github.com/sweet-sh/sweet-web
 description: sweet.sh was an experimental social network that I helped code.
