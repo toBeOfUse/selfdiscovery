@@ -1,16 +1,16 @@
 ---
 import Angles from "../../assets/angles.html.svg?raw";
 import Logo from "../../assets/logo.html.svg?raw";
+import PageMeta from "../components/PageMeta.astro";
 import Html from "../layouts/Html.astro";
-import { SEO } from "astro-seo";
 ---
 
 <Html>
-  <SEO
+  <PageMeta
     slot="head"
     title="Mitch's Website <3"
     description="Accumulating evidence for the insanity plea."
-    openGraph={{ basic: { image: "/sine.png", title: "Mitch's Website <3", type: "website" } }}
+    image="sine.png"
   />
   <div class="font-home h-dvh w-screen flex items-center content-center overflow-hidden">
     <div class="h-dvh w-full absolute top-0 left-0 overflow-hidden -z-10" set:html={Angles} />

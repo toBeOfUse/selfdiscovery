@@ -12,6 +12,7 @@ const { title, image, imageLink } = Astro.props;
 ---
 
 <Html>
+  <slot name="head" slot="head" />
   <div class="flex flex-col md:flex-row lg:px-8 xl:px-28">
     <div class="h-auto md:w-1/4 md:min-w-[300px] mx-6 lg:mx-4">
       <NavIsland title={title} image={image} imageLink={imageLink}>
