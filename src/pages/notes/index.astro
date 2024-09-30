@@ -1,0 +1,10 @@
+---
+import Post from "../../components/Post.vue";
+import Notes from "../../layouts/Notes.astro";
+---
+
+<Notes>
+  <div class="flex flex-col">
+    {Array(10).fill(<Post />)}
+  </div>
+</Notes>
