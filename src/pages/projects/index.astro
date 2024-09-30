@@ -1,9 +1,9 @@
 ---
 import { SEO } from "astro-seo";
 import ProjectItem from "../../components/ProjectItem.vue";
-import Projects from "../../layouts/Projects.astro";
 
 import { getEntry } from "astro:content";
+import Island from "../../layouts/Island.astro";
 
 const allProjects = await Promise.all(
   [
@@ -34,29 +34,58 @@ const allProjects = await Promise.all(
 );
 ---
 
-<Projects>
-  <SEO slot="head" title="Projects" description="Stuff I've made." />
-  <div>
-    <h1 class="text-3xl text-center" style="font-variant: small-caps">
-      <a href="/projects/" class="no-underline"> What Have I Done? </a>
-    </h1>
-    <p>
+<Island title="What Have I Done?">
+  <!-- <SEO slot="head" title="Projects" description="Stuff I've made." /> -->
+  <Fragment slot="island">
+    <p class="my-2">
       This is the question we must all ask ourselves from time to time, and this is the page where
-      I'm recording my answers. Also, hi, I'm
-      <a class="underline" href="/about">some kind of programmer</a>. To learn more, read on, and/or <a
-        class="underline"
-        href="mailto:mitchjacov@gmail.com">email me</a
-      >.
+      I'm recording my answers.
     </p>
+    <p class="my-2">
+      Herein lie loose descriptions of various projects I've created or worked on for fun, for
+      school, or in a more-or-less professional capacity.
+    </p>
+    <select id="contents" value="toc" class="w-10/12 p-1 mt-2">
+      <option value="toc">Table of Contents...</option>
+      {allProjects.map((p) => <option value={p.slug}>{p.data.title}</option>)}
+    </select>
+  </Fragment>
+  <div class="my-8 md:my-20">
     {
-      allProjects.map((p) => {
+      allProjects.map((p, i) => {
         const { Content } = p.rendered;
         return (
-          <ProjectItem entry={p}>
-            <Content />
-          </ProjectItem>
+          <Fragment>
+            {i !== 0 && <hr class="w-full my-4 border-t-2 border-gray-400" />}
+            <ProjectItem entry={p}>
+              <Content />
+            </ProjectItem>
+          </Fragment>
         );
       })
     }
   </div>
-</Projects>
+</Island>
+
+<script>
+  const tocSelect = document.querySelector("select#contents") as HTMLSelectElement;
+  if (!tocSelect) {
+    throw new Error("could not find table of contents select element");
+  }
+  let thingSelected = false;
+  tocSelect.addEventListener("change", (e) => {
+    const slug = (e?.target as HTMLOptionElement)?.value;
+    if (slug !== "toc") {
+      document.querySelector("#" + slug)?.scrollIntoView();
+    }
+    setTimeout(() => {
+      thingSelected = true;
+    }, 50);
+  });
+  window.addEventListener("scroll", () => {
+    if (thingSelected && tocSelect) {
+      tocSelect.value = "toc";
+      thingSelected = false;
+    }
+  });
+</script>

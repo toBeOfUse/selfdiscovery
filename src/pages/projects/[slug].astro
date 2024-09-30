@@ -1,6 +1,6 @@
 ---
 import ProjectItem from "../../components/ProjectItem.vue";
-import Projects from "../../layouts/Projects.astro";
+import Island from "../../layouts/Island.astro";
 import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
@@ -15,12 +15,11 @@ const { entry } = Astro.props;
 const { Content } = await entry.render();
 ---
 
-<Projects>
-  <div>
-    <span class="text-center block">
-      <h1 class="text-3xl" style="font-variant: small-caps">What Have I Done?</h1>
-      <a href={"/projects/#" + entry.slug} class="underline">(back to main page)</a>
-    </span>
+<Island title={entry.data.title}>
+  <div class="text-center block" slot="island">
+    <a href={"/projects/#" + entry.slug} class="underline">(back to main page)</a>
+  </div>
+  <div class="mt-20">
     <ProjectItem entry={entry} :standalone="true"><Content /></ProjectItem>
   </div>
-</Projects>
+</Island>

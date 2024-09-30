@@ -1,6 +1,5 @@
 <template>
   <div class="flex flex-col items-center mx-auto">
-    <hr class="w-full m-4 border-t-2 border-gray-400" />
     <div :id="entry.slug" class="flex flex-col items-center w-full sm:w-auto py-2">
       <span>
         <h2 v-if="meta.date" class="text-sm inline">{{ meta.date }}</h2>
@@ -23,7 +22,7 @@
       v-if="meta.image"
       :assetPath="'projects' + meta.image"
       :alt="meta.image_alt"
-      class="my-2 project-image"
+      class="my-2 project-image rounded-t-xl"
     />
     <iframe
       v-else-if="meta.iframe"
@@ -44,8 +43,6 @@ import type { CollectionEntry } from "astro:content";
 import { computed } from "vue";
 import Image from "./Image.vue";
 
-// import { useWindowSize } from "@vueuse/core";
-
 // TODO: directional quotation marks?
 
 const props = defineProps<{
@@ -54,14 +51,6 @@ const props = defineProps<{
 }>();
 
 const meta = props.entry.data;
-
-// const { data: imageSize } = await useAsyncData(props.entry.data.image + "size", async () => {
-//   if (import.meta.server) {
-//     return props.entry.data.image
-//       ? (await import("image-size")).default("./public/" + props.entry.data.image)
-//       : { width: 0, height: 0 };
-//   }
-// });
 
 const noMainVisual = computed(() => !props.entry.data.image && !props.entry.data.iframe);
 </script>
