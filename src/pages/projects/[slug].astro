@@ -12,14 +12,19 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
-const { Content } = await entry.render();
+const { Content, remarkPluginFrontmatter } = await entry.render();
 ---
 
-<Island title={entry.data.title}>
+<Island
+  title={entry.data.title}
+  image="rodin-wide.jpg"
+  imageLink="https://philamuseum.org/collection/object/101812"
+>
   <div class="text-center block" slot="island">
+    <p class="my-2">{entry.data.description || remarkPluginFrontmatter.description}</p>
     <a href={"/projects/#" + entry.slug} class="underline">(back to main page)</a>
   </div>
-  <div class="mt-20">
+  <div class="mt-12">
     <ProjectItem entry={entry} :standalone="true"><Content /></ProjectItem>
   </div>
 </Island>
