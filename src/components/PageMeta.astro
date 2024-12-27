@@ -29,6 +29,9 @@ const favicon = (await getImage({ src: await imageAsset("cool-m-small.png") })).
         type: "website",
         image: image ? optimizedImage!.src : "",
       },
+      optional: {
+        description,
+      },
       image: image
         ? {
             url: optimizedImage!.src,
