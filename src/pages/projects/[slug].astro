@@ -25,12 +25,12 @@ const description = entry.data.description || remarkPluginFrontmatter.descriptio
   <PageMeta
     title={entry.data.title}
     description={description}
-    image={"projects" + entry.data.image}
+    image={entry.data.image ? "projects" + entry.data.image : undefined}
     slot="head"
   />
   <div class="text-center block" slot="island">
     <p class="my-2">{description}</p>
-    <a href={"/projects/#" + entry.slug} class="underline">(back to main page)</a>
+    <a href={"/projects/#" + entry.slug} class="underline">(back to all projects)</a>
   </div>
   <div class="mt-12">
     <ProjectItem entry={entry} :standalone="true"><Content /></ProjectItem>
