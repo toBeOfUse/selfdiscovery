@@ -4,11 +4,11 @@
   >
     <template v-if="image && imageLink">
       <a :href="imageLink" target="_blank">
-        <Image :assetPath="image" class="min-h-0 h-64 object-cover" />
+        <Image :assetPath="image" class="min-h-0 h-64 xs:h-96 md:h-64 object-cover" />
       </a>
     </template>
     <template v-else-if="image">
-      <Image :assetPath="image" class="min-h-0 h-64 object-cover" />
+      <Image :assetPath="image" class="min-h-0 h-64 xs:h-96 lg:h-64 object-cover" />
     </template>
     <div class="p-3">
       <template v-if="title">
