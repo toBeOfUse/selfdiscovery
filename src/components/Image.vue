@@ -2,16 +2,21 @@
 import { getImage } from "astro:assets";
 import { imageAsset } from "../images";
 
-const props = defineProps<{ assetPath: string }>();
-const importedImage = await imageAsset(props.assetPath);
-const image = await getImage({ src: importedImage, quality: 90 });
+const props = defineProps<{ assetPath: string; widths?: number[] }>();
+const imageMetadata = await imageAsset(props.assetPath);
+const image = await getImage({
+  widths: props.widths ?? [100, 200, 400, 800, 1200],
+  src: imageMetadata,
+  quality: 90,
+});
 </script>
 
 <template>
   <img
     :src="image?.src"
-    :width="importedImage?.width"
-    :height="importedImage?.height"
+    :srcset="image?.srcSet.attribute"
+    :width="imageMetadata?.width"
+    :height="imageMetadata?.height"
     loading="lazy"
   />
 </template>

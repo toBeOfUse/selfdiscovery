@@ -1,11 +1,14 @@
 <template>
   <div
-    class="shadow-dark text-center rounded-lg border border-black sticky md:top-1/2 md:-translate-y-1/2 mx-auto mt-8 md:mt-0 overflow-hidden"
+    class="max-h-screen flex flex-col shadow-dark text-center rounded-lg border border-black sticky md:top-1/2 md:-translate-y-1/2 mx-auto mt-8 md:mt-0 overflow-hidden"
   >
-    <template v-if="image">
+    <template v-if="image && imageLink">
       <a :href="imageLink" target="_blank">
-        <Image :assetPath="image" class="w-full" />
+        <Image :assetPath="image" class="min-h-0 h-64 object-cover" />
       </a>
+    </template>
+    <template v-else-if="image">
+      <Image :assetPath="image" class="min-h-0 h-64 object-cover" />
     </template>
     <div class="p-3">
       <template v-if="title">
@@ -16,7 +19,7 @@
         >
           {{ title }}
         </h1>
-        <div class="mx-2 my-4 mt-6" v-html="multiwave" />
+        <div class="mx-2 my-2 mt-4" v-html="multiwave" />
       </template>
       <div class="content">
         <slot />
