@@ -60,8 +60,7 @@ const noMainVisual = computed(() => !props.entry.data.image && !props.entry.data
 .project-image {
   max-width: 100%;
   max-height: 70vh;
-  height: auto;
-  width: auto;
+  object-fit: contain;
 }
 .project-post {
   @include content;
