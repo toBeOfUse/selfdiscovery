@@ -1,3 +1,9 @@
+<script lang="ts" setup>
+import Image from "./Image.vue";
+import multiwave from "../../assets/multiwave-once.svg?raw";
+defineProps<{ title: string; titleLink?: string; image: string; imageLink?: string }>();
+</script>
+
 <template>
   <div
     class="flex flex-col shadow-dark text-center rounded-lg border border-black overflow-hidden"
@@ -11,7 +17,7 @@
       <Image :assetPath="image" class="min-h-0 h-64 xs:h-96 lg:h-64 object-cover" />
     </template>
     <div class="p-3 overflow-y-auto">
-      <template v-if="title">
+      <a :href="titleLink">
         <h1
           class="text-3xl text-center my-4"
           :class="{ 'mt-1': !!image }"
@@ -19,8 +25,8 @@
         >
           {{ title }}
         </h1>
-        <div class="mx-2 my-2 mt-4" v-html="multiwave" />
-      </template>
+      </a>
+      <div class="mx-2 my-2 mt-4" v-html="multiwave" />
       <div class="content">
         <slot />
       </div>
@@ -33,9 +39,3 @@
     </div>
   </div>
 </template>
-
-<script lang="ts" setup>
-import Image from "./Image.vue";
-import multiwave from "../../assets/multiwave-once.svg?raw";
-defineProps<{ title?: string; image?: string; imageLink?: string }>();
-</script>

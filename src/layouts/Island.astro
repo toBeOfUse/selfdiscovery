@@ -3,12 +3,13 @@ import Html from "./Html.astro";
 import NavIsland from "../components/NavIsland.vue";
 
 interface Props {
-  title?: string;
-  image?: string;
+  title: string;
+  titleLink?: string;
+  image: string;
   imageLink?: string;
 }
 
-const { title, image, imageLink } = Astro.props;
+const { title, titleLink, image, imageLink } = Astro.props;
 ---
 
 <Html>
@@ -28,7 +29,7 @@ const { title, image, imageLink } = Astro.props;
     <div
       class="h-screen md:top-0 md:sticky flex flex-col justify-center md:w-1/4 md:min-w-[300px] mx-6 lg:mx-4 mt-8 md:mt-0"
     >
-      <NavIsland title={title} image={image} imageLink={imageLink}>
+      <NavIsland title={title} titleLink={titleLink} image={image} imageLink={imageLink}>
         <slot name="island" />
       </NavIsland>
     </div>
