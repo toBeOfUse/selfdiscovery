@@ -18,6 +18,12 @@ const { entry } = Astro.props;
 
 <Island title="Blog Posts" titleLink="/blog/" image="typewriter.png">
   <div slot="island">stuff!!!</div>
+  <PageMeta
+    slot="head"
+    title={entry.data.title}
+    description={entry.data.tagline}
+    image={entry.data.image ?? "typewriter.png"}
+  />
   <div class="flex flex-col">
     <Post entry={entry} standalone />
   </div>

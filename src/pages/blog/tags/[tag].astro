@@ -24,12 +24,16 @@ const posts = await Promise.all(
   }))
 );
 
-const firstPage = posts
-  .sort((a, b) => a.data.date.getTime() - b.data.date.getTime())
-  .slice(0, 10);
+const firstPage = posts.sort((a, b) => a.data.date.getTime() - b.data.date.getTime());
 ---
 
 <Island title="Blog Posts" titleLink="/blog/" image="typewriter.png">
+  <PageMeta
+    slot="head"
+    title={`${Astro.params.tag} - Mitch's Blog`}
+    description="My highly meaningful thoughts."
+    image="typewriter.png"
+  />
   <div slot="island">stuff!!!</div>
   <div class="flex flex-col">
     {

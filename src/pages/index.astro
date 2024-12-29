@@ -13,9 +13,16 @@ import Html from "../layouts/Html.astro";
     image="cool-m.png"
   />
   <div class="font-home h-dvh w-screen flex items-center content-center overflow-hidden">
-    <div class="h-dvh w-full absolute top-0 left-0 overflow-hidden -z-10" set:html={Angles} />
+    <div
+      class="h-dvh w-full absolute top-0 left-0 overflow-hidden -z-10"
+      set:html={Angles}
+    />
     <div class="mx-auto p-5 bg-white inner-width aggressive-rounding">
-      <div set:html={Logo} class="flex items-center justify-center" style="height: 200px" />
+      <div
+        set:html={Logo}
+        class="flex items-center justify-center"
+        style="height: 200px"
+      />
       <ul class="list-disc my-4 px-4 sm:px-28 text-xl sm:text-2xl">
         <li>Born 1997</li>
         <li>Software Enthusiast and Som'times-Do-Well</li>
