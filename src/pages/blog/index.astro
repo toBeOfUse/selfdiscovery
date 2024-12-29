@@ -12,7 +12,7 @@ const posts = await Promise.all(
   }))
 );
 
-const firstPage = posts.sort((a, b) => a.data.date.getTime() - b.data.date.getTime());
+const firstPage = posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 ---
 
 <Island title="Blog Posts" titleLink="/blog" image="typewriter.png">
