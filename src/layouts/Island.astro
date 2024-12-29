@@ -13,12 +13,27 @@ const { title, image, imageLink } = Astro.props;
 
 <Html>
   <slot name="head" slot="head" />
-  <div class="flex flex-col md:flex-row lg:px-8 xl:px-28">
-    <div class="h-auto md:w-1/4 md:min-w-[300px] mx-6 lg:mx-4">
+  <!-- this first div is the container for the two content areas of this layout;
+  they're arranged side-by-side on desktop and above and below one another on
+  mobile -->
+  <div class="flex flex-col md:flex-row lg:px-8 xl:px-28 min-h-screen">
+    <!-- this next div creates the first content area, which is an "island" that
+    contains the summary and navigation elements. it is displayed in the left
+    column on desktop, and above the "real" content on mobile.
+
+    on desktop, this uses position: sticky so that it takes up horizontal space
+    in the layout, but it's always positioned with its top edge at the top of the
+    viewport and its bottom edge at the bottom of the viewport. it thus can
+    vertically center its "island" contents within the viewport. -->
+    <div
+      class="h-screen md:top-0 md:sticky flex flex-col justify-center md:w-1/4 md:min-w-[300px] mx-6 lg:mx-4 mt-8 md:mt-0"
+    >
       <NavIsland title={title} image={image} imageLink={imageLink}>
         <slot name="island" />
       </NavIsland>
     </div>
+    <!-- this div receives the "real" content of the page, and displays it in the
+    second column on desktop, or under the navigation island on mobile. -->
     <div class="xl:max-w-[700px] lg:max-w-[600px] md:max-w-[500px] mx-auto pl-2 pr-4">
       <slot />
     </div>

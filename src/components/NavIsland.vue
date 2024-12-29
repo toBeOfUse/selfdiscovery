@@ -1,6 +1,6 @@
 <template>
   <div
-    class="max-h-screen flex flex-col shadow-dark text-center rounded-lg border border-black sticky md:top-1/2 md:-translate-y-1/2 mx-auto mt-8 md:mt-0 overflow-hidden"
+    class="flex flex-col shadow-dark text-center rounded-lg border border-black overflow-hidden"
   >
     <template v-if="image && imageLink">
       <a :href="imageLink" target="_blank">
@@ -10,7 +10,7 @@
     <template v-else-if="image">
       <Image :assetPath="image" class="min-h-0 h-64 xs:h-96 lg:h-64 object-cover" />
     </template>
-    <div class="p-3">
+    <div class="p-3 overflow-y-auto">
       <template v-if="title">
         <h1
           class="text-3xl text-center my-4"
@@ -25,10 +25,10 @@
         <slot />
       </div>
       <p class="text-sm mt-4 mb-2">
-          <a class="underline" href="/">Home</a> -
-          <a class="underline" href="/about">About</a> -
+        <a class="underline" href="/">Home</a> -
+        <a class="underline" href="/about">About</a> -
         <a class="underline" href="/projects/">Projects</a> -
-          <a class="underline" href="/blog/">Posts</a>
+        <a class="underline" href="/blog/">Posts</a>
       </p>
     </div>
   </div>
