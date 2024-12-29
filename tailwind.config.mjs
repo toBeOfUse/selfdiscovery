@@ -10,13 +10,11 @@ export default {
       screens: {
         xs: "450px",
       },
-      extend: {
-        fontFamily: {
-          home: ["OpenSauceOne", ...defaultTheme.fontFamily.sans],
-        },
-        boxShadow: {
-          dark: "0 4px 6px 0 rgba(0, 0, 0, 0.2)",
-        },
+      fontFamily: {
+        home: ["OpenSauceOne", ...defaultTheme.fontFamily.sans],
+      },
+      boxShadow: {
+        dark: "0 4px 6px 0 rgba(0, 0, 0, 0.2)",
       },
     },
   },
