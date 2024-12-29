@@ -27,6 +27,9 @@ export const commonAltText: Record<string, string> = {
   "typewriter.png":
     "An old-fashioned electric typewriter on a desk, with a piece of paper " +
     "coming out of it showing faces and animals made out of typed characters.",
+  "m-w.png":
+    "3D layered sine waves of different shades of blue. " +
+    "They look a little like a repeated 'M'.",
 };
 
 /**
