@@ -25,9 +25,10 @@
         <slot />
       </div>
       <p class="text-sm mt-4 mb-2">
-        <a class="underline" href="/">Home</a> - <a class="underline" href="/about">About</a> -
+          <a class="underline" href="/">Home</a> -
+          <a class="underline" href="/about">About</a> -
         <a class="underline" href="/projects/">Projects</a> -
-        <a class="underline" href="/notes/">Notes</a>
+          <a class="underline" href="/blog/">Posts</a>
       </p>
     </div>
   </div>
