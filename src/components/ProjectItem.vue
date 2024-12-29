@@ -1,5 +1,7 @@
 <template>
-  <div class="flex flex-col items-center mx-auto">
+  <div
+    class="flex flex-col items-center mx-auto px-8 py-2 bg-slate-50 first:rounded-t-3xl last:rounded-b-3xl"
+  >
     <div :id="entry.slug" class="flex flex-col items-center w-full sm:w-auto py-2">
       <span>
         <h2 v-if="meta.date" class="text-sm inline">{{ meta.date }}</h2>

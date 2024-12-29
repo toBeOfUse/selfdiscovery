@@ -5,8 +5,8 @@ import Island from "../../layouts/Island.astro";
 import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
-  const blogEntries = await getCollection("projects");
-  return blogEntries.map((entry) => ({
+  const projects = await getCollection("projects");
+  return projects.map((entry) => ({
     params: { slug: entry.slug },
     props: { entry },
   }));
@@ -17,7 +17,7 @@ const { Content, remarkPluginFrontmatter } = await entry.render();
 const description = entry.data.description || remarkPluginFrontmatter.description;
 ---
 
-<Island title={entry.data.title} image="typewriter.png">
+<Island title={entry.data.title} image="circuit.png">
   <PageMeta
     title={entry.data.title}
     description={description}

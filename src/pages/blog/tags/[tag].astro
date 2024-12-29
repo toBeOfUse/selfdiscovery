@@ -1,0 +1,47 @@
+---
+import Post from "../../../components/Post.astro";
+import Island from "../../../layouts/Island.astro";
+
+import { getCollection } from "astro:content";
+import PageMeta from "../../../components/PageMeta.astro";
+
+export async function getStaticPaths() {
+  const blogEntries = await getCollection("blog");
+  const tags = new Set(
+    blogEntries.reduce((acc, val) => acc.concat(val.data.tags), [] as string[])
+  );
+  return Array.from(tags).map((tag) => ({
+    params: { tag },
+  }));
+}
+
+const posts = await Promise.all(
+  (
+    await getCollection("blog", (entry) => entry.data.tags.includes(Astro.params.tag))
+  ).map(async (post) => ({
+    ...post,
+    rendered: await post.render(),
+  }))
+);
+
+const firstPage = posts
+  .sort((a, b) => a.data.date.getTime() - b.data.date.getTime())
+  .slice(0, 10);
+---
+
+<Island title="Blog Posts" image="typewriter.png">
+  <div slot="island">stuff!!!</div>
+  <div class="flex flex-col">
+    {
+      firstPage.map(async (p, i) => {
+        // TODO: something with headings
+        return (
+          <Fragment>
+            {i !== 0 && <hr class="w-full my-4 border-t-2 border-gray-400" />}
+            <Post entry={p} />
+          </Fragment>
+        );
+      })
+    }
+  </div>
+</Island>

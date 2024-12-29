@@ -1,8 +1,8 @@
 ---
-import Post from "../../components/Post.vue";
+import Post from "../../components/Post.astro";
 import Island from "../../layouts/Island.astro";
 
-import { getEntry, getCollection } from "astro:content";
+import { getCollection } from "astro:content";
 import PageMeta from "../../components/PageMeta.astro";
 
 const posts = await Promise.all(
@@ -15,18 +15,16 @@ const posts = await Promise.all(
 const firstPage = posts.sort((a, b) => a.data.date.getTime() - b.data.date.getTime()).slice(0, 10);
 ---
 
-<Island title="Blog Posts">
+<Island title="Blog Posts" image="typewriter.png">
   <div slot="island">stuff!!!</div>
   <div class="flex flex-col">
     {
-      firstPage.map((p, i) => {
-        const { Content } = p.rendered;
+      firstPage.map(async (p, i) => {
+        // TODO: something with headings
         return (
           <Fragment>
             {i !== 0 && <hr class="w-full my-4 border-t-2 border-gray-400" />}
-            <Post entry={p}>
-              <Content />
-            </Post>
+            <Post entry={p} />
           </Fragment>
         );
       })

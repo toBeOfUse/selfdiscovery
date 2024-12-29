@@ -1,0 +1,61 @@
+---
+import type { CollectionEntry } from "astro:content";
+import ShowMore from "./ShowMore.vue";
+import render from "../md";
+import { formatDate } from "../date";
+
+interface Props {
+  entry: CollectionEntry<"blog">;
+  standalone?: boolean;
+}
+
+const props = Astro.props;
+
+const meta = props.entry.data;
+
+const { Content, headings, remarkPluginFrontmatter } = await props.entry.render();
+
+const { code: introHtml } = await render(remarkPluginFrontmatter.introMD);
+---
+
+<div class="border-2 my-8 p-4 post">
+  <small class="text-base">From {meta.date_as_string ?? formatDate(meta.date)}</small>
+  <a href={props.standalone ? "/blog/" : "/blog/" + props.entry.slug}>
+    <h1 class="text-2xl">{meta.title}</h1>
+  </a>
+  <div class="blog-post">
+    {
+      !props.standalone ? (
+        <ShowMore client:load>
+          <Fragment slot="all">
+            <Content />
+          </Fragment>
+          <Fragment slot="intro">
+            <div set:html={introHtml} />
+          </Fragment>
+        </ShowMore>
+      ) : (
+        <Content />
+      )
+    }
+  </div>
+  <p>
+    <span class="mr-1">Tags:</span>
+    {
+      meta.tags.map((tag, i) => (
+        <Fragment>
+          {/* prettier-ignore */}
+          <a href={`/blog/tags/${tag}`} class="italic">{tag}</a>
+          {i !== meta.tags.length - 1 && <span> - </span>}
+        </Fragment>
+      ))
+    }
+  </p>
+</div>
+
+<style lang="scss" is:global>
+  @import "../scss/content.scss";
+  .post {
+    @include content;
+  }
+</style>

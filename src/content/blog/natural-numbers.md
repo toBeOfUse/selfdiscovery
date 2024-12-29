@@ -1,19 +1,21 @@
 ---
-title: Floating Point Numbers Aren't the Problem, They're the Solution
+title: The Double Life of Floating Point
 tagline: The real reason you should use whole numbers for prices
 date: 2024-08-31
-tags: ["computers", "math"]
+tags: ["computers", "math", "low-effort titles"]
 ---
 
 If you go to [jsconsole.com](https://jsconsole.com/), which executes JavaScript code, which most common mathematical operations count as, and type "0.1 + 0.1 + 0.1", it will produce a number that is close to 0.3, but is not quite 0.3. When you try to write programs that do math, things like this often happen. You may have heard that it's because the number is "floating point."
 
 There's a lot of superstition and folklore around floating-point numbers in computer science, plausibly due to occult-sounding terms like "mantissa" and "significand." "Floating-point math is imprecise," people will say. But the "floating-point" part gets way too much emphasis. "Math is imprecise" is a better way to put it. The poor floating-point number is just chronically misunderstood.
 
+<!-- more -->
+
 ## "Floating-point math" is just normal math
 
 "Floating-point" just means "a number where the decimal point can be placed between any two digits." But that's just normal math. We put the point wherever we want whenever we write down a number. Historically, people have said "floating-point math" to contrast with "fixed-point math," but fixed-point math has been used by almost no-one in recent computational history. Even in languages with a lot of history, like C, floating point is the default for non-whole numbers, and fixed-point math requires custom code. It's as if we still called our phones "camera phones" to distinguish them from old camera-less cell phones, or tigers "non-saber-tooth tigers" to distinguish them from saber-tooth tigers.
 
-"Floating-point" also often seems to be used to refer to a specific way of storing numbers in a computer's memory, in the format codified by the IEEE, but in my experience, the implementation details actually don't help that much to understand the unusual behaviors you might see when working with non-whole numbers in computer science; focusing on IEEE 754 is missing the forest for the trees. The relevant math is easier to understand without it, and thus I won't be using the term "floating-point" again in this post until the very end.
+"Floating-point" also often seems to be used to refer to a specific scientific-notation-y way of storing numbers in a computer's memory, in the format codified by the IEEE, but in my experience, the implementation details actually don't help that much to understand the unusual behaviors you might see when working with non-whole numbers in computer science; focusing on IEEE 754 is missing the forest for the trees. The relevant math is easier to understand without it, and thus I won't be using the term "floating-point" again in this post until the very end.
 
 ## Binary math is also just math
 

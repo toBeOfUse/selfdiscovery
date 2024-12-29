@@ -36,7 +36,7 @@ const allProjects = await Promise.all(
 );
 ---
 
-<Island title="What Have I Done?" image="typewriter.png">
+<Island title="What Have I Done?" image="circuit.png">
   <PageMeta slot="head" title="Projects" description="Stuff I've made." />
   <Fragment slot="island">
     <p class="my-2">
@@ -64,7 +64,7 @@ const allProjects = await Promise.all(
         const { Content } = p.rendered;
         return (
           <Fragment>
-            {i !== 0 && <hr class="w-full my-4 border-t-2 border-gray-400" />}
+            {i !== 0 && <hr class="w-full my-8 border-t-2 border-gray-400" />}
             <ProjectItem entry={p}>
               <Content />
             </ProjectItem>
