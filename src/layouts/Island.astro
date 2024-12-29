@@ -23,11 +23,12 @@ const { title, titleLink, image, imageLink } = Astro.props;
     column on desktop, and above the "real" content on mobile.
 
     on desktop, this uses position: sticky so that it takes up horizontal space
-    in the layout, but it's always positioned with its top edge at the top of the
-    viewport and its bottom edge at the bottom of the viewport. it thus can
-    vertically center its "island" contents within the viewport. -->
+    in the layout, but it's always positioned with its top edge at the top of
+    the viewport (and, due to its height, its bottom edge at the bottom of the
+    viewport). it thus can vertically center its "island" contents within the
+    viewport. -->
     <div
-      class="h-screen md:top-0 md:sticky flex flex-col justify-center md:w-1/4 md:min-w-[300px] mx-6 lg:mx-4 mt-8 md:mt-0"
+      class="md:h-screen md:top-0 md:sticky flex flex-col justify-center md:w-1/4 md:min-w-[300px] mx-3 lg:mx-4 mt-8 md:mt-0"
     >
       <NavIsland title={title} titleLink={titleLink} image={image} imageLink={imageLink}>
         <slot name="island" />
@@ -35,7 +36,7 @@ const { title, titleLink, image, imageLink } = Astro.props;
     </div>
     <!-- this div receives the "real" content of the page, and displays it in the
     second column on desktop, or under the navigation island on mobile. -->
-    <div class="xl:max-w-[700px] lg:max-w-[600px] md:max-w-[500px] mx-auto pl-2 pr-4">
+    <div class="xl:max-w-[700px] lg:max-w-[600px] md:max-w-[500px] mx-auto px-2">
       <slot />
     </div>
   </div>

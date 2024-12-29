@@ -1,12 +1,17 @@
 <template>
   <div
-    class="flex flex-col items-center mx-auto px-8 py-2 bg-slate-50 first:rounded-t-3xl last:rounded-b-3xl"
+    class="flex flex-col items-center mx-auto px-3 md:px-8 py-2 bg-slate-50 first:rounded-t-3xl last:rounded-b-3xl"
   >
     <div :id="entry.slug" class="flex flex-col items-center w-full sm:w-auto py-2">
       <span>
         <h2 v-if="meta.date" class="text-sm inline">{{ meta.date }}</h2>
         <span v-if="meta.date && (meta.live_link || meta.github_link)"> • </span>
-        <a v-if="meta.github_link" class="text-sm" :href="meta.github_link" target="_blank">
+        <a
+          v-if="meta.github_link"
+          class="text-sm"
+          :href="meta.github_link"
+          target="_blank"
+        >
           Github
         </a>
         <span v-if="meta.live_link && meta.github_link"> • </span>

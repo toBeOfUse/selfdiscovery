@@ -40,16 +40,16 @@ const { code: introHtml } = await render(remarkPluginFrontmatter.introMD);
     }
   </div>
   <p>
-    <span class="mr-1">Tags:</span>
+    <span>Tagged as</span>
     {
+      // >:( https://github.com/withastro/astro/issues/6011
+      // prettier-ignore
       meta.tags.map((tag, i) => (
         <Fragment>
-          {/* prettier-ignore */}
-          <a href={`/blog/tags/${tag}`} class="italic">{tag}</a>
-          {i !== meta.tags.length - 1 && <span> - </span>}
+          <a href={`/blog/tags/${tag}`} class="italic">{tag}</a>{i !== meta.tags.length - 1 && `, `}
         </Fragment>
       ))
-    }
+    }.
   </p>
 </div>
 
