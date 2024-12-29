@@ -1,3 +1,0 @@
----
-title: Why .webp exists
----

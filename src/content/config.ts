@@ -10,8 +10,7 @@ const projects = defineCollection({
     image_alt: z.string().optional(),
     iframe: z.string().optional(),
     iframe_title: z.string().optional(),
-    // description should always be present, but, need to get some kind of <!--
-    // more --> thing working
+    // description may be supplied by the <!-- more --> tag
     description: z.string().optional(),
     live_link: z.string().optional(),
     live_link_title: z.string().optional(),
@@ -19,12 +18,23 @@ const projects = defineCollection({
   }),
 });
 
-// TODO
-const notes = defineCollection({ type: "content", schema: z.object({}) });
+const blog = defineCollection({
+  type: "content",
+  // TODO: custom loader that excludes .draft.md files?
+  schema: z.object({
+    title: z.string(),
+    tagline: z.string(),
+    image: z.string().optional(),
+    image_alt: z.string().optional(),
+    tags: z.array(z.string()),
+    date: z.date(),
+    date_as_string: z.string().optional(),
+  }),
+});
 
 // 3. Export a single `collections` object to register your collection(s)
 //    This key should match your collection directory name in "src/content"
 export const collections = {
   projects,
-  notes,
+  blog,
 };

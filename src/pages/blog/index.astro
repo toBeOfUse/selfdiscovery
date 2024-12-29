@@ -1,0 +1,35 @@
+---
+import Post from "../../components/Post.vue";
+import Island from "../../layouts/Island.astro";
+
+import { getEntry, getCollection } from "astro:content";
+import PageMeta from "../../components/PageMeta.astro";
+
+const posts = await Promise.all(
+  (await getCollection("blog")).map(async (post) => ({
+    ...post,
+    rendered: await post.render(),
+  }))
+);
+
+const firstPage = posts.sort((a, b) => a.data.date.getTime() - b.data.date.getTime()).slice(0, 10);
+---
+
+<Island title="Blog Posts">
+  <div slot="island">stuff!!!</div>
+  <div class="flex flex-col">
+    {
+      firstPage.map((p, i) => {
+        const { Content } = p.rendered;
+        return (
+          <Fragment>
+            {i !== 0 && <hr class="w-full my-4 border-t-2 border-gray-400" />}
+            <Post entry={p}>
+              <Content />
+            </Post>
+          </Fragment>
+        );
+      })
+    }
+  </div>
+</Island>

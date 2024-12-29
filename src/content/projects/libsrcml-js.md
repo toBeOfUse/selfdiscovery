@@ -3,6 +3,7 @@ title: libsrcml.js
 date: Fall 2023
 description: I created a WebAssembly version of a C library and wrote a JavaScript wrapper for it.
 image: /srcml-playground.jpg
+image_alt: A webpage with three primary sections arranged in a row. In the middle is some code, in C; on the right is an XML document breaking that code down into its component parts; and on the left is a narrower section showing the XML document in the form of a tree made out of expandable sections.
 live_link: https://www.srcml.org/doc/playground/
 ---
 
