@@ -17,6 +17,7 @@ const image = await getImage({
     :srcset="image?.srcSet.attribute"
     :width="imageMetadata?.width"
     :height="imageMetadata?.height"
+    :alt="imageMetadata?.alt ?? ''"
     loading="lazy"
   />
 </template>

@@ -14,6 +14,22 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
 );
 
 /**
+ * it is convenient to put the alt text for all "fixed" images here (i.e. those
+ * used in the design of the site itself, not part of the markdown content), so
+ * that they'll automatically get the right alt text wherever they're used (in
+ * the Image and PageMeta components, and in the return value from the
+ * `imageAsset` function.) if their filenames change, well, whoops
+ */
+export const commonAltText: Record<string, string> = {
+  "circuit.png":
+    "An illustration of a lightbulb being powered by a simple circuit " +
+    "composed of a battery and a switch that is being flipped on.",
+  "typewriter.png":
+    "An old-fashioned electric typewriter on a desk, with a piece of paper " +
+    "coming out of it showing faces and animals made out of typed characters.",
+};
+
+/**
  * Supply the relative path of an image within the assets directory (e.g.
  * "projects/corn.jpg"), and get back an object with that image's metadata.
  */
@@ -27,5 +43,5 @@ export async function imageAsset(assetPath: string) {
     );
   }
   const { default: importedImage } = await images[composedPath]();
-  return importedImage;
+  return { ...importedImage, alt: commonAltText[assetPath] as string | undefined };
 }

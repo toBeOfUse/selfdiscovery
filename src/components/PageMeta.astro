@@ -11,10 +11,8 @@ interface Props {
 
 const { title, description, image } = Astro.props;
 
-let optimizedImage;
-if (image) {
-  optimizedImage = await getImage({ src: await imageAsset(image), quality: 90 });
-}
+const imageSrc = image ? await imageAsset(image) : null;
+const optimizedImage = image ? await getImage({ src: imageSrc!, quality: 90 }) : null;
 
 const favicon = (await getImage({ src: await imageAsset("cool-m-small.png") })).src;
 ---
@@ -35,6 +33,7 @@ const favicon = (await getImage({ src: await imageAsset("cool-m-small.png") })).
       image: image
         ? {
             url: optimizedImage!.src,
+            alt: imageSrc!.alt,
           }
         : {},
     }}
