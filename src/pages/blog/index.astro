@@ -4,6 +4,7 @@ import Island from "../../layouts/Island.astro";
 
 import { getCollection } from "astro:content";
 import PageMeta from "../../components/PageMeta.astro";
+import BlogIslandContent from "../../components/BlogIslandContent.vue";
 
 const posts = await Promise.all(
   (await getCollection("blog")).map(async (post) => ({
@@ -12,17 +13,36 @@ const posts = await Promise.all(
   }))
 );
 
+const tagToCount = posts
+  .flatMap((post) => post.data.tags)
+  .reduce(
+    (acc, tag) => {
+      if (tag in acc) {
+        acc[tag]++;
+      } else {
+        acc[tag] = 1;
+      }
+      return acc;
+    },
+    {} as Record<string, number>
+  );
+
+// not paginating yet. should start when there are like, > 20 posts. will have to create
+// a dynamic route that looks like /blog/[pagenumber]. will have to do the same thing
+// for the tags, so it'll be like /blog/tags/[tag]/[pagenumber] (if that's how it works)
 const firstPage = posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 ---
 
-<Island title="Blog Posts" titleLink="/blog" image="typewriter.png">
+<Island title="Type Type Type" titleLink="/blog" image="typewriter.png">
   <PageMeta
     slot="head"
-    title="Mitch's Blog"
-    description="My highly meaningful thoughts."
+    title="Voyages of Self Discovery"
+    description="My blog, which contains my highly meaningful thoughts."
     image="typewriter.png"
   />
-  <div slot="island">stuff!!!</div>
+  <div slot="island">
+    <BlogIslandContent tagCounts={tagToCount} client:load />
+  </div>
   <div class="flex flex-col">
     {
       firstPage.map(async (p, i) => {

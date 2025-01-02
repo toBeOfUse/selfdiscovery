@@ -7,9 +7,7 @@ import PageMeta from "../../../components/PageMeta.astro";
 
 export async function getStaticPaths() {
   const blogEntries = await getCollection("blog");
-  const tags = new Set(
-    blogEntries.reduce((acc, val) => acc.concat(val.data.tags), [] as string[])
-  );
+  const tags = new Set(blogEntries.flatMap((entry) => entry.data.tags));
   return Array.from(tags).map((tag) => ({
     params: { tag },
   }));

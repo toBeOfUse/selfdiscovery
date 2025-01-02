@@ -4,6 +4,7 @@ import ProjectItem from "../../components/ProjectItem.vue";
 import { getEntry } from "astro:content";
 import Island from "../../layouts/Island.astro";
 import PageMeta from "../../components/PageMeta.astro";
+import ProjectsIslandContent from "../../components/ProjectsIslandContent.vue";
 
 const allProjects = await Promise.all(
   [
@@ -44,24 +45,33 @@ const allProjects = await Promise.all(
     image="circuit.png"
   />
   <Fragment slot="island">
-    <p class="my-2">
-      This is a question we must all ask ourselves from time to time, and this is the page
-      where I'm recording my answers.
-    </p>
-    <p class="my-2">
-      Herein lie loose descriptions of various projects I've created or worked on for fun,
-      for school, or in a more-or-less professional capacity.
-    </p>
-    <select id="contents" value="toc" class="w-10/12 p-1 mt-2 bg-slate-100">
-      <option value="toc">Table of Contents...</option>
-      {
-        allProjects.map((p) => (
-          <option value={p.slug}>
-            {p.data.title} ({p.data.date})
-          </option>
-        ))
-      }
-    </select>
+    <ProjectsIslandContent client:load>
+      <Fragment slot="text">
+        <p class="my-2">
+          This is a question we must all ask ourselves from time to time, and this is the
+          page where I'm recording my answers.
+        </p>
+        <p class="my-2">
+          Herein lie descriptions of various projects I've created or worked on for fun,
+          for school, or in a more-or-less professional capacity.
+        </p>
+      </Fragment>
+      <Fragment slot="toc">
+        {
+          (
+            <ul class="text-left pl-4">
+              {allProjects.map((p) => (
+                <li class="my-1">
+                  <a href={`/projects#${p.slug}`}>
+                    <span class="underline">{p.data.title}</span> ({p.data.date})
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )
+        }</Fragment
+      >
+    </ProjectsIslandContent>
   </Fragment>
   <div class="my-8 md:my-10">
     {
@@ -79,26 +89,3 @@ const allProjects = await Promise.all(
     }
   </div>
 </Island>
-
-<script>
-  const tocSelect = document.querySelector("select#contents") as HTMLSelectElement;
-  if (!tocSelect) {
-    throw new Error("could not find table of contents select element");
-  }
-  let thingSelected = false;
-  tocSelect.addEventListener("change", (e) => {
-    const slug = (e?.target as HTMLOptionElement)?.value;
-    if (slug !== "toc") {
-      document.querySelector("#" + slug)?.scrollIntoView();
-    }
-    setTimeout(() => {
-      thingSelected = true;
-    }, 50);
-  });
-  window.addEventListener("scroll", () => {
-    if (thingSelected && tocSelect) {
-      tocSelect.value = "toc";
-      thingSelected = false;
-    }
-  });
-</script>

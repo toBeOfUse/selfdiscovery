@@ -9,6 +9,7 @@ const image = await getImage({
   src: imageMetadata,
   quality: 90,
 });
+// TODO: use the `widths` img attribute, properly
 </script>
 
 <template>

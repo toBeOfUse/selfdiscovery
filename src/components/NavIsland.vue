@@ -27,7 +27,7 @@ defineProps<{ title: string; titleLink?: string; image: string; imageLink?: stri
         </h1>
       </a>
       <div class="mx-2 my-2 mt-4" v-html="multiwave" />
-      <div class="content">
+      <div class="content -mt-2 mb-4">
         <slot />
       </div>
       <p class="text-sm mt-4 mb-2">
