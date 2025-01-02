@@ -2,6 +2,8 @@
 title: The Double Life of Floating Point
 tagline: The real reason you should use whole numbers for prices
 date: 2024-08-31
+image: posts/floating-point/cover.jpg
+image_alt: A clunky old adding machine.
 tags: ["computers", "math", "low-effort titles"]
 ---
 
@@ -54,3 +56,5 @@ Technically, the scheme for storing currencies where you multiply dollar amounts
 ## Appendix C: What was that about numbers of fingers again?
 
 Earlier, I said that humans normally use base 10 because we have 10 fingers; of course, different humans in different parts of the world have historically used different bases for their numbers system, and the original source of the base 10 system is unverifiable due to it being very old, but the fingers thing is probably why it's common. Of course, you're only restricted to counting on base 10 on your fingers if you like, count them. If you treat each finger like a binary switch that can be either folded in or extended, you can use them as binary digits and count to 1,024 on them 😀.
+
+_This post's image is an [Anita 1011 calculator](https://commons.wikimedia.org/wiki/File:Anita1011-1.jpg) belonging to [MaltaGC](https://en.wikipedia.org/wiki/User:MaltaGC), shared under the the Creative Commons Attribution-Share Alike 3.0 Unported license._

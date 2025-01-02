@@ -1,6 +1,8 @@
 ---
 title: The Simple Life
 tagline: What I was doing from 2015 to 2018.
+image: posts/the-simple-life/cover.jpg
+image_alt: A gravel driveway with an old farmhouse on the right side of it and some sheds and trees scattered around. The orange leaves indicate that it's autumn.
 date: 2019-02-23
 tags: ["personal", "plants", "long post"]
 ---
