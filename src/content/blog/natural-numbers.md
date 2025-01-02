@@ -1,6 +1,6 @@
 ---
 title: The Double Life of Floating Point
-tagline: The real reason you should use whole numbers for prices
+tagline: Small numbers can be long. Floating points are made. The real reason you should use whole numbers for prices. The appendixes are the interesting points.
 date: 2024-08-31
 image: posts/floating-point/cover-wide.jpg
 image_alt: A clunky old adding machine.
@@ -8,9 +8,9 @@ image_style: normal
 tags: ["computers", "math", "low-effort titles"]
 ---
 
-If you go to [jsconsole.com](https://jsconsole.com/), which executes JavaScript code, which most common mathematical operations count as, and type "0.1 + 0.1 + 0.1", it will produce a number that is almost, but not quite 0.3. When you try to write programs that do math, things like this often happen. You may have heard that it's because the number is "floating point."
+Computers are bad at math. If you go into your friendly local [Python terminal](https://www.pythonmorsels.com/repl/) or [JavScript console](https://jsconsole.com/), and type "0.1 + 0.1 + 0.1", it will produce a number that is almost, but not quite 0.3. When you try to write programs that do math, things like this often happen. You may have heard that it's because the number is "floating point."
 
-There's a lot of superstition and folklore around floating-point numbers in computer science, plausibly due to occult-sounding terms like "mantissa" and "significand." "Floating-point math is imprecise," people will say. But the "floating-point" part gets way too much emphasis. "Math is imprecise" is a better way to put it. The poor floating-point number is just chronically misunderstood.
+There's a lot of superstition and folklore around floating-point numbers in computer science, plausibly due to occult-sounding terms like "mantissa" and "significand." "Floating-point math is imprecise," people will say. But the "floating-point" part gets way too much emphasis. "Math is too precise" is a better way to put it. The poor floating-point number is just chronically misunderstood.
 
 <!-- more -->
 
@@ -22,9 +22,7 @@ There's a lot of superstition and folklore around floating-point numbers in comp
 
 ## Binary math is also just math
 
-To briefly review binary math: let's say we want to create a number system that only uses two digits: 0 and 1. This really isn't any weirder than having a number system with exactly 10 digits, like the normal one, which probably only got started because humans happen to have 10 fingers. Binary math is important because computers' memory is made out of tiny switches that can either be flipped on or flipped off, and similar to the fingers thing, computers do math with two unique digits to correspond to the two states that those switches can have.
-
-Trying to do `1 + 1` in binary might have thrown you off the first time you tried it, since the answer is unfortunately not "2". Instead, it's written `10`, mainly because, what other number could `1 + 1` possibly add up to? We're not using the digit "2", so it's not that. What you may not have thought about is that similar considerations apply to calculating `0.1 + 0.1`. The answer can't be 0.2, since we're not using the digit "2." For extremely similar reasons, the answer also cannot be 0.3 or 0.4, etc. The answer must be `0.1 + 0.1 = 1.0`, since we're overflowing the first digit after the point and thus we have to carry a one to the left. Also, what other number could the result possibly be?
+Trying to do `1 + 1` in binary might have thrown you off the first time you tried it, since the answer is unfortunately not "2". Instead, it's written `10`, mainly because, binary math only uses the digits `0` and `0`, so what other number could `1 + 1` possibly add up to? We're not using the digit "2", so it's not that. What you may not have thought about is that similar considerations apply to calculating `0.1 + 0.1`. The answer can't be 0.2, since we're not using the digit "2." For extremely similar reasons, the answer also cannot be 0.3, or 0.4, etc. The answer must be `0.1 + 0.1 = 1.0`; since we're overflowing the first digit after the point and thus we have to carry a one to the left. But also, what other number could the result possibly be?
 
 This means that `0.1` must signify what we'd typically refer to as one-half, since two of them equal 1. For the same reason, `0.01` must signify one-fourth, since `0.01 + 0.01` must equal `0.1`, and so `0.01` is half of one-half. Similarly, `0.001` must mean one-eighth. Similarly, `0.11` must mean "three-fourths", since it's `0.1 + 0.01`, or one half plus one-fourth. It's just the only consistent system.
 
@@ -36,11 +34,13 @@ Similarly, in binary, it's very difficult to represent one-tenth. In decimal, it
 
 Tragically, representing one-tenth in binary exactly would take an infinite number of digits - the `0011` part after the point repeats infinitely, just like the 3 in "0.333333...". In general, numbers that can be represented very easily in one number system can't necessarily be represented at all in another. For example, one-third is impossible to write in decimal and binary, but can be written very easily, as "0.1", in ternary (i.e. base 3, the number system that uses the digits 0, 1, and 2.)
 
-This is a problem because of the ubiquitous use of number like 0.1 in our everyday lives. For example, we divide currencies up into 100 equal pieces called cents, and write things like "$0.10" to mean "ten cents." This amount of dollars can't be precisely represented by computers in binary, since it would take an infinite number of digits, and computers have a finite number of little switches to represent digits with.
+This is a problem because of the ubiquitous use of number like 0.1 in our everyday lives. For example, we divide currencies up into 100 equal pieces called cents, and write things like "$0.10" to mean "ten cents." This amount of dollars can't be precisely represented by computers in binary, since it would take an infinite number of digits, and computers have a finite number of little transistors (or whatever) to represent digits with.
 
 But, since we generally only subdivide dollars or euros into 100 constituent pieces, if we want to store prices precisely, we can just multiply them by 100 and store them as whole numbers of cents. Easy. In general, whole numbers are easy to store precisely because they're built out of atomic, indivisible units of 1, so you'll never find yourself needing infinite precision to store them; and dollars and euros are built out of indivisible units called "cents." It all fits. So that's why and how you should use whole numbers for prices.
 
-So, floating-point math isn't the problem; math is the problem. "Floating-point" just means we're writing numbers with the point going wherever it wants, albeit with a fixed amount of digits available, since computers can only store so many of those. If our computer allocates eight switches to store the digits part of a binary number, floating point lets us put the point close to the end of the digits if we need to store a large number, like 64.5 (`1000000.1`), or close to the beginning if we need to store a small number, like three sixty-fourths (`0.0000110`). Yes, the system used to achieve this result is complicated and involves stuff like a "mantissa," but that is like, rarely important.
+## Conclusion
+
+So, floating-point math isn't the problem; math is the problem. "Floating-point" just means we're writing numbers with the point going wherever it wants, albeit with a fixed amount of digits available, since computers can only store so many of those. If our computer allocates eight bits to store the digits part of a binary number, floating point lets us put the point close to the end of the digits if we need to store a large number, like 64.5 (`1000000.1`), or close to the beginning if we need to store a small number, like three sixty-fourths (`0.0000110`). The internal representation used to achieve this result is complicated and involves stuff like a "mantissa," but that is relatively rarely important.
 
 ## Appendix A: Floating Point is the Problem Actually
 
@@ -54,8 +54,8 @@ So that's the one thing about this basic system that I would say is pretty weird
 
 Technically, the scheme for storing currencies where you multiply dollar amounts by 100 before storing them, which practically everyone uses, is a "fixed-point math" situation: implicitly, the point is always positioned two places from the right of the number, making it fixed. However, no-one calls that "fixed-point math", possibly because all this terminology is just confusing, possibly because you could claim that that system is integer math that just uses cents as the unit, and possibly because fixed-point math has traditionally meant that the point is fixed at a certain location on the binary level, not in the decimal number you can get from it. But you could certainly make a case that fixed-point math is alive and well and all around us, albeit in this kind of edge-case form, even while previous use cases for it like "all math on the PlayStation 1" have faded away into history.
 
-## Appendix C: What was that about numbers of fingers again?
+## Appendix C: Why base 10?
 
-Earlier, I said that humans normally use base 10 because we have 10 fingers; of course, different humans in different parts of the world have historically used different bases for their numbers system, and the original source of the base 10 system is unverifiable due to it being very old, but the fingers thing is probably why it's common. Of course, you're only restricted to counting on base 10 on your fingers if you like, count them. If you treat each finger like a binary switch that can be either folded in or extended, you can use them as binary digits and count to 1,024 on them 😀.
+Humans normally use base 10 because we have 10 fingers; technically, different humans in different parts of the world have historically used different bases for their numbers system, and the original source of the base 10 system is unverifiable due to it being very old, but the fingers thing is probably why it's common. Of course, you're only restricted to counting on base 10 on your fingers if you like, count them. If you treat each finger like a binary switch that can be either folded in or extended, you can use them as binary digits and count to 1,024 on them 😀.
 
 _This post's image is an [Anita 1011 calculator](https://commons.wikimedia.org/wiki/File:Anita1011-1.jpg) belonging to [MaltaGC](https://en.wikipedia.org/wiki/User:MaltaGC), shared under the the Creative Commons Attribution-Share Alike 3.0 Unported license._
