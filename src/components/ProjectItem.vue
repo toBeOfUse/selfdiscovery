@@ -39,7 +39,7 @@
       style="height: 60vh"
       loading="lazy"
     />
-    <div class="project-post leading-relaxed" :class="{ '-mt-6': noMainVisual }">
+    <div class="project-post leading-relaxed" :class="{ '-mt-2': noMainVisual }">
       <slot />
     </div>
   </div>
