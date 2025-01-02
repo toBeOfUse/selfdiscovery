@@ -13,9 +13,7 @@ const sortedTags = computed(() =>
 <template>
   <Cordion>
     <CordionDefaultItem>
-      <p class="my-10">
-        I don't know what I'm going to write here! Let's find out together.
-      </p>
+      <p>I don't know what I'm going to write here! Let's find out together.</p>
     </CordionDefaultItem>
 
     <CordionItem heading="Common Tags">

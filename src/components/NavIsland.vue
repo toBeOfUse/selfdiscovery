@@ -34,7 +34,7 @@ defineProps<{ title: string; titleLink?: string; image: string; imageLink?: stri
         <a class="underline" href="/">Home</a> -
         <a class="underline" href="/about">About</a> -
         <a class="underline" href="/projects/">Projects</a> -
-        <a class="underline" href="/blog/">Posts</a>
+        <a class="underline" href="/blog/">Blog</a>
       </p>
     </div>
   </div>

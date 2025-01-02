@@ -4,6 +4,7 @@ import Island from "../../layouts/Island.astro";
 
 import { getCollection } from "astro:content";
 import PageMeta from "../../components/PageMeta.astro";
+import BlogPostIslandContent from "../../components/BlogPostIslandContent.vue";
 
 export async function getStaticPaths() {
   const blogEntries = await getCollection("blog");
@@ -14,10 +15,14 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
+
+const { headings } = await entry.render();
 ---
 
-<Island title="Blog Posts" titleLink="/blog/" image="typewriter.png">
-  <div slot="island">stuff!!!</div>
+<Island title={entry.data.title} titleLink={`/blog/${entry.slug}`} image="typewriter.png">
+  <div slot="island" class="text-left">
+    <BlogPostIslandContent entry={entry} headings={headings} client:load />
+  </div>
   <PageMeta
     slot="head"
     title={entry.data.title}

@@ -2,8 +2,9 @@
 title: The Double Life of Floating Point
 tagline: The real reason you should use whole numbers for prices
 date: 2024-08-31
-image: posts/floating-point/cover.jpg
+image: posts/floating-point/cover-wide.jpg
 image_alt: A clunky old adding machine.
+image_style: normal
 tags: ["computers", "math", "low-effort titles"]
 ---
 

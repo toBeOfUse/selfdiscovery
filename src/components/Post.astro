@@ -13,24 +13,34 @@ const props = Astro.props;
 
 const meta = props.entry.data;
 
-const { Content, headings, remarkPluginFrontmatter } = await props.entry.render();
+const { Content, remarkPluginFrontmatter } = await props.entry.render();
 
 const { code: introHtml } = await render(remarkPluginFrontmatter.introMD);
 ---
 
-<div class="border-2 my-8 p-2 md:p-4">
+<div class="border-2 my-8 p-2 md:p-4 flex flex-col items-start gap-3">
   {
-    !!meta.image ? (
+    meta.image_style === "old" ? (
       <div class="relative">
         <Image assetPath={meta.image} alt={meta.image_alt} />
-        <h1 class="text-2xl absolute py-1 px-2 left-2 top-2 bg-white text-black">
+        <h1 class="text-2xl absolute rounded py-1 px-2 left-2 bottom-2 bg-white text-black">
           <a href={props.standalone ? "/blog/" : "/blog/" + props.entry.slug}>
             {meta.title}
           </a>
         </h1>
-        <p class="m-0 absolute py-1 px-2 bottom-2 right-2 bg-white text-black">
+        <p class="m-0 absolute rounded py-1 px-2 top-2 right-2 text-sm italic bg-white text-black">
           {meta.date_as_string ?? formatDate(meta.date)}
         </p>
+      </div>
+    ) : meta.image_style === "normal" ? (
+      <div>
+        <Image assetPath={meta.image} alt={meta.image_alt} />
+        <h1 class="text-2xl my-2">
+          <a href={props.standalone ? "/blog/" : "/blog/" + props.entry.slug}>
+            {meta.title}
+          </a>
+        </h1>
+        <p class="text-sm italic ">{meta.date_as_string ?? formatDate(meta.date)}</p>
       </div>
     ) : (
       <Fragment>
@@ -46,13 +56,19 @@ const { code: introHtml } = await render(remarkPluginFrontmatter.introMD);
       !props.standalone ? (
         <Fragment>
           <div set:html={introHtml} />
-          <a href={`/blog/${props.entry.slug}`}>Read Post</a>
         </Fragment>
       ) : (
         <Content />
       )
     }
   </div>
+  {
+    !props.standalone && (
+      <a class="underline" href={`/blog/${props.entry.slug}`}>
+        Read More
+      </a>
+    )
+  }
   <p>
     <span>Tagged as</span>
     {
@@ -60,7 +76,7 @@ const { code: introHtml } = await render(remarkPluginFrontmatter.introMD);
       // prettier-ignore
       meta.tags.map((tag, i) => (
         <Fragment>
-          <a href={`/blog/tags/${tag}`} class="italic">{tag}</a>{i !== meta.tags.length - 1 && `, `}
+          <a href={`/blog/tags/${tag}`} class="italic underline">{tag}</a>{i !== meta.tags.length - 1 && `, `}
         </Fragment>
       ))
     }.

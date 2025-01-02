@@ -6,7 +6,13 @@
     }
   }
   & p {
-    @apply my-5;
+    @apply my-4;
+    &:first-child {
+      @apply mt-0;
+    }
+    &:last-child {
+      @apply mb-0;
+    }
   }
   & a {
     @apply underline;
