@@ -2,7 +2,7 @@
 title: The Simple Life
 tagline: What I was doing from 2015 to 2018.
 date: 2019-02-23
-tags: ["life", "plants", "long post"]
+tags: ["personal", "plants", "long post"]
 ---
 
 _Author's note: I originally wrote this on a different platform (as the date says, in 2019), and am transplanting it here. I dug up the originals of all of the photos and wrote alt text for them, but the text of the post remains completely unchanged. As a matter of fact, I haven't even re-read it._
