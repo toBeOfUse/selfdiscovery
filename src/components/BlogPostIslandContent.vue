@@ -5,14 +5,17 @@ import Cordion from "./AccordionWithDefault/Cordion.vue";
 import CordionItem from "./AccordionWithDefault/CordionItem.vue";
 import CordionDefaultItem from "./AccordionWithDefault/CordionDefaultItem.vue";
 
-defineProps<{ entry: CollectionEntry<"blog">; headings: MarkdownHeading[] }>();
+defineProps<{
+  entryMeta: CollectionEntry<"blog">["data"];
+  headings: MarkdownHeading[];
+}>();
 </script>
 
 <template>
   <Cordion>
     <CordionDefaultItem>
       <div class="text-center flex flex-col gap-4">
-        <p>{{ entry.data.tagline }}</p>
+        <p>{{ entryMeta.tagline }}</p>
         <p><a class="underline" href="/blog">(back to blog home)</a></p>
       </div>
     </CordionDefaultItem>

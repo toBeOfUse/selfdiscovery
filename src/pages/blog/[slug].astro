@@ -21,7 +21,7 @@ const { headings } = await entry.render();
 
 <Island title={entry.data.title} titleLink={`/blog/${entry.slug}`} image="typewriter.png">
   <div slot="island" class="text-left">
-    <BlogPostIslandContent entry={entry} headings={headings} client:load />
+    <BlogPostIslandContent entryMeta={entry.data} headings={headings} client:load />
   </div>
   <PageMeta
     slot="head"
