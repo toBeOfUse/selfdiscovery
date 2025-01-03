@@ -1,6 +1,6 @@
 ---
 title: The Double Life of Floating Point
-tagline: Small numbers can be long. Floating points are made. The real reason you should use whole numbers for prices. The appendixes are the interesting points.
+tagline: Small numbers can be long. Floating points are made. The real reason you should use whole numbers for prices. The appendixes are the interesting parts.
 date: 2024-08-31
 image: posts/floating-point/cover-wide.jpg
 image_alt: A clunky old adding machine.
@@ -8,7 +8,7 @@ image_style: normal
 tags: ["computers", "math", "low-effort titles"]
 ---
 
-Computers are bad at math. If you go into your friendly local [Python terminal](https://www.pythonmorsels.com/repl/) or [JavScript console](https://jsconsole.com/), and type "0.1 + 0.1 + 0.1", it will produce a number that is almost, but not quite 0.3. When you try to write programs that do math, things like this often happen. You may have heard that it's because the number is "floating point."
+Computers are bad at math. If you go into your friendly local [Python terminal](https://www.pythonmorsels.com/repl/) or [JavaScript console](https://jsconsole.com/), and type "0.1 + 0.1 + 0.1", it will produce a number that is almost, but not quite 0.3. When you try to write programs that do math, things like this often happen. You may have heard that it's because the number is "floating point."
 
 There's a lot of superstition and folklore around floating-point numbers in computer science, plausibly due to occult-sounding terms like "mantissa" and "significand." "Floating-point math is imprecise," people will say. But the "floating-point" part gets way too much emphasis. "Math is too precise" is a better way to put it. The poor floating-point number is just chronically misunderstood.
 
@@ -22,7 +22,7 @@ There's a lot of superstition and folklore around floating-point numbers in comp
 
 ## Binary math is also just math
 
-Trying to do `1 + 1` in binary might have thrown you off the first time you tried it, since the answer is unfortunately not "2". Instead, it's written `10`, mainly because, binary math only uses the digits `0` and `0`, so what other number could `1 + 1` possibly add up to? We're not using the digit "2", so it's not that. What you may not have thought about is that similar considerations apply to calculating `0.1 + 0.1`. The answer can't be 0.2, since we're not using the digit "2." For extremely similar reasons, the answer also cannot be 0.3, or 0.4, etc. The answer must be `0.1 + 0.1 = 1.0`; since we're overflowing the first digit after the point and thus we have to carry a one to the left. But also, what other number could the result possibly be?
+Trying to do `1 + 1` in binary might have thrown you off the first time you tried it, since the answer is unfortunately not "2". Instead, it's written `10`, mainly because, binary math only uses the digits `1` and `0`, so what other number could `1 + 1` possibly add up to? We're not using the digit "2", so it's not that. What you may not have thought about is that similar considerations apply to calculating `0.1 + 0.1`. The answer can't be 0.2, since we're not using the digit "2." For extremely similar reasons, the answer also cannot be 0.3, or 0.4, etc. The answer must be `0.1 + 0.1 = 1.0`; since we're overflowing the first digit after the point and thus we have to carry a one to the left. But also, what other number could the result possibly be?
 
 This means that `0.1` must signify what we'd typically refer to as one-half, since two of them equal 1. For the same reason, `0.01` must signify one-fourth, since `0.01 + 0.01` must equal `0.1`, and so `0.01` is half of one-half. Similarly, `0.001` must mean one-eighth. Similarly, `0.11` must mean "three-fourths", since it's `0.1 + 0.01`, or one half plus one-fourth. It's just the only consistent system.
 
