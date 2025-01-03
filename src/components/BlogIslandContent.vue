@@ -19,7 +19,7 @@ const sortedTags = computed(() =>
     <CordionItem heading="Common Tags">
       <ul class="text-left p-2">
         <li v-for="[tag, count] in sortedTags">
-          <a :href="`/blog/tags/${tag}`">{{ tag }}</a> ({{ count }})
+          <a class="underline" :href="`/blog/tags/${tag}`">{{ tag }}</a> ({{ count }})
         </li>
       </ul>
     </CordionItem>

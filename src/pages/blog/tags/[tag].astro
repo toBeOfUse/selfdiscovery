@@ -23,16 +23,27 @@ const posts = await Promise.all(
 );
 
 const firstPage = posts.sort((a, b) => a.data.date.getTime() - b.data.date.getTime());
+
+function pluralize(count: number, singular: string, plural?: string) {
+  if (count === 1) return singular;
+  return plural ?? singular + "s";
+}
 ---
 
-<Island title="Blog Posts" titleLink="/blog/" image="typewriter.png">
+<Island title={"Tagged: " + Astro.params.tag} titleLink="/blog/" image="typewriter.png">
   <PageMeta
     slot="head"
-    title={`${Astro.params.tag} - Mitch's Blog`}
+    title={`Tagged: "${Astro.params.tag}"`}
     description="My highly meaningful thoughts."
     image="typewriter.png"
   />
-  <div slot="island">stuff!!!</div>
+  <div slot="island">
+    <p class="my-8">
+      There {pluralize(posts.length, "is", "are")}
+      {posts.length}
+      {pluralize(posts.length, "post")} tagged "{Astro.params.tag}."
+    </p>
+  </div>
   <div class="flex flex-col">
     {
       firstPage.map(async (p, i) => {
