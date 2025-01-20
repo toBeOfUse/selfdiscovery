@@ -26,19 +26,19 @@ In general, I prefer this approach over being sent to a new page if it's not act
 
 This is also why I made an in-place editor for the complicated spreadsheet I use to track research papers:
 
-<video alt="One of a series of spreadsheet rows describing research papers expands to show a series of input fields for the paper's name, authors, tags, and so on." controls src="../../.../../../assets/posts/eyeline-ui/compact-spreadsheet.mp4"></video>
+<video alt="One of a series of spreadsheet rows describing research papers expands to show a series of input fields for the paper's name, authors, tags, and so on." controls src="/posts/eyeline-ui/compact-spreadsheet.mp4"></video>
 
 The conventional way to handle that interaction would have been to create a whole separate page, or maybe just a modal, in which the data for the paper could be edited. But that would involve a full UI context switch, and it wouldn't be as fun a way to edit weird nested data structures. This way, everything is spreadsheet.
 
 The first place I remember seeing this kind of in-place data editing was on Trello, years ago (although access to their nested fields takes slightly more clicks than mine):
 
-<video alt="A pencil icon is clicked on a card in a Kanban board full of Minecraft projects. The card's description, which reads 'Improve house interiors', becomes editable, and buttons on the side show up that let you add things like dates and labels to the card." controls src="../../.../../../assets/posts/eyeline-ui/trello.mp4"></video>
+<video alt="A pencil icon is clicked on a card in a Kanban board full of Minecraft projects. The card's description, which reads 'Improve house interiors', becomes editable, and buttons on the side show up that let you add things like dates and labels to the card." controls src="/posts/eyeline-ui/trello.mp4"></video>
 
 You can see how this approach also keeps more context on screen for the user, with the content of the card remaining visible while you add dates and labels and stuff to it.
 
 I think part of the reason why I enjoy this trend is the creativity - it's fun to see UI [shapeshift](https://www.youtube.com/watch?v=y69gQtAdHKc&t=59s) in place to meet your needs, instead of just staying static.
 
-<video alt="A very short clip from the movie Nimona, in which the protagonist transforms from a rhino, to an armadillo, to a bear, to a bird, to a meerkat, all while rapidly pushing one of the other characters down a hall." controls src="../../.../../../assets/posts/eyeline-ui/nimona-shapeshift.mp4"></video>
+<video alt="A very short clip from the movie Nimona, in which the protagonist transforms from a rhino, to an armadillo, to a bear, to a bird, to a meerkat, all while rapidly pushing one of the other characters down a hall." controls src="/posts/eyeline-ui/nimona-shapeshift.mp4"></video>
 
 [Here's](https://x.com/laurentdelrey/status/1681321861106524162) another fun example of keeping something in context, on screen, for longer than you'd expect:
 

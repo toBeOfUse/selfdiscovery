@@ -1,6 +1,6 @@
 ---
 title: Separation of Concerns and State
-publish_date: "2024-09-18"
+publish_date: 2024-09-18
 description: This post is about two fundamental axes of code organization in programming projects.
 ---
 
