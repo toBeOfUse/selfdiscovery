@@ -17,9 +17,14 @@
   & a {
     @apply underline;
   }
+  & img,
+  & video {
+    @apply max-w-full h-auto mx-auto max-h-[90vh];
+  }
   & figure {
     @apply my-4 bg-gray-200 p-2 w-4/5 mx-auto;
-    & img {
+    & img,
+    & video {
       @apply max-w-sm w-full h-auto mx-auto max-h-96;
     }
     & figcaption {

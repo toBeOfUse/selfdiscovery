@@ -4,7 +4,7 @@ tagline: Small numbers can be long. Floating points are made. The real reason yo
 date: 2025-01-02
 image: posts/floating-point/cover-wide.jpg
 image_alt: A clunky old adding machine.
-image_style: normal
+image_style: old
 tags: ["computers", "math", "low-effort titles"]
 ---
 
