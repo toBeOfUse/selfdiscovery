@@ -18,7 +18,10 @@ const { Content, remarkPluginFrontmatter } = await props.entry.render();
 const { code: introHtml } = await render(remarkPluginFrontmatter.introMD);
 ---
 
-<div class="border-2 my-8 p-2 md:p-4 flex flex-col items-start gap-3">
+<div
+  class={"my-8 p-3 md:p-4 flex flex-col items-start gap-3 " +
+    (props.standalone ? "border-0 md:border-2" : "border-2")}
+>
   {
     meta.image_style === "old" ? (
       <div class="relative">
