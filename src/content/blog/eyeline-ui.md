@@ -22,7 +22,7 @@ Here's a slightly less conventional example from a website I once designed:
 
 Each page has the "log in" and "make account" buttons you'd expect to see on a website when you're not logged in, but the "Log In" button just unveils the necessary fields instead of taking you to a separate "log in" page, and the button itself is instantly reused as the final "submit login credentials" button. The focal point of the interaction (the login button) is held constant the whole time, while only a couple of new things appear around it.
 
-In general, I prefer this approach over being sent to a new page if it's not actually necessary; it's easier and faster than being moved to a login page and then moved right back to the page I was already on, except that I'm logged in now, hopefully. (Why would you need a whole page just to log in? It's like two form fields.) (Note that this usually requires keeping significant state on the client side to pull off smoothly, so that you can switch from the logged-out view to the logged-in view without refetching the page from the server.)
+In general, I enjoy using this approach instead of sending the user to a new page if it's not actually necessary; it's easier and faster than being moved to a login page and then moved right back to the page you were already on, except that you're logged in now, hopefully. (Why would you need a whole page just to log in? It's like two form fields.) (Note that this usually requires keeping significant state on the client side to pull off smoothly, so that you can switch from the logged-out view to the logged-in view without refetching the page from the server.)
 
 This is also why I made an in-place editor for the complicated spreadsheet I use to track research papers:
 
