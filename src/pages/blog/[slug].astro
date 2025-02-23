@@ -19,7 +19,12 @@ const { entry } = Astro.props;
 const { headings } = await entry.render();
 ---
 
-<Island title={entry.data.title} titleLink={`/blog/${entry.slug}`} image="typewriter.png">
+<Island
+  title={entry.data.title}
+  titleLink={`/blog/${entry.slug}`}
+  image="typewriter.png"
+  imageLink="/blog"
+>
   <div slot="island" class="text-left">
     <BlogPostIslandContent entryMeta={entry.data} headings={headings} client:load />
   </div>

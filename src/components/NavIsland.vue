@@ -9,7 +9,7 @@ defineProps<{ title: string; titleLink?: string; image: string; imageLink?: stri
     class="flex flex-col shadow-dark text-center rounded-lg border border-black overflow-hidden"
   >
     <template v-if="image && imageLink">
-      <a :href="imageLink" target="_blank">
+      <a :href="imageLink">
         <Image :assetPath="image" class="min-h-0 h-64 xs:h-96 md:h-64 object-cover" />
       </a>
     </template>

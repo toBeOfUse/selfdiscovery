@@ -14,11 +14,14 @@ const sortedTags = computed(() =>
   <Cordion>
     <CordionDefaultItem>
       <p class="my-1">
-        This is a blog where I add posts to the Internet. There are two main types of
-        posts here: <a class="underline" href="/blog/tags/computers">technical</a> and
+        This is a blog where I add posts to the Internet. Don't expect much in terms of
+        "brevity."
+      </p>
+      <p class="my-1">
+        There are two main types of posts here:
+        <a class="underline" href="/blog/tags/computers">technical</a> and
         <a class="underline" href="/blog/tags/personal">sincere</a>.
       </p>
-      <p class="my-1">Either way, don't expect much in terms of brevity.</p>
     </CordionDefaultItem>
 
     <CordionItem heading="All Tags">

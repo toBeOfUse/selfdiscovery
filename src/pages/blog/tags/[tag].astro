@@ -30,7 +30,12 @@ function pluralize(count: number, singular: string, plural?: string) {
 }
 ---
 
-<Island title={"Tagged: " + Astro.params.tag} titleLink="/blog/" image="typewriter.png">
+<Island
+  title={"Tagged: " + Astro.params.tag}
+  titleLink="/blog/"
+  image="typewriter.png"
+  imageLink="/blog"
+>
   <PageMeta
     slot="head"
     title={`Tagged: "${Astro.params.tag}"`}

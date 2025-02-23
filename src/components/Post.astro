@@ -23,28 +23,34 @@ const { code: introHtml } = await render(remarkPluginFrontmatter.introMD);
     (props.standalone ? "border-0 md:border-2" : "border-2")}
 >
   {
-    meta.image_style === "old" ? (
-      <div class="relative">
-        <Image assetPath={meta.image} alt={meta.image_alt} />
-        <h1 class="text-2xl absolute rounded py-1 px-2 left-2 bottom-2 bg-white text-black">
-          <a href={props.standalone ? "/blog/" : "/blog/" + props.entry.slug}>
-            {meta.title}
-          </a>
-        </h1>
-        <p class="m-0 absolute rounded py-1 px-2 top-2 right-2 text-sm italic bg-white text-black">
-          {meta.date_as_string ?? formatDate(meta.date)}
-        </p>
-      </div>
-    ) : meta.image_style === "normal" ? (
-      <div>
-        <Image assetPath={meta.image} alt={meta.image_alt} />
-        <h1 class="text-2xl my-2">
-          <a href={props.standalone ? "/blog/" : "/blog/" + props.entry.slug}>
-            {meta.title}
-          </a>
-        </h1>
-        <p class="text-sm italic ">{meta.date_as_string ?? formatDate(meta.date)}</p>
-      </div>
+    meta.image ? (
+      meta.image_style === "old" ? (
+        <div class="relative">
+          <Image assetPath={meta.image} alt={meta.image_alt} />
+          <h1 class="text-2xl absolute rounded py-1 px-2 left-2 bottom-2 bg-white text-black">
+            <a href={props.standalone ? "/blog/" : "/blog/" + props.entry.slug}>
+              {meta.title}
+            </a>
+          </h1>
+          <p class="m-0 absolute rounded py-1 px-2 top-2 right-2 text-sm italic bg-white text-black">
+            {meta.date_as_string ?? formatDate(meta.date)}
+          </p>
+        </div>
+      ) : (
+        <div>
+          <Image
+            assetPath={meta.image}
+            alt={meta.image_alt}
+            class="max-h-[70vh] object-contain"
+          />
+          <h1 class="text-2xl my-2">
+            <a href={props.standalone ? "/blog/" : "/blog/" + props.entry.slug}>
+              {meta.title}
+            </a>
+          </h1>
+          <p class="text-sm italic ">{meta.date_as_string ?? formatDate(meta.date)}</p>
+        </div>
+      )
     ) : (
       <Fragment>
         <p>From {meta.date_as_string ?? formatDate(meta.date)}</p>
