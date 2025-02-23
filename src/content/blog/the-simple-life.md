@@ -5,7 +5,7 @@ image: posts/the-simple-life/cover.jpg
 image_alt: A gravel driveway with an old farmhouse on the right side of it and some sheds and trees scattered around. The orange leaves indicate that it's autumn.
 date: 2019-02-23
 image_style: old
-tags: ["personal", "plants", "long post"]
+tags: ["personal", "plants", "long post", "nonfiction"]
 ---
 
 _Author's note: I originally wrote this on a different platform (as the date says, in 2019), and am transplanting it here. I dug up the originals of all of the photos and wrote alt text for them, but the text of the post remains completely unchanged. As a matter of fact, I haven't even re-read it._
