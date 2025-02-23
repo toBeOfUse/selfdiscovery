@@ -1,6 +1,6 @@
 ---
 title: Eyeline UI
-tagline: Out of sight, out of mind.
+tagline: Out of sight, out of mind. A philosophy of saccade reduction. Shape-shifting is cooler than shape-caps lock.
 date: 2025-01-21
 image: posts/eyeline-ui/wow-cool-site.jpg
 image_alt: The meme where someone is looking straight ahead and going "wow" while something shoots over their head. In this case, an old Yahoo home page is shooting the words "LOGIN PAGE" over their head.

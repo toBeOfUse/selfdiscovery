@@ -13,10 +13,15 @@ const sortedTags = computed(() =>
 <template>
   <Cordion>
     <CordionDefaultItem>
-      <p>I don't know what I'm going to write here! Let's find out together.</p>
+      <p class="my-1">
+        This is a blog where I add posts to the Internet. There are two main types of
+        posts here: <a class="underline" href="/blog/tags/computers">technical</a> and
+        <a class="underline" href="/blog/tags/personal">sincere</a>.
+      </p>
+      <p class="my-1">Either way, don't expect much in terms of brevity.</p>
     </CordionDefaultItem>
 
-    <CordionItem heading="Common Tags">
+    <CordionItem heading="All Tags">
       <ul class="text-left p-2">
         <li v-for="[tag, count] in sortedTags">
           <a class="underline" :href="`/blog/tags/${tag}`">{{ tag }}</a> ({{ count }})
