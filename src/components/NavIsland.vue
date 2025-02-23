@@ -6,7 +6,7 @@ defineProps<{ title: string; titleLink?: string; image: string; imageLink?: stri
 
 <template>
   <div
-    class="flex flex-col shadow-dark text-center rounded-lg border border-black overflow-hidden"
+    class="flex flex-col shadow-dark text-center rounded-lg border border-black overflow-hidden mb-4"
   >
     <template v-if="image && imageLink">
       <a :href="imageLink">

@@ -49,7 +49,9 @@ const firstPage = posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTi
         // TODO: something with headings
         return (
           <Fragment>
-            {i !== 0 && <hr class="w-full my-4 border-t-2 border-gray-400" />}
+            {i !== 0 && (
+              <hr class="block md:hidden my-2 mx-2 border-t-2 border-gray-300" />
+            )}
             <Post entry={p} />
           </Fragment>
         );

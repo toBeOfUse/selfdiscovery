@@ -28,7 +28,7 @@ const { title, titleLink, image, imageLink } = Astro.props;
     viewport). it thus can vertically center its "island" contents within the
     viewport. -->
     <div
-      class="md:h-screen md:top-0 md:sticky flex flex-col justify-center md:w-1/4 md:min-w-[300px] mx-3 lg:mx-4 mt-8 md:mt-0"
+      class="md:h-screen md:top-0 md:sticky flex flex-col justify-center self-center md:self-auto max-w-[400px] md:w-1/4 md:min-w-[300px] mx-3 lg:mx-4 mt-4 md:mt-0"
     >
       <NavIsland title={title} titleLink={titleLink} image={image} imageLink={imageLink}>
         <slot name="island" />

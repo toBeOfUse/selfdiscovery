@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex flex-col items-center mx-auto px-3 md:px-8 py-2 bg-slate-50 first:rounded-t-3xl last:rounded-b-3xl"
+    class="flex flex-col items-center mx-auto p-3 md:p-5 bg-slate-50 first:rounded-t-xl last:rounded-b-xl"
   >
     <div :id="entry.slug" class="flex flex-col items-center w-full sm:w-auto py-2">
       <span>
