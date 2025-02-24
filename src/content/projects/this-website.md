@@ -2,6 +2,8 @@
 date: August 2022 - Ongoing
 title: This Website
 github_link: https://github.com/toBeOfUse/selfdiscovery/
+image: /this-website.jpg
+image_alt: A screenshot of the front page of this website.
 live_link: /
 live_link_title: Live Version (do you really need this link?)
 description: Eventually, after developing several projects, I decided to create this website in their honor.

@@ -1,9 +1,9 @@
 <template>
   <div
-    class="flex flex-col items-center mx-auto p-3 md:p-5 bg-slate-50 first:rounded-t-xl last:rounded-b-xl"
+    class="flex flex-col items-center mx-auto p-3 md:p-5 md:pt-2 bg-slate-50 first:rounded-t-xl last:rounded-b-xl"
   >
-    <div :id="entry.slug" class="flex flex-col items-center w-full sm:w-auto py-2">
-      <span>
+    <div :id="entry.slug" class="flex flex-col items-center w-full sm:w-auto pb-2 gap-2">
+      <span class="text-center">
         <h2 v-if="meta.date" class="text-sm inline">{{ meta.date }}</h2>
         <span v-if="meta.date && (meta.live_link || meta.github_link)"> • </span>
         <a

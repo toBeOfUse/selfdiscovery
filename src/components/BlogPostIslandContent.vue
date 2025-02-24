@@ -16,7 +16,7 @@ defineProps<{
     <CordionDefaultItem>
       <div class="text-center flex flex-col gap-4">
         <p>{{ entryMeta.tagline }}</p>
-        <p><a class="underline" href="/blog">(back to blog home)</a></p>
+        <p><a class="underline" href="#" onclick="history.back()">(go back)</a></p>
       </div>
     </CordionDefaultItem>
     <CordionItem v-if="headings.length > 1" heading="Table of Contents">
