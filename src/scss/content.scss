@@ -5,6 +5,15 @@
       @apply no-underline;
     }
   }
+  & blockquote {
+    @apply pl-6 ml-2 border-l-4;
+    &:first-of-type {
+      @apply mt-4;
+    }
+    &:last-of-type {
+      @apply mb-4;
+    }
+  }
   & p {
     @apply my-4;
     &:first-child {
