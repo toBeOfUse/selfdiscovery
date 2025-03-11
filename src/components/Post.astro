@@ -92,16 +92,6 @@ const { code: introHtml } = await render(remarkPluginFrontmatter.introMD);
       ))
     }.
   </p>
-  {
-    props.standalone && (
-      <p>
-        <a href="#" class="underline" onclick="history.back()">
-          {" "}
-          &lt; Go back.{" "}
-        </a>
-      </p>
-    )
-  }
 </div>
 
 <style lang="scss" is:global>
