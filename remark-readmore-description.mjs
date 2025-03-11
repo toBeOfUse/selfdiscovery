@@ -29,8 +29,16 @@ export function getDescription() {
           childrenBeforeCut.position.start.offset,
           childrenBeforeCut.position.end.offset
         );
+
+        file.data.astro.frontmatter.hasMore = true;
         return;
       }
     }
+
+    // if there was no <!-- more -->, then treat the whole thing as the "intro"
+
+    file.data.astro.frontmatter.description = toString(tree.children);
+    file.data.astro.frontmatter.introMD = file.value;
+    file.data.astro.frontmatter.hasMore = false;
   };
 }

@@ -74,7 +74,7 @@ const { code: introHtml } = await render(remarkPluginFrontmatter.introMD);
     }
   </div>
   {
-    !props.standalone && (
+    !props.standalone && remarkPluginFrontmatter.hasMore && (
       <a class="underline" href={`/blog/${props.entry.slug}#post-top`}>
         Read More
       </a>
