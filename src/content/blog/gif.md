@@ -21,7 +21,7 @@ So why does this format exist? Why do any file formats exist? Why do I care? Let
 
 <!-- more -->
 
-## The File Format Rumba
+## The file format rumba
 
 Let's assume that I'm starting a new social network, and I want users to be able to share animations with each other. Specifically, this brief clip from the movie "Wicked:"
 
