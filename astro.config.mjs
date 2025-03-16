@@ -33,7 +33,7 @@ export default defineConfig({
         })
         .concat([
           { userAgent: "Googlebot", allow: "/" },
-          { userAgent: "*", allow: "/" },
+          { userAgent: "GPTBot", disallow: "*" },
         ]),
     }),
     sitemap(),
