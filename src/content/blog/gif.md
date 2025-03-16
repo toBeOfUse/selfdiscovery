@@ -1,5 +1,5 @@
 ---
-title: The Eye of the Beholder
+title: A GIF By Any Other Name
 tagline: Everyone loves GIFs, and hates .webp files. But why? And why is the Internet switching from one to the other?
 date: 2025-03-11
 tags: ["computers", "digital art", "the culture"]
