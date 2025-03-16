@@ -5,6 +5,9 @@
       @apply no-underline;
     }
   }
+  & small {
+    @apply text-sm;
+  }
   & blockquote {
     @apply pl-4 ml-2 border-l-4 py-1;
     &:first-of-type {
