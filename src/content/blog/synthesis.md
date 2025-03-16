@@ -11,7 +11,7 @@ Human brains are wired to anticipate and recognize patterns. The quiet thump of 
 
 But what if I told you that writing that kind of thing is now easy?
 
-![](../../../assets/posts/synthesis/seuss-brakes.jpg)
+![A chat with ChatGPT. The user says: "Write a short Dr. Seuss-style poem about driving with broken brake lines." ChatGPT replies: "Oh, the places you’ll go— but not where you planned! For your brake lines are broken, your stopping’s unmanned! You roll down the street, you pick up some speed, you pump on the pedal— but stop? No, indeed!"](../../../assets/posts/synthesis/seuss-brakes.jpg)
 
 Well, it's not quite top-tier Dr. Seuss material, I guess, but that comes down to the prompt, right? I could have told it to write about something more Dr. Seuss-like. Animals, breakfast foods, headwear, that kind of thing. But the fact that it understood the prompt - the fact that it knows who Dr. Seuss is, that it presumably knows what a trisyllabic meter is, that it knows which words rhyme and which don't - that makes it smart, right?
 
@@ -29,13 +29,13 @@ This is something that Ezra Klein pointed out about the initial impact of ChatGP
 
 I do remember that kind of thing fascinating people. There are a couple of other places where this skill has been evident. The following image is a QR code:
 
-![](../../../assets/posts/synthesis/ai-qr-code.png)
+![An AI-generated image of some kind of fishing village with old-fashioned houses, with prominent black and white squarish elements.](../../../assets/posts/synthesis/ai-qr-code.png)
 
 No, seriously, scan it with your phone: that is a working QR code. The AI was able to take the pattern of a painting of a fishing village (?), the pattern of the black-and-white squares that is a QR code, and blend them together, without losing the essential qualities of either.
 
 There's also more basic stuff that falls into this category:
 
-![](../../../assets/posts/synthesis/gemini-late.png)
+![A tweet by Riley Goodside that says: "POV: You're already late for work and you haven't even left home yet. You have no excuse. You snap a pic of today's fit and open Gemini 2.0 Flash Experimental." Then, she posted a screenshot showing Gemini combining her selfie with the background of a subway station where the train is broken down.](../../../assets/posts/synthesis/gemini-late.png)
 
 Here, the AI takes the stuff you give it and overlays it over a standard type of image that it's probably seen tons of in its training data: a subway station with workers milling around near the tracks. The point is, none of these examples require the LLM to come up with anything new; instead, it's impressive in its ability to replicate things that undoubtedly already exist, and more importantly, since you can already replicate pictures by right-clicking and copying them, to mix them together.
 
@@ -55,7 +55,7 @@ And by and large, there doesn't seem to be a lot of demand for it. People oohed 
 
 This post was inspired by this Linkedin post by Michael Bromley, who's the creator of an open-source e-commerce platform called [Vendure](https://vendure.io/) that I am [a tiny contributor to](https://github.com/vendure-ecommerce/vendure/commits?author=toBeOfUse):
 
-![](../../../assets/posts/synthesis/bromley.jpg)
+![A post by Michael Bromley on Linkedin, saying: "Today was one of the most productive and flow-filled days of development I can remember. And I mostly wrote English, not TypeScript. Today I built in minutes what I've spent multiple hours or days on in the past. I've been quietly skeptical of AI tools for dev work. But I've been sleeping on an unprecedented force multiplier. Don't worry - Vendure is not about to become a mess of unread tab-key slop. Every tool has its place. Judgement is still paramount. But the work I was doing today was like using a power drill instead of my fingers to drive a screw into concrete."](../../../assets/posts/synthesis/bromley.jpg)
 
 What I want to understand is why that might work out well for him, and might not for other people.
 
