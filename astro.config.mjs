@@ -42,6 +42,18 @@ export default defineConfig({
     remarkPlugins: [getDescription],
   },
   vite: {
+    // this file (astro.config.mjs) is imported in md.ts to get access to the
+    // markdown config, but this can cause vite to try to import and bundle
+    // itself due to the imports in this file, so i'm trying to mark this file
+    // as unbundleable
+    build: {
+      rollupOptions: {
+        external: ["astro.config.mjs"],
+      },
+    },
+    optimizeDeps: {
+      exclude: ["astro.config.mjs"],
+    },
     css: {
       preprocessorOptions: {
         scss: {
