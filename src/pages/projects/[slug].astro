@@ -28,7 +28,7 @@ const description = entry.data.description || remarkPluginFrontmatter.descriptio
     <p class="my-2">{description}</p>
     <a href={"/projects/#" + entry.slug} class="underline">(back to all projects)</a>
   </div>
-  <div class="mt-12">
+  <div class="my-12">
     <ProjectItem entry={entry} :standalone="true"><Content /></ProjectItem>
   </div>
 </Island>
