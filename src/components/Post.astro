@@ -1,8 +1,8 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import render from "../md";
 import { formatDate } from "../date";
 import Image from "./Image.vue";
+import { experimental_AstroContainer } from "astro/container";
 
 interface Props {
   entry: CollectionEntry<"blog">;
@@ -15,7 +15,16 @@ const meta = props.entry.data;
 
 const { Content, remarkPluginFrontmatter } = await props.entry.render();
 
-const { code: introHtml } = await render(remarkPluginFrontmatter.introMD);
+let introHtml = "";
+if (!props.standalone) {
+  const container = await experimental_AstroContainer.create();
+  introHtml = await container.renderToString(Content);
+  const MORE_MARKER = "<!-- more -->";
+  const readMorePos = introHtml.indexOf(MORE_MARKER);
+  if (readMorePos != -1) {
+    introHtml = introHtml.slice(0, readMorePos);
+  }
+}
 ---
 
 <div
