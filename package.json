@@ -11,10 +11,10 @@
   },
   "dependencies": {
     "@astrojs/check": "~0.9.3",
-    "@astrojs/markdown-remark": "~6.0.1",
+    "@astrojs/markdown-remark": "~6.3.1",
     "@astrojs/sitemap": "~3.1.6",
     "@astrojs/tailwind": "~5.1.1",
-    "@astrojs/vue": "~4.5.1",
+    "@astrojs/vue": "~5.0.7",
     "@vueuse/core": "10.11.1",
     "astro": "5.5.4",
     "astro-robots-txt": "~1.0.0",
@@ -32,6 +32,7 @@
   "devDependencies": {
     "globals": "^15.0.0",
     "prettier": "^3.2.5",
+    "shiki": "^1.24.4",
     "typescript": "*"
   },
   "packageManager": "pnpm@9.11.0+sha256.1c0e33f70e5df9eede84a357bdfa0b1f9dba6e58194628d48a1055756f553754"
