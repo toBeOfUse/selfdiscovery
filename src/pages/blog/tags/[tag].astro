@@ -14,12 +14,7 @@ export async function getStaticPaths() {
 }
 
 const posts = await Promise.all(
-  (
-    await getCollection("blog", (entry) => entry.data.tags.includes(Astro.params.tag))
-  ).map(async (post) => ({
-    ...post,
-    rendered: await post.render(),
-  }))
+  await getCollection("blog", (entry) => entry.data.tags.includes(Astro.params.tag))
 );
 
 const firstPage = posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());

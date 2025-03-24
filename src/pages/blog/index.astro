@@ -6,12 +6,7 @@ import { getCollection } from "astro:content";
 import PageMeta from "../../components/PageMeta.astro";
 import BlogIslandContent from "../../components/BlogIslandContent.vue";
 
-const posts = await Promise.all(
-  (await getCollection("blog")).map(async (post) => ({
-    ...post,
-    rendered: await post.render(),
-  }))
-);
+const posts = await Promise.all(await getCollection("blog"));
 
 const tagToCount = posts
   .flatMap((post) => post.data.tags)

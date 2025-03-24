@@ -32,7 +32,7 @@ const allProjects = await Promise.all(
     if (!e) {
       throw new Error("could not find project entry: " + title);
     }
-    return { ...e, rendered: await e.render() };
+    return e;
   })
 );
 ---
@@ -75,8 +75,8 @@ const allProjects = await Promise.all(
   </Fragment>
   <div class="my-8 md:my-10">
     {
-      allProjects.map((p, i) => {
-        const { Content } = p.rendered;
+      allProjects.map(async (p, i) => {
+        const { Content } = await p.render();
         return (
           <Fragment>
             {i !== 0 && <hr class="w-full my-4 border-t-2 border-gray-400" />}

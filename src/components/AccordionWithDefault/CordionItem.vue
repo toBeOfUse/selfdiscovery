@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, inject, nextTick, onMounted, ref, watch } from "vue";
+import { computed, inject, onMounted, ref, watch } from "vue";
 import { accordionProviderKeys, getAccordionItemId } from "./util";
 import { type Ref } from "vue";
 import { executeTransition, TransitionPresets } from "@vueuse/core";
