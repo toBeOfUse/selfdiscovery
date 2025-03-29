@@ -13,9 +13,10 @@ const props = Astro.props;
 
 const meta = props.entry.data;
 
-const { Content, remarkPluginFrontmatter } = await props.entry.render();
+const { Content } = await props.entry.render();
 
 let introHtml = "";
+let hasMore = false;
 if (!props.standalone) {
   const container = await experimental_AstroContainer.create();
   introHtml = await container.renderToString(Content);
@@ -23,6 +24,7 @@ if (!props.standalone) {
   const readMorePos = introHtml.indexOf(MORE_MARKER);
   if (readMorePos != -1) {
     introHtml = introHtml.slice(0, readMorePos);
+    hasMore = true;
   }
 }
 ---
@@ -83,9 +85,7 @@ if (!props.standalone) {
     }
   </div>
   {
-    !props.standalone && remarkPluginFrontmatter.hasMore && (
-      <a class="underline" href={`/blog/${props.entry.slug}#post-top`}>
-        Read More
+    !props.standalone && hasMore && (
       </a>
     )
   }

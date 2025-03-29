@@ -1,5 +1,10 @@
 import { toString } from "mdast-util-to-string";
 
+// this is used to get the unformatted text that exists before a <!-- more -->
+// comment from project posts to use as their descriptions. i do a similar thing
+// with the content that goes before that comment in blog posts, but
+// experimental_AstroContainer turns out to be better for getting a segment of
+// the rendered HTML (as opposed to a plain text string.)
 export function getDescription() {
   /**
    * @param {import('mdast').Parent} tree
@@ -22,23 +27,9 @@ export function getDescription() {
         // get the content before the cut as a plain, unformatted string
         const textBeforeCut = toString(childrenBeforeCut);
         file.data.astro.frontmatter.description = textBeforeCut;
-
-        // get the content before the cut in its original markdown form, for
-        // rendering
-        file.data.astro.frontmatter.introMD = file.value.slice(
-          childrenBeforeCut.position.start.offset,
-          childrenBeforeCut.position.end.offset
-        );
-
-        file.data.astro.frontmatter.hasMore = true;
         return;
       }
     }
-
-    // if there was no <!-- more -->, then treat the whole thing as the "intro"
-
     file.data.astro.frontmatter.description = toString(tree.children);
-    file.data.astro.frontmatter.introMD = file.value;
-    file.data.astro.frontmatter.hasMore = false;
   };
 }
