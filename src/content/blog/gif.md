@@ -2,7 +2,7 @@
 title: A GIF By Any Other Name
 tagline: Everyone loves GIFs, and hates .webp files. But why? And why is the Internet switching from one to the other?
 date: 2025-03-11
-tags: ["computers", "digital art", "the culture"]
+tags: ["computers", "digital art", "the culture", "door vs. window conundra"]
 image: posts/gif/millenial.jpg
 image_alt: A tweet by Keara Sullivan (@superkeara) that reads, "I actually love it when a millennial sends me a gif. It's like hearing a cow go moo in real life. I can't help but smile when witnessing something so classic."
 ---
