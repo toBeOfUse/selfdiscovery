@@ -1,6 +1,6 @@
 ---
 title: Let vs. Const
-tagline: A quick note on a ubiquitous convention in JavaScript programming.
+tagline: A quick note on a JavaScript feature that basically no-one uses as intended.
 date: 2025-03-29
 tags: ["computers", "low-effort titles", "door vs. window conundra"]
 ---
