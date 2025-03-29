@@ -35,6 +35,21 @@ defineProps<{ title: string; titleLink?: string; image: string; imageLink?: stri
         <a class="underline" href="/about">About</a> -
         <a class="underline" href="/projects/">Projects</a> -
         <a class="underline" href="/blog/">Blog</a>
+        <a href="/blog/rss.xml"
+          ><img
+            alt="RSS Feed"
+            title="RSS Feed"
+            style="
+              display: inline;
+              height: 1em;
+              width: 1em;
+              margin-left: 4px;
+              margin-bottom: 2px;
+            "
+            width="15"
+            height="15"
+            src="/rss.svg"
+        /></a>
       </p>
     </div>
   </div>

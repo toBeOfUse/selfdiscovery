@@ -31,7 +31,7 @@ const firstPage = posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTi
 <Island title="Type Type Type" titleLink="/blog" image="typewriter.png" imageLink="/blog">
   <PageMeta
     slot="head"
-    title="Voyages of Self Discovery"
+    title="Self-Discovery"
     description="My blog, which contains my highly meaningful thoughts."
     image="typewriter.png"
   />
@@ -43,12 +43,12 @@ const firstPage = posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTi
       firstPage.map(async (p, i) => {
         // TODO: something with headings
         return (
-          <Fragment>
+          <>
             {i !== 0 && (
               <hr class="block md:hidden my-2 mx-2 border-t-2 border-gray-300" />
             )}
             <Post entry={p} />
-          </Fragment>
+          </>
         );
       })
     }
