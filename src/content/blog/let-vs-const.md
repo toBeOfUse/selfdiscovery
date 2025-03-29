@@ -11,7 +11,7 @@ Unrelatedly, here are two keywords that exist in JavaScript: `const` and `let`. 
 
 <!-- more -->
 
-If you've actually programmed in JavaScript, though, you know that the keyword `const` is misleading. Technically, in a high-falutin' referential identity sense, `const` variables can never have a new value attached to them, but it is in fact the case that everything about any object or array that's assigned to a `const` variable can be completely and totally changed at your whim. In other words, altering `const` variables' values is often trivial and the whole keyword is kind of a lie. In more static languages, like C++, it is difficult to change data that is attached to a `const` variable; in JavaScript, it's pretty easy, probably because the keyword `const` was not originally part of the language and was only shoved in later.
+If you've actually programmed in JavaScript, you know that the keyword `const` is misleading. Technically, in a high-falutin' referential identity sense, `const` variables can never have a new value attached to them, but it is in fact the case that everything about any object or array that's assigned to a `const` variable can be completely and totally changed at your whim. In other words, altering `const` variables' values is often trivial and the whole keyword is kind of a lie. In more static languages, like C++, it is difficult to change data that is attached to a `const` variable; in JavaScript, it's pretty easy, probably because the keyword `const` was not originally part of the language and was only shoved in later.
 
 Who added `let` and `const` to the language? What do they have to say about this inevitable source of confusion for newcomers and sane people? At least in some cases, apologies:
 
