@@ -30,7 +30,13 @@ const { title, titleLink, image, imageLink } = Astro.props;
     <div
       class="md:h-screen md:top-0 md:sticky flex flex-col justify-center self-center md:self-auto max-w-[400px] md:w-1/4 md:min-w-[300px] mx-3 lg:mx-4 mt-4 md:mt-0"
     >
-      <NavIsland title={title} titleLink={titleLink} image={image} imageLink={imageLink}>
+      <NavIsland
+        client:load
+        title={title}
+        titleLink={titleLink}
+        image={image}
+        imageLink={imageLink}
+      >
         <slot name="island" />
       </NavIsland>
     </div>

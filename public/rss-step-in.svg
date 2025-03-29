@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg viewBox="0 0 8 8" width="256" height="256" version="1.1"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+   <style type="text/css">
+    .symbol {stroke: none; fill: black;}
+   </style>
+   <circle class="symbol" cx="1.8815483" cy="6.0858884" r="0.88399005" opacity="0">
+      <animate attributeName="opacity" values="0;1" dur="0.1s" calcMode="discrete" begin="1s" repeatCount="0" fill="freeze" />
+   </circle>
+   <path class="symbol" opacity="0" d="m 0.99755825,3.7349264 c 1.72589005,-10e-8 3.32183525,1.557046 3.32183535,3.2349519 h 0.8448319 c 0,-2.2372079 -1.8654806,-4.0508231 -4.16666725,-4.050823 z">
+      <animate attributeName="opacity" values="0;1" dur="0.1s" calcMode="discrete" begin="2s" repeatCount="0" fill="freeze" />
+   </path>
+   <path class="symbol" opacity="0" d="M 0.99755825,1.6558833 C 3.9421673,1.6558832 6.5260795,4.1437486 6.5260794,6.9698782 H 7.3955817 C 7.3955818,3.5785228 4.5310891,0.82928594 0.99755825,0.82928594 Z">
+      <animate attributeName="opacity" values="0;1" dur="0.1s" calcMode="discrete" begin="3s" repeatCount="0" fill="freeze" />
+   </path>
+</svg>

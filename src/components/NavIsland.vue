@@ -2,6 +2,15 @@
 import Image from "./Image.vue";
 import multiwave from "../../assets/multiwave-once.svg?raw";
 defineProps<{ title: string; titleLink?: string; image: string; imageLink?: string }>();
+let playAnimation = true;
+if (typeof window !== "undefined") {
+  if (sessionStorage.getItem("rss-animation-was-played")) {
+    playAnimation = false;
+  }
+}
+const onAnimationFinish = () => {
+  sessionStorage.setItem("rss-animation-was-played", "twue");
+};
 </script>
 
 <template>
@@ -48,7 +57,8 @@ defineProps<{ title: string; titleLink?: string; image: string; imageLink?: stri
             "
             width="15"
             height="15"
-            src="/rss.svg"
+            @animationend="onAnimationFinish"
+            :src="playAnimation ? '/rss-step-in.svg' : '/rss.svg'"
         /></a>
       </p>
     </div>
