@@ -56,6 +56,22 @@ import Html from "../layouts/Html.astro";
     font-style: normal;
     font-display: swap;
   }
+
+  // using these properties as the colors for the clipped background
+  // of the link text, and changing them on hover
+  // https://stackoverflow.com/a/63848864/3962267
+  @property --linkBgFrom {
+    syntax: "<color>";
+    initial-value: black;
+    inherits: false;
+  }
+
+  @property --linkBgTo {
+    syntax: "<color>";
+    initial-value: black;
+    inherits: false;
+  }
+
   li {
     margin-top: 10px;
   }
@@ -64,6 +80,28 @@ import Html from "../layouts/Html.astro";
   }
   a {
     text-decoration: underline;
+    text-decoration-thickness: 1.4px;
+    text-underline-offset: 0.08em;
+    color: black;
+
+    @supports (background-clip: text) or (-webkit-background-clip: text) {
+      background-clip: text;
+      text-fill-color: transparent;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-decoration-color: black;
+
+      background-image: linear-gradient(to bottom, var(--linkBgFrom), var(--linkBgTo));
+      transition:
+        --linkBgFrom 0.5s,
+        --linkBgTo 0.5s;
+
+      &:hover {
+        // :3
+        --linkBgFrom: rgb(208, 0, 187);
+        --linkBgTo: rgb(228, 66, 2);
+      }
+    }
   }
   .inner-width {
     width: 800px;
