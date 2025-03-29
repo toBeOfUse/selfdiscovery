@@ -7,6 +7,8 @@ const props = defineProps<{
   alt?: string;
   class?: string;
   widths?: number[];
+  displaySizes?: string;
+  style?: string;
 }>();
 const imageMetadata = await imageAsset(props.assetPath);
 const image = await getImage({
@@ -14,7 +16,6 @@ const image = await getImage({
   src: imageMetadata,
   quality: 90,
 });
-// TODO: use the `widths` img attribute, properly
 </script>
 
 <template>
@@ -22,9 +23,11 @@ const image = await getImage({
     :src="image?.src"
     :srcset="image?.srcSet.attribute"
     :width="imageMetadata?.width"
+    :sizes="displaySizes"
     :height="imageMetadata?.height"
     :alt="alt ?? imageMetadata?.alt ?? ''"
     :class="class"
+    :style="style"
     loading="lazy"
   />
 </template>

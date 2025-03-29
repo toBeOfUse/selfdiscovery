@@ -53,7 +53,7 @@ const onAnimationFinish = () => {
               height: 1em;
               width: 1em;
               margin-left: 4px;
-              margin-bottom: 2px;
+              margin-bottom: 4px;
             "
             width="15"
             height="15"
