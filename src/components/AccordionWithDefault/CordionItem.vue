@@ -102,7 +102,7 @@ const toggleOpen = () => {
         scrollbarWidth: 'thin',
       }"
     >
-      <div :class="{ 'min-h-[150px] flex flex-col justify-center': _isDefault }">
+      <div :class="{ 'py-4 flex flex-col justify-center': _isDefault }">
         <slot />
       </div>
     </div>
