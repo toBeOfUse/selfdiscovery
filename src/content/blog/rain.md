@@ -11,6 +11,4 @@ Most people probably think that rain is generally good for crops, but unless the
 
 Not all drainage is visible on the surface. It's common to dig a ditch, fill it in with highly porous gravel or drain tile, and then let the dirt cover it up again, instead of fighting to keep it from eroding away season after season. In my time, we mostly filled in ditches with heavily perforated black drain pipe. The fields also had an ancient network of old, brown square porcelain tubes (yes, square tubes) that were laid end-to-end under the soil. No one quite knew where they were laid, which was exciting when digging or plowing. My grandfather remembered the burying of them in trenches as a kid.
 
-Tonight, I went on a walk to the gas station to buy soda and got trapped by the rain:
-
-It's been a while since that happened. I mean, it has rained in the last five years, but it hasn't really affected my life. It's surprisingly pleasant to get trapped like that: there's nothing you can do, and there's nothing happening that's not supposed to happen. It's naturally-occurring peace.
+Tonight, I went on a walk to the gas station to buy soda and got trapped by the rain. It's been a while since that happened. I mean, it has rained in the last five years, but it hasn't really affected my life. It's surprisingly pleasant to get trapped like that: there's nothing you can do, and there's nothing happening that's not supposed to happen. It's free peace.
