@@ -19,6 +19,9 @@ defineProps<{
       </div>
     </CordionDefaultItem>
     <CordionItem v-if="headings.length > 1" heading="Table of Contents">
+      <p class="my-1 pl-1">
+        <a href="#post-top">{{ entryMeta.title }}</a>
+      </p>
       <ol class="list-decimal pl-5">
         <li class="my-1 pl-1" v-for="{ text, slug, depth } in headings">
           <a :href="'#' + slug">{{ text }}</a>
