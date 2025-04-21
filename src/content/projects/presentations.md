@@ -7,7 +7,7 @@ description: A project to synchronize a slide presentation between multiple comp
 date: April 2020
 ---
 
-This program simply synchronizes a slide show between multiple people who view it through a website, letting each of them control the "next slide" and "previous slide" controls as well as giving each of them a laser pointer.
+This program just synchronizes a slide show between multiple people who view it through a website, letting each of them control the "next slide" and "previous slide" controls as well as giving each of them a laser pointer.
 
 At the beginning of the pandemic, during the Spring 2020 semester, when all my classes went online, we who were in them were stuck giving group presentations remotely, which meant constantly saying ["next slide, please"](https://xkcd.com/2470/) to the one person who was actually sharing their screen. I built this app out of simple static JavaScript and HTML, with a Python backend that used WebSockets (via the Socket.IO library) to make group control of a presentation seamless. My group members connected to my server application (I was using my home IP address and port forwarding to use my regular computer as a server at that time) and it synchronized the presentation state while giving all of us control.
 
