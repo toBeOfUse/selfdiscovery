@@ -100,6 +100,7 @@ const toggleOpen = () => {
         ...(itemHeight !== -1 ? { height: itemHeight + 'px' } : {}),
         overflowY: transitionInProcess ? 'hidden' : 'auto',
         scrollbarWidth: 'thin',
+        scrollbarGutter: 'stable',
       }"
     >
       <div :class="{ 'py-4 flex flex-col justify-center': _isDefault }">
