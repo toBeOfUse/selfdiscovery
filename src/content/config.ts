@@ -33,9 +33,16 @@ const blog = defineCollection({
   }),
 });
 
+// this is just here to get rid of the warning about the "drafts" folder
+const drafts = defineCollection({
+  type: "content",
+  schema: z.any(),
+});
+
 // 3. Export a single `collections` object to register your collection(s)
 //    This key should match your collection directory name in "src/content"
 export const collections = {
   projects,
   blog,
+  drafts,
 };
