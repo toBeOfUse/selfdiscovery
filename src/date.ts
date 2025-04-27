@@ -1,7 +1,15 @@
 // ya i could install day.js but whatever
 export function formatDate(date: Date) {
   // Array of day names
-  const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  const days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
 
   // Array of month names
   const months = [
@@ -34,10 +42,12 @@ export function formatDate(date: Date) {
     }
   }
 
-  const dayName = days[date.getDay()];
-  const monthName = months[date.getMonth()];
-  const day = date.getDate();
-  const year = date.getFullYear();
+  // dates are from YAML frontmatter, which assumes UTC, so we have to read it
+  // as UTC or else it will be translated to the current locale's timezone
+  const dayName = days[date.getUTCDay()];
+  const monthName = months[date.getUTCMonth()];
+  const day = date.getUTCDate();
+  const year = date.getUTCFullYear();
 
   return `${dayName}, ${monthName} ${day}${getOrdinalSuffix(day)}, ${year}`;
 }

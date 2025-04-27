@@ -29,6 +29,7 @@ const blog = defineCollection({
     image_style: z.enum(["old", "normal"]).optional(),
     tags: z.array(z.string()),
     date: z.date(),
+    // not actually used by any posts, unsure why it exists
     date_as_string: z.string().optional(),
   }),
 });
