@@ -45,6 +45,10 @@ const {
   <div slot="island">
     <BlogIslandContent tagCounts={sortedTags} client:load />
   </div>
+  <!--
+    TODO: extract the below into a BlogPageContent component for use in
+    [tag].astro
+  -->
   <div class="flex flex-col">
     {
       currentPagePosts.map(async (p, i) => {

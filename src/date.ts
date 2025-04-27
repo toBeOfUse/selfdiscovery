@@ -43,7 +43,8 @@ export function formatDate(date: Date) {
   }
 
   // dates are from YAML frontmatter, which assumes UTC, so we have to read it
-  // as UTC or else it will be translated to the current locale's timezone
+  // as UTC, or else it will be translated to the current locale's timezone,
+  // potentially changing the date from how it was entered
   const dayName = days[date.getUTCDay()];
   const monthName = months[date.getUTCMonth()];
   const day = date.getUTCDate();

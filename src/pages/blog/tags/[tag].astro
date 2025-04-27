@@ -5,6 +5,7 @@ import Island from "../../../layouts/Island.astro";
 import { getCollection } from "astro:content";
 import PageMeta from "../../../components/PageMeta.astro";
 
+// TODO: paginate (similar to /blog/page/[page].astro)
 export async function getStaticPaths() {
   const blogEntries = await getCollection("blog");
   const tags = new Set(blogEntries.flatMap((entry) => entry.data.tags));
@@ -45,10 +46,13 @@ function pluralize(count: number, singular: string, plural?: string) {
     </p>
     <!-- TODO: probably show tag accordion here too -->
   </div>
+  <!--
+    TODO: replace with BlogPageContent component based on the content
+    from [page].astro
+  -->
   <div class="flex flex-col">
     {
       firstPage.map(async (p, i) => {
-        // TODO: something with headings
         return (
           <Fragment>
             {i !== 0 && (
