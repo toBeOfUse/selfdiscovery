@@ -1,0 +1,87 @@
+---
+import Post from "../../../components/Post.astro";
+import Island from "../../../layouts/Island.astro";
+
+import { getCollection } from "astro:content";
+import PageMeta from "../../../components/PageMeta.astro";
+import BlogIslandContent from "../../../components/BlogIslandContent.vue";
+import type { GetStaticPaths } from "astro";
+
+export const getStaticPaths = (async ({ paginate }) => {
+  const posts = await getCollection("blog");
+
+  // sortedTags is the same for every page:
+  const sortedTags = Array.from(
+    posts
+      .flatMap((post) => post.data.tags)
+      .reduce((acc, tag) => {
+        return acc.set(tag, (acc.get(tag) ?? 0) + 1);
+      }, new Map<string, number>())
+  )
+    // only show tags that occur more than one time:
+    .filter((value) => value[1] > 1)
+    // sort by count, descending:
+    .sort((a, b) => b[1] - a[1]);
+
+  const sortedPosts = posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+  return paginate(sortedPosts, { pageSize: 10, props: { sortedTags } });
+}) satisfies GetStaticPaths;
+
+const {
+  sortedTags,
+  page: { data: currentPagePosts, url },
+} = Astro.props;
+---
+
+<Island title="Type Type Type" titleLink="/blog" image="typewriter.png" imageLink="/blog">
+  <PageMeta
+    slot="head"
+    title="Self-Discovery"
+    description="My blog, which contains my highly meaningful thoughts."
+    image="typewriter.png"
+  />
+  <div slot="island">
+    <BlogIslandContent tagCounts={sortedTags} client:load />
+  </div>
+  <div class="flex flex-col">
+    {
+      currentPagePosts.map(async (p, i) => {
+        return (
+          <>
+            {i !== 0 && (
+              <hr class="block md:hidden my-2 mx-2 border-t-2 border-gray-300" />
+            )}
+            <Post entry={p} />
+          </>
+        );
+      })
+    }
+    <div class="flex justify-between w-full mb-6 px-2 md:px-0">
+      <a
+        href={url.prev ? (url.prev.endsWith("/1") ? "/blog" : url.prev) : "#"}
+        class={"p-2 bg-gray-100 md:bg-transparent md:border-2" +
+          (url.prev ? "" : " invisible")}
+      >
+        <img
+          src="/right-fleuron.svg"
+          style="display: inline; height: 1em; width: auto; transform: scaleX(-1)"
+          alt="Right-pointing flowery thing"
+        />
+        <span class="underline">Previous</span>
+      </a>
+      <a
+        href={url.next ?? "#"}
+        class={"p-2 bg-gray-100 md:bg-transparent md:border-2" +
+          (url.next ? "" : " invisible")}
+      >
+        <span class="underline">Next</span>
+        <img
+          src="/right-fleuron.svg"
+          style="display: inline; height: 1em; width: auto"
+          alt="Right-pointing flowery thing"
+        />
+      </a>
+    </div>
+  </div>
+</Island>
