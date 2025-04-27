@@ -8,19 +8,16 @@ import BlogIslandContent from "../../components/BlogIslandContent.vue";
 
 const posts = await Promise.all(await getCollection("blog"));
 
-const tagToCount = posts
-  .flatMap((post) => post.data.tags)
-  .reduce(
-    (acc, tag) => {
-      if (tag in acc) {
-        acc[tag]++;
-      } else {
-        acc[tag] = 1;
-      }
-      return acc;
-    },
-    {} as Record<string, number>
-  );
+const mapOfTagsToCounts = Array.from(
+  posts
+    .flatMap((post) => post.data.tags)
+    .reduce((acc, tag) => {
+      return acc.set(tag, (acc.get(tag) ?? 0) + 1);
+    }, new Map<string, number>())
+    .entries()
+).filter((value) => value[1] > 1);
+
+const sortedTags = Array.from(mapOfTagsToCounts).sort((a, b) => b[1] - a[1]);
 
 // not paginating yet. should start when there are like, > 20 posts. will have to create
 // a dynamic route that looks like /blog/[pagenumber]. will have to do the same thing
@@ -36,7 +33,7 @@ const firstPage = posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTi
     image="typewriter.png"
   />
   <div slot="island">
-    <BlogIslandContent tagCounts={tagToCount} client:load />
+    <BlogIslandContent tagCounts={sortedTags} client:load />
   </div>
   <div class="flex flex-col">
     {

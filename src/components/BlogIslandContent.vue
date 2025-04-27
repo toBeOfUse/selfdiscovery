@@ -2,12 +2,8 @@
 import Cordion from "./AccordionWithDefault/Cordion.vue";
 import CordionItem from "./AccordionWithDefault/CordionItem.vue";
 import CordionDefaultItem from "./AccordionWithDefault/CordionDefaultItem.vue";
-import { computed } from "vue";
 
-const props = defineProps<{ tagCounts: Record<string, number> }>();
-const sortedTags = computed(() =>
-  Object.entries(props.tagCounts).sort((a, b) => b[1] - a[1])
-);
+defineProps<{ tagCounts: [string, number][] }>();
 </script>
 
 <template>
@@ -23,7 +19,7 @@ const sortedTags = computed(() =>
 
     <CordionItem heading="All Tags">
       <ul class="text-left p-2">
-        <li v-for="[tag, count] in sortedTags">
+        <li v-for="[tag, count] in tagCounts">
           <a class="underline" :href="`/blog/tags/${tag}`">{{ tag }}</a> ({{ count }})
         </li>
       </ul>
