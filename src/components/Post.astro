@@ -30,7 +30,7 @@ if (!props.standalone) {
 ---
 
 <div
-  class="my-4 p-2 md:p-4 flex flex-col items-start gap-3 max-width-[450px] self-center border-0 md:border-2"
+  class="my-4 p-2 md:p-4 flex flex-col items-start gap-3 max-w-full self-center border-0 md:border-2"
 >
   {
     meta.image ? (
@@ -73,7 +73,7 @@ if (!props.standalone) {
       </>
     )
   }
-  <div class="blog-post">
+  <div class="blog-post max-w-full">
     {
       !props.standalone ? (
         <>
