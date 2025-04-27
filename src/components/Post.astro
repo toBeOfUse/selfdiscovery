@@ -3,6 +3,7 @@ import type { CollectionEntry } from "astro:content";
 import { formatDate } from "../date";
 import Image from "./Image.vue";
 import { experimental_AstroContainer } from "astro/container";
+import FleuronArrow from "./FleuronArrow.astro";
 
 interface Props {
   entry: CollectionEntry<"blog">;
@@ -87,12 +88,7 @@ if (!props.standalone) {
   {
     !props.standalone && hasMore && (
       <a class="underline shrink-0 mr-2" href={`/blog/${props.entry.slug}#post-top`}>
-        Read More{" "}
-        <img
-          src="/right-fleuron.svg"
-          style="display: inline; height: 1em; width: auto"
-          alt="Right-pointing flowery thing"
-        />
+        Read More <FleuronArrow />
       </a>
     )
   }

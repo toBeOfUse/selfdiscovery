@@ -1,0 +1,14 @@
+---
+interface Props {
+  direction?: "left" | "right";
+}
+const { direction = "right" } = Astro.props;
+
+// TODO: inline the SVG?
+---
+
+<img
+  src="/right-fleuron.svg"
+  class={"inline h-4 w-auto" + (direction === "left" ? " -scale-x-100" : "")}
+  alt={`${direction}-pointing flowery thing`}
+/>

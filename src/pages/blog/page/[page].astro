@@ -6,6 +6,7 @@ import { getCollection } from "astro:content";
 import PageMeta from "../../../components/PageMeta.astro";
 import BlogIslandContent from "../../../components/BlogIslandContent.vue";
 import type { GetStaticPaths } from "astro";
+import FleuronArrow from "../../../components/FleuronArrow.astro";
 
 export const getStaticPaths = (async ({ paginate }) => {
   const posts = await getCollection("blog");
@@ -63,11 +64,7 @@ const {
         class={"p-2 bg-gray-100 md:bg-transparent md:border-2" +
           (url.prev ? "" : " invisible")}
       >
-        <img
-          src="/right-fleuron.svg"
-          style="display: inline; height: 1em; width: auto; transform: scaleX(-1)"
-          alt="Right-pointing flowery thing"
-        />
+        <FleuronArrow direction="left" />
         <span class="underline">Previous</span>
       </a>
       <a
@@ -76,11 +73,7 @@ const {
           (url.next ? "" : " invisible")}
       >
         <span class="underline">Next</span>
-        <img
-          src="/right-fleuron.svg"
-          style="display: inline; height: 1em; width: auto"
-          alt="Right-pointing flowery thing"
-        />
+        <FleuronArrow />
       </a>
     </div>
   </div>
