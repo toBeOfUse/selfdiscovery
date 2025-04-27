@@ -34,7 +34,8 @@
     "globals": "^15.0.0",
     "prettier": "^3.2.5",
     "shiki": "^1.24.4",
-    "typescript": "*"
+    "typescript": "*",
+    "unist-util-visit": "^5.0.0"
   },
   "packageManager": "pnpm@9.11.0+sha256.1c0e33f70e5df9eede84a357bdfa0b1f9dba6e58194628d48a1055756f553754"
 }

@@ -78,6 +78,9 @@ importers:
       typescript:
         specifier: '*'
         version: 5.6.2
+      unist-util-visit:
+        specifier: ^5.0.0
+        version: 5.0.0
 
 packages:
 

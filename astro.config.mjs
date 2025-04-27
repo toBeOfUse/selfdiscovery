@@ -6,7 +6,8 @@ import vue from "@astrojs/vue";
 import robotsTxt from "astro-robots-txt";
 
 import sitemap from "@astrojs/sitemap";
-import { getDescription } from "./remark-readmore-description.mjs";
+import { getDescription } from "./md-plugins/remark-readmore-description.mjs";
+import { addLabelsToFootnoteDefs } from "./md-plugins/remark-footnote-labels";
 
 const aiUserAgents = [
   "GPTBot",
@@ -39,7 +40,13 @@ export default defineConfig({
     sitemap(),
   ],
   markdown: {
-    remarkPlugins: [getDescription],
+    remarkPlugins: [addLabelsToFootnoteDefs, getDescription],
+    remarkRehype: {
+      footnoteBackContent: "^",
+    },
+    shikiConfig: {
+      theme: "github-light",
+    },
   },
   vite: {
     // this file (astro.config.mjs) is imported in md.ts to get access to the
