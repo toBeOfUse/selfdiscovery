@@ -9,6 +9,8 @@ export default {
     extend: {
       screens: {
         xs: "450px",
+        // really just for 4k monitors
+        "3xl": "1800px",
       },
       fontFamily: {
         home: ["OpenSauceOne", ...defaultTheme.fontFamily.sans],
