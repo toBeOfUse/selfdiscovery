@@ -4,6 +4,7 @@ import Island from "../../../layouts/Island.astro";
 
 import { getCollection } from "astro:content";
 import PageMeta from "../../../components/PageMeta.astro";
+import { imageAsset } from "../../../images";
 
 // TODO: paginate (similar to /blog/page/[page].astro)
 export async function getStaticPaths() {
@@ -24,6 +25,8 @@ function pluralize(count: number, singular: string, plural?: string) {
   if (count === 1) return singular;
   return plural ?? singular + "s";
 }
+
+const bg = await imageAsset("bg-field.jpg");
 ---
 
 <Island
@@ -31,6 +34,7 @@ function pluralize(count: number, singular: string, plural?: string) {
   titleLink="/blog/"
   image="typewriter.png"
   imageLink="/blog"
+  bgImage={bg.src}
 >
   <PageMeta
     slot="head"

@@ -15,17 +15,20 @@ const onAnimationFinish = () => {
 
 <template>
   <div
-    class="flex flex-col shadow-dark text-center rounded-lg border border-black overflow-hidden mb-4"
+    class="flex flex-col shadow-dark text-center rounded-lg border border-black bg-[#ffffff33] overflow-hidden mb-4"
   >
     <template v-if="image && imageLink">
       <a :href="imageLink">
-        <Image :assetPath="image" class="min-h-0 h-64 xs:h-96 md:h-64 object-cover" />
+        <Image :assetPath="image" class="min-h-0 h-64 xs:h-96 md:h-52 object-cover" />
       </a>
     </template>
     <template v-else-if="image">
-      <Image :assetPath="image" class="min-h-0 h-64 xs:h-96 lg:h-64 object-cover" />
+      <Image
+        :assetPath="image"
+        class="min-h-0 h-64 xs:h-96 lg:h-64 md:h-52 object-cover"
+      />
     </template>
-    <div class="p-3 overflow-y-auto">
+    <div class="p-3 overflow-y-auto bg-white">
       <a :href="titleLink">
         <h1
           class="text-3xl text-center my-4"
