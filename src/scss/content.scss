@@ -5,6 +5,13 @@
       @apply no-underline;
     }
   }
+  & h3 {
+    @apply text-lg;
+    @apply my-2;
+    a {
+      @apply no-underline;
+    }
+  }
   & small {
     @apply text-sm;
   }
