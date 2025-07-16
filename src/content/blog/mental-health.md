@@ -8,13 +8,13 @@ unlisted: true
 
 This is a diagram of a normal human brain:
 
-<img style="max-height: 50vh" src="../../../assets/posts/mental-health/normal-brain.svg">
+<img style="max-height: 50vh" src="/posts/mental-health/normal-brain.svg">
 
 As you can see, a normal human brain takes the form of a human brain. It has one main constituent part, which is the brain part.
 
 This is a diagram of my brain:
 
-<img style="max-height: 50vh" src="../../../assets/posts/mental-health/my-brain.svg">
+<img style="max-height: 50vh" src="/posts/mental-health/my-brain.svg">
 
 You might be able to spot a few differences.
 
