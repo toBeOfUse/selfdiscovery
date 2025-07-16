@@ -8,15 +8,16 @@ import { imageAsset } from "../../../images";
 
 // TODO: paginate (similar to /blog/page/[page].astro)
 export async function getStaticPaths() {
-  const blogEntries = await getCollection("blog");
+  const blogEntries = await getCollection("blog", (entry) => !entry.data.unlisted);
   const tags = new Set(blogEntries.flatMap((entry) => entry.data.tags));
   return Array.from(tags).map((tag) => ({
     params: { tag },
   }));
 }
 
-const posts = await getCollection("blog", (entry) =>
-  entry.data.tags.includes(Astro.params.tag)
+const posts = await getCollection(
+  "blog",
+  (entry) => !entry.data.unlisted && entry.data.tags.includes(Astro.params.tag)
 );
 
 const firstPage = posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());

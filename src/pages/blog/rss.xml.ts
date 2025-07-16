@@ -4,7 +4,7 @@ import { experimental_AstroContainer } from "astro/container";
 import { getCollection } from "astro:content";
 
 export const GET: APIRoute = async (context) => {
-  let blog = await getCollection("blog");
+  let blog = await getCollection("blog", (entry) => !entry.data.unlisted);
   blog.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
   blog = blog.slice(0, 10);
 

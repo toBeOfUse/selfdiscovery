@@ -10,7 +10,7 @@ import FleuronArrow from "../../../components/FleuronArrow.astro";
 import { imageAsset } from "../../../images";
 
 export const getStaticPaths = (async ({ paginate }) => {
-  const posts = await getCollection("blog");
+  const posts = await getCollection("blog", (entry) => !entry.data.unlisted);
 
   // sortedTags is the same for every page:
   const sortedTags = Array.from(
