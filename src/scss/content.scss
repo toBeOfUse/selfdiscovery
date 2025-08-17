@@ -33,6 +33,14 @@
       @apply mb-0;
     }
   }
+  & ol {
+    @apply my-4;
+  }
+  & ul {
+    @apply my-4;
+    @apply list-disc;
+    @apply ml-6;
+  }
   & a {
     @apply underline;
   }

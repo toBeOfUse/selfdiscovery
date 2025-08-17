@@ -5,12 +5,14 @@ import { getEntry } from "astro:content";
 import Island from "../../layouts/Island.astro";
 import PageMeta from "../../components/PageMeta.astro";
 import ProjectsIslandContent from "../../components/ProjectsIslandContent.vue";
+import ImageSlideshow from "../../components/ImageSlideshow.vue";
 
 const allProjects = await Promise.all(
   [
     // "townchest",
     "hacksu-lessons",
     "khe-io",
+    "small-sites",
     "libsrcml-js",
     "research-folder",
     "bundle-md",
@@ -22,8 +24,6 @@ const allProjects = await Promise.all(
     "corn-simulator",
     "minecraft-maps",
     "twitter-messages-archive",
-    // scattered single pages - progress meter, v-arcs, mail, etc.
-    // should build and consolidate those somehow
     "presentations",
     "sweet-sh",
     "this-website",
@@ -81,6 +81,15 @@ const allProjects = await Promise.all(
           <Fragment>
             {i !== 0 && <hr class="w-full my-4 border-t-2 border-gray-400" />}
             <ProjectItem entry={p}>
+              {!!p.data.images?.length && (
+                <ImageSlideshow
+                  client:load
+                  images={p.data.images.map((i) => ({
+                    ...i,
+                    url: "projects" + i.url,
+                  }))}
+                />
+              )}
               <Content />
             </ProjectItem>
           </Fragment>

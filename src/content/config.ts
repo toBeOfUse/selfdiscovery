@@ -8,6 +8,7 @@ const projects = defineCollection({
     github_link: z.string().optional(),
     image: z.string().optional(),
     image_alt: z.string().optional(),
+    images: z.array(z.object({ url: z.string(), alt: z.string() })).optional(),
     iframe: z.string().optional(),
     iframe_title: z.string().optional(),
     // description may be supplied by the <!-- more --> tag
