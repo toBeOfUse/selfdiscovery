@@ -3,6 +3,7 @@ import ProjectItem from "../../components/ProjectItem.vue";
 import PageMeta from "../../components/PageMeta.astro";
 import Island from "../../layouts/Island.astro";
 import { getCollection } from "astro:content";
+import ImageSlideshow from "../../components/ImageSlideshow.vue";
 
 export async function getStaticPaths() {
   const projects = await getCollection("projects");
@@ -29,6 +30,16 @@ const description = entry.data.description || remarkPluginFrontmatter.descriptio
     <a href={"/projects/#" + entry.slug} class="underline">(back to all projects)</a>
   </div>
   <div class="my-12">
-    <ProjectItem entry={entry} :standalone="true"><Content /></ProjectItem>
+    <ProjectItem entry={entry} :standalone="true">
+      {
+        !!entry.data.images?.length && (
+          <ImageSlideshow
+            client:load
+            images={entry.data.images.map((i) => ({ ...i, url: "projects" + i.url }))}
+          />
+        )
+      }
+      <Content />
+    </ProjectItem>
   </div>
 </Island>

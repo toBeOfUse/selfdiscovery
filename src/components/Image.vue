@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { getImage } from "astro:assets";
 import { imageAsset } from "../images";
+import { computed } from "vue";
 
 const props = defineProps<{
   assetPath: string;
@@ -10,18 +10,14 @@ const props = defineProps<{
   displaySizes?: string;
   style?: string;
 }>();
-const imageMetadata = await imageAsset(props.assetPath);
-const image = await getImage({
-  widths: props.widths ?? [100, 200, 400, 800, 1200],
-  src: imageMetadata,
-  quality: 90,
-});
+
+const imageMetadata = computed(() => imageAsset(props.assetPath));
 </script>
 
 <template>
   <img
-    :src="image?.src"
-    :srcset="image?.srcSet.attribute"
+    :src="imageMetadata.optimized?.src"
+    :srcset="imageMetadata.optimized?.srcSet.attribute"
     :width="imageMetadata?.width"
     :sizes="displaySizes"
     :height="imageMetadata?.height"

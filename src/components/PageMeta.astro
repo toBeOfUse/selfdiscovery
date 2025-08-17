@@ -11,10 +11,10 @@ interface Props {
 
 const { title, description, image } = Astro.props;
 
-const imageSrc = image ? await imageAsset(image) : null;
-const optimizedImage = image ? await getImage({ src: imageSrc!, quality: 90 }) : null;
+const imageSrc = image ? imageAsset(image) : null;
+const optimizedImage = image ? imageSrc?.optimized : null;
 
-const favicon = (await getImage({ src: await imageAsset("cool-m-small.png") })).src;
+const favicon = (await getImage({ src: imageAsset("cool-m-small.png") })).src;
 ---
 
 <Fragment>
