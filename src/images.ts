@@ -34,7 +34,7 @@ const optimizedImages: Record<string, GetImageResult> = Object.fromEntries(
       await getImage({
         widths: [400, 800, 1200],
         src: imageMetadata.default,
-        quality: 90,
+        quality: 95,
       }),
     ])
   )

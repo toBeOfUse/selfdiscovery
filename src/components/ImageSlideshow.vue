@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref } from "vue";
+import { computed, nextTick, ref } from "vue";
 import Image from "./Image.vue";
 
 const { images } = defineProps<{ images: { url: string; alt: string }[] }>();
@@ -15,25 +15,35 @@ const prevIndex = computed(() =>
   currentSlide.value === 0 ? images.length - 1 : currentSlide.value - 1
 );
 
+const transitionsActive = ref(false);
+
 const goingToPrev = ref(false);
-const previousSlide = () => {
+const goToPrev = async () => {
   if (goingToPrev.value) {
     return;
   }
+  transitionsActive.value = true;
+  await nextTick();
   goingToPrev.value = true;
-  setTimeout(() => {
+  setTimeout(async () => {
+    transitionsActive.value = false;
+    await nextTick();
     currentSlide.value = prevIndex.value;
     goingToPrev.value = false;
   }, transitionLengthMs);
 };
 
 const goingToNext = ref(false);
-const nextSlide = () => {
+const goToNext = async () => {
   if (goingToNext.value) {
     return;
   }
+  transitionsActive.value = true;
+  await nextTick();
   goingToNext.value = true;
-  setTimeout(() => {
+  setTimeout(async () => {
+    transitionsActive.value = false;
+    await nextTick();
     currentSlide.value = nextIndex.value;
     goingToNext.value = false;
   }, transitionLengthMs);
@@ -42,37 +52,49 @@ const nextSlide = () => {
 const currentImage = computed(() => images[currentSlide.value]);
 const prevImage = computed(() => images[prevIndex.value]);
 const nextImage = computed(() => images[nextIndex.value]);
+
+let lastPointerDownX = -1;
+const onPointerDown = (event: PointerEvent) => {
+  lastPointerDownX = event.clientX;
+};
+
+const onPointerUp = (event: PointerEvent) => {
+  if (event.clientX < lastPointerDownX - 10) {
+    goToNext();
+  } else if (event.clientX > lastPointerDownX + 10) {
+    goToPrev();
+  }
+};
 </script>
 
 <template>
   <div class="slideshow-container py-4">
     <Image
-      :class="`slide-img absolute ${goingToPrev ? 'left-0' : '-left-full'}`"
+      :class="`slide-img absolute top-0 ${goingToPrev ? 'left-0' : '-left-full'} ${transitionsActive ? 'transitions-active' : ''}`"
       :asset-path="prevImage.url"
       :alt="prevImage.alt"
-      :key="prevImage.url"
     />
     <Image
-      :class="`slide-img absolute ${goingToNext ? '-left-full' : goingToPrev ? 'left-full' : 'left-0'}`"
+      :class="`slide-img absolute top-0 ${goingToNext ? '-left-full' : goingToPrev ? 'left-full' : 'left-0'} ${transitionsActive ? 'transitions-active' : ''}`"
       :asset-path="currentImage.url"
       :alt="currentImage.alt"
-      :key="currentImage.url"
+      :onPointerDown="onPointerDown"
+      :onPointerUp="onPointerUp"
     />
     <Image
-      :class="`slide-img absolute ${goingToNext ? 'left-0' : 'left-full'}`"
+      :class="`slide-img absolute top-0 ${goingToNext ? 'left-0' : 'left-full'} ${transitionsActive ? 'transitions-active' : ''}`"
       :asset-path="nextImage.url"
       :alt="nextImage.alt"
-      :key="nextImage.url"
     />
 
-    <button class="nav-btn prev" @click="previousSlide">❮</button>
-    <button class="nav-btn next" @click="nextSlide">❯</button>
+    <button class="nav-btn prev" @click="goToPrev">❮</button>
+    <button class="nav-btn next" @click="goToNext">❯</button>
   </div>
 </template>
 
 <style scoped>
 .slideshow-container {
-  height: 300px;
+  height: 325px;
   margin: 20px auto;
   position: relative;
   background: white;
@@ -85,6 +107,9 @@ const nextImage = computed(() => images[nextIndex.value]);
   height: 100%;
   object-fit: contain;
   display: block;
+}
+
+.transitions-active {
   transition: left v-bind("transitionLengthMs+'ms'") ease-out;
 }
 
@@ -99,7 +124,6 @@ const nextImage = computed(() => images[nextIndex.value]);
   border-radius: 50%;
   font-size: 20px;
   cursor: pointer;
-  transition: all 0.3s ease;
   z-index: 10;
   display: flex;
   align-items: center;

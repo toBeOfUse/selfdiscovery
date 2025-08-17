@@ -9,6 +9,8 @@ const props = defineProps<{
   widths?: number[];
   displaySizes?: string;
   style?: string;
+  onPointerDown?: (event: PointerEvent) => void;
+  onPointerUp?: (event: PointerEvent) => void;
 }>();
 
 const imageMetadata = computed(() => imageAsset(props.assetPath));
@@ -16,6 +18,8 @@ const imageMetadata = computed(() => imageAsset(props.assetPath));
 
 <template>
   <img
+    @pointerdown="onPointerDown"
+    @pointerup="onPointerUp"
     :src="imageMetadata.optimized?.src"
     :srcset="imageMetadata.optimized?.srcSet.attribute"
     :width="imageMetadata?.width"
