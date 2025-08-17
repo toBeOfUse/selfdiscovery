@@ -43,6 +43,22 @@ export default defineConfig({
     remarkPlugins: [addLabelsToFootnoteDefs, getDescription],
     remarkRehype: {
       footnoteBackContent: "^",
+      handlers: {
+        // make external links open in a new tab
+        link(state, node) {
+          return {
+            type: 'element',
+            tagName: 'a',
+            children: [
+              ...node.children
+            ],
+            properties: {
+              href: node.url,
+              target: node.url.startsWith('http') ? '_blank' : undefined
+            }
+          }
+        }
+      }
     },
     shikiConfig: {
       theme: "github-light",
