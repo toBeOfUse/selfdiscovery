@@ -11,6 +11,7 @@ const props = defineProps<{
   style?: string;
   onPointerDown?: (event: PointerEvent) => void;
   onPointerUp?: (event: PointerEvent) => void;
+  onPointerMove?: (event: Event) => void;
 }>();
 
 const imageMetadata = computed(() => imageAsset(props.assetPath));
@@ -20,6 +21,8 @@ const imageMetadata = computed(() => imageAsset(props.assetPath));
   <img
     @pointerdown="onPointerDown"
     @pointerup="onPointerUp"
+    @touchmove="onPointerMove"
+    @pointermove="onPointerMove"
     :src="imageMetadata.optimized?.src"
     :srcset="imageMetadata.optimized?.srcSet.attribute"
     :width="imageMetadata?.width"

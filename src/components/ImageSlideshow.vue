@@ -80,6 +80,7 @@ const onPointerUp = (event: PointerEvent) => {
       :alt="currentImage.alt"
       :onPointerDown="onPointerDown"
       :onPointerUp="onPointerUp"
+      :onPointerMove="(event) => event.preventDefault()"
     />
     <Image
       :class="`slide-img absolute top-0 ${goingToNext ? 'left-0' : 'left-full'} ${transitionsActive ? 'transitions-active' : ''}`"
