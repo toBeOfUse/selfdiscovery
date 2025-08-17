@@ -6,6 +6,7 @@ import vue from "@astrojs/vue";
 import robotsTxt from "astro-robots-txt";
 
 import sitemap from "@astrojs/sitemap";
+import { visit } from 'unist-util-visit'
 import { getDescription } from "./md-plugins/remark-readmore-description.mjs";
 import { addLabelsToFootnoteDefs } from "./md-plugins/remark-footnote-labels";
 
@@ -41,24 +42,19 @@ export default defineConfig({
   ],
   markdown: {
     remarkPlugins: [addLabelsToFootnoteDefs, getDescription],
+    rehypePlugins: [() => (tree) => {
+      // abbreviated plugin to make external links open in new tabs
+      visit(tree, 'element', function (node) {
+        if (
+          node.tagName.toLowerCase() === 'a' &&
+          typeof node.properties.href === 'string' &&
+          node.properties.href.startsWith('http')) {
+          node.properties.target = '_blank';
+        }
+      })
+    }],
     remarkRehype: {
       footnoteBackContent: "^",
-      handlers: {
-        // make external links open in a new tab
-        link(state, node) {
-          return {
-            type: 'element',
-            tagName: 'a',
-            children: [
-              ...node.children
-            ],
-            properties: {
-              href: node.url,
-              target: node.url.startsWith('http') ? '_blank' : undefined
-            }
-          }
-        }
-      }
     },
     shikiConfig: {
       theme: "github-light",
