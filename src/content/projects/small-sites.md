@@ -1,6 +1,5 @@
 ---
 title: Small Static Sites
-date: Ongoing
 description: Small sites I've created.
 images:
   - url: /word-clock.png

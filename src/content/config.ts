@@ -15,7 +15,7 @@ const projects = defineCollection({
     description: z.string().optional(),
     live_link: z.string().optional(),
     live_link_title: z.string().optional(),
-    date: z.string(),
+    date: z.string().optional(),
   }),
 });
 

@@ -103,7 +103,7 @@ const toggleOpen = () => {
         scrollbarGutter: 'stable',
       }"
     >
-      <div :class="{ 'py-4 flex flex-col justify-center': _isDefault }">
+      <div :class="{ 'flex flex-col justify-center': _isDefault }">
         <slot />
       </div>
     </div>
