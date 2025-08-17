@@ -44,6 +44,7 @@ export default defineConfig({
     remarkPlugins: [addLabelsToFootnoteDefs, getDescription],
     rehypePlugins: [() => (tree) => {
       // abbreviated plugin to make external links open in new tabs
+      // docs: https://unifiedjs.com/learn/guide/create-a-rehype-plugin/
       visit(tree, 'element', function (node) {
         if (
           node.tagName.toLowerCase() === 'a' &&

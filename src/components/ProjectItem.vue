@@ -12,8 +12,8 @@
           :href="meta.github_link"
           target="_blank"
         >
-          Github
-        </a>
+          Github</a
+        >
         <span v-if="meta.live_link && meta.github_link"> • </span>
         <a v-if="meta.live_link" class="text-sm" :href="meta.live_link" target="_blank">
           {{ meta.live_link_title || "Live Version" }}
