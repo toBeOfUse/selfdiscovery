@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex flex-col items-center mx-auto p-3 md:p-5 md:pt-2 bg-slate-50 border-solid border-[1px] border-slate-200 first:rounded-t-xl last:rounded-b-xl"
+    class="flex flex-col items-center mx-auto p-3 md:p-5 md:pt-2 bg-slate-50 first:rounded-t-xl last:rounded-b-xl"
   >
     <div :id="entry.slug" class="flex flex-col items-center w-full sm:w-auto pb-2 gap-2">
       <span class="text-center">
@@ -29,7 +29,7 @@
       v-if="meta.image"
       :assetPath="'projects' + meta.image"
       :alt="meta.image_alt"
-      class="my-2 project-image rounded-t-xl"
+      class="my-2 project-image"
     />
     <iframe
       v-else-if="meta.iframe"
