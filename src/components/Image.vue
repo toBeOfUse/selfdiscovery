@@ -9,9 +9,9 @@ const props = defineProps<{
   widths?: number[];
   displaySizes?: string;
   style?: string;
-  onPointerDown?: (event: PointerEvent) => void;
-  onPointerUp?: (event: PointerEvent) => void;
-  onPointerMove?: (event: Event) => void;
+  onTouchStart?: (event: TouchEvent) => void;
+  onTouchEnd?: (event: TouchEvent) => void;
+  onTouchMove?: (event: TouchEvent) => void;
 }>();
 
 const imageMetadata = computed(() => imageAsset(props.assetPath));
@@ -19,10 +19,9 @@ const imageMetadata = computed(() => imageAsset(props.assetPath));
 
 <template>
   <img
-    @pointerdown="onPointerDown"
-    @pointerup="onPointerUp"
-    @touchmove="onPointerMove"
-    @pointermove="onPointerMove"
+    @touchstart="onTouchStart"
+    @touchend="onTouchEnd"
+    @touchmove="onTouchMove"
     :src="imageMetadata.optimized?.src"
     :srcset="imageMetadata.optimized?.srcSet.attribute"
     :width="imageMetadata?.width"

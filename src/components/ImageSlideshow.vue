@@ -54,14 +54,26 @@ const prevImage = computed(() => images[prevIndex.value]);
 const nextImage = computed(() => images[nextIndex.value]);
 
 let lastPointerDownX = -1;
-const onPointerDown = (event: PointerEvent) => {
-  lastPointerDownX = event.clientX;
+const onTouchStart = (event: TouchEvent) => {
+  const { touches, changedTouches } = event;
+  const touch = touches[0] ?? changedTouches[0];
+  if (!touch) {
+    console.warn("no data available from touch start event");
+    return;
+  }
+  lastPointerDownX = touch.clientX;
 };
 
-const onPointerUp = (event: PointerEvent) => {
-  if (event.clientX < lastPointerDownX - 10) {
+const onTouchEnd = (event: TouchEvent) => {
+  const { touches, changedTouches } = event;
+  const touch = touches[0] ?? changedTouches[0];
+  if (!touch) {
+    console.warn("no data available from touch end event");
+    return;
+  }
+  if (touch.clientX < lastPointerDownX - 10) {
     goToNext();
-  } else if (event.clientX > lastPointerDownX + 10) {
+  } else if (touch.clientX > lastPointerDownX + 10) {
     goToPrev();
   }
 };
@@ -78,9 +90,8 @@ const onPointerUp = (event: PointerEvent) => {
       :class="`slide-img absolute top-0 ${goingToNext ? '-left-full' : goingToPrev ? 'left-full' : 'left-0'} ${transitionsActive ? 'transitions-active' : ''}`"
       :asset-path="currentImage.url"
       :alt="currentImage.alt"
-      :onPointerDown="onPointerDown"
-      :onPointerUp="onPointerUp"
-      :onPointerMove="(event) => event.preventDefault()"
+      :onTouchStart="onTouchStart"
+      :onTouchEnd="onTouchEnd"
     />
     <Image
       :class="`slide-img absolute top-0 ${goingToNext ? 'left-0' : 'left-full'} ${transitionsActive ? 'transitions-active' : ''}`"
