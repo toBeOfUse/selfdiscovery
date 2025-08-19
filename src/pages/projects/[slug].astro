@@ -4,6 +4,7 @@ import PageMeta from "../../components/PageMeta.astro";
 import Island from "../../layouts/Island.astro";
 import { getCollection } from "astro:content";
 import ImageSlideshow from "../../components/ImageSlideshow.vue";
+import { imageAsset } from "../../images";
 
 export async function getStaticPaths() {
   const projects = await getCollection("projects");
@@ -16,6 +17,9 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { Content, remarkPluginFrontmatter } = await entry.render();
 const description = entry.data.description || remarkPluginFrontmatter.description;
+const images = await Promise.all(
+  entry.data.images?.map((i) => imageAsset("projects" + i.url)) ?? []
+);
 ---
 
 <Island title={entry.data.title} titleLink="/projects/" image="circuit.png">
@@ -35,7 +39,7 @@ const description = entry.data.description || remarkPluginFrontmatter.descriptio
         !!entry.data.images?.length && (
           <ImageSlideshow
             client:load
-            images={entry.data.images.map((i) => ({ ...i, url: "projects" + i.url }))}
+            images={images.map((i) => ({ ...i, alt: i.alt ?? "" }))}
           />
         )
       }

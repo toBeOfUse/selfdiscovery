@@ -6,6 +6,8 @@ import Island from "../../layouts/Island.astro";
 import PageMeta from "../../components/PageMeta.astro";
 import ProjectsIslandContent from "../../components/ProjectsIslandContent.vue";
 import ImageSlideshow from "../../components/ImageSlideshow.vue";
+import { imageAsset } from "../../images";
+import { getImage } from "astro:assets";
 
 const allProjects = await Promise.all(
   [
@@ -31,6 +33,16 @@ const allProjects = await Promise.all(
     const e = await getEntry("projects", title);
     if (!e) {
       throw new Error("could not find project entry: " + title);
+    }
+    if (e.data.images?.length) {
+      const images = await Promise.all(
+        e.data.images.map(async (i) => {
+          const metadata = await imageAsset("projects" + i.url);
+          const optimizedImage = await getImage({ src: metadata, quality: 95 });
+          return { metadata, optimizedImage };
+        })
+      );
+      return { ...e, images };
     }
     return e;
   })
@@ -81,12 +93,12 @@ const allProjects = await Promise.all(
           <Fragment>
             {i !== 0 && <hr class="w-full my-2 border-t-2 border-white" />}
             <ProjectItem entry={p}>
-              {!!p.data.images?.length && (
+              {"images" in p && !!p.images?.length && (
                 <ImageSlideshow
                   client:load
-                  images={p.data.images.map((i) => ({
-                    ...i,
-                    url: "projects" + i.url,
+                  images={p.images.map((i) => ({
+                    src: i.optimizedImage.src,
+                    alt: i.metadata.alt ?? "",
                   }))}
                 />
               )}

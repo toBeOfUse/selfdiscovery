@@ -27,7 +27,7 @@ function pluralize(count: number, singular: string, plural?: string) {
   return plural ?? singular + "s";
 }
 
-const bg = imageAsset("bg-field.jpg");
+const bg = await imageAsset("bg-field.jpg");
 ---
 
 <Island

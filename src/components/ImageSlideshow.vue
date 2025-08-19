@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { computed, nextTick, ref } from "vue";
-import Image from "./Image.vue";
 
-const { images } = defineProps<{ images: { url: string; alt: string }[] }>();
+const { images } = defineProps<{ images: { src: string; alt: string }[] }>();
 
 const transitionLengthMs = 350;
 
@@ -81,21 +80,21 @@ const onTouchEnd = (event: TouchEvent) => {
 
 <template>
   <div class="slideshow-container py-4">
-    <Image
+    <img
       :class="`slide-img absolute top-0 ${goingToPrev ? 'left-0' : '-left-full'} ${transitionsActive ? 'transitions-active' : ''}`"
-      :asset-path="prevImage.url"
+      :src="prevImage.src"
       :alt="prevImage.alt"
     />
-    <Image
+    <img
       :class="`slide-img absolute top-0 ${goingToNext ? '-left-full' : goingToPrev ? 'left-full' : 'left-0'} ${transitionsActive ? 'transitions-active' : ''}`"
-      :asset-path="currentImage.url"
+      :src="currentImage.src"
       :alt="currentImage.alt"
-      :onTouchStart="onTouchStart"
-      :onTouchEnd="onTouchEnd"
+      @touchstart="onTouchStart"
+      @touchend="onTouchEnd"
     />
-    <Image
+    <img
       :class="`slide-img absolute top-0 ${goingToNext ? 'left-0' : 'left-full'} ${transitionsActive ? 'transitions-active' : ''}`"
-      :asset-path="nextImage.url"
+      :src="nextImage.src"
       :alt="nextImage.alt"
     />
 

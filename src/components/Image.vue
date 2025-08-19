@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { imageAsset } from "../images";
-import { computed } from "vue";
+import { getImage } from "astro:assets";
 
 const props = defineProps<{
   assetPath: string;
@@ -14,7 +14,12 @@ const props = defineProps<{
   onTouchMove?: (event: TouchEvent) => void;
 }>();
 
-const imageMetadata = computed(() => imageAsset(props.assetPath));
+const imageMetadata = await imageAsset(props.assetPath);
+const image = await getImage({
+  widths: props.widths ?? [100, 200, 400, 800, 1200],
+  src: imageMetadata,
+  quality: 90,
+});
 </script>
 
 <template>
@@ -22,8 +27,8 @@ const imageMetadata = computed(() => imageAsset(props.assetPath));
     @touchstart="onTouchStart"
     @touchend="onTouchEnd"
     @touchmove="onTouchMove"
-    :src="imageMetadata.optimized?.src"
-    :srcset="imageMetadata.optimized?.srcSet.attribute"
+    :src="image.src"
+    :srcset="image.srcSet.attribute"
     :width="imageMetadata?.width"
     :sizes="displaySizes"
     :height="imageMetadata?.height"

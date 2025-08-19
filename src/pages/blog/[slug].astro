@@ -19,7 +19,7 @@ const { entry } = Astro.props;
 
 const { headings } = await entry.render();
 
-const bg = imageAsset("bg-field.jpg");
+const bg = await imageAsset("bg-field.jpg");
 ---
 
 <Island
