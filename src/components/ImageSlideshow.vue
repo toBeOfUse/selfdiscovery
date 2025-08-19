@@ -52,6 +52,7 @@ const currentImage = computed(() => images[currentSlide.value]);
 const prevImage = computed(() => images[prevIndex.value]);
 const nextImage = computed(() => images[nextIndex.value]);
 
+let lastPointerDownY = -1;
 let lastPointerDownX = -1;
 const onTouchStart = (event: TouchEvent) => {
   const { touches, changedTouches } = event;
@@ -61,6 +62,23 @@ const onTouchStart = (event: TouchEvent) => {
     return;
   }
   lastPointerDownX = touch.clientX;
+  lastPointerDownY = touch.clientY;
+};
+
+const onTouchMove = (event: TouchEvent) => {
+  const { touches, changedTouches } = event;
+  const touch = touches[0] ?? changedTouches[0];
+  if (!touch) {
+    console.warn("no data available from touch start event");
+    return;
+  }
+
+  if (
+    Math.abs(touch.clientX - lastPointerDownX) >
+    Math.abs(touch.clientY - lastPointerDownY)
+  ) {
+    event.preventDefault();
+  }
 };
 
 const onTouchEnd = (event: TouchEvent) => {
@@ -68,6 +86,9 @@ const onTouchEnd = (event: TouchEvent) => {
   const touch = touches[0] ?? changedTouches[0];
   if (!touch) {
     console.warn("no data available from touch end event");
+    return;
+  }
+  if (Math.abs(touch.clientY - lastPointerDownY) > 50) {
     return;
   }
   if (touch.clientX < lastPointerDownX - 10) {
@@ -90,6 +111,7 @@ const onTouchEnd = (event: TouchEvent) => {
       :src="currentImage.src"
       :alt="currentImage.alt"
       @touchstart="onTouchStart"
+      @touchmove="onTouchMove"
       @touchend="onTouchEnd"
     />
     <img
