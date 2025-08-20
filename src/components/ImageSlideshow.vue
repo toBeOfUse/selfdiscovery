@@ -3,7 +3,7 @@ import { computed, nextTick, ref } from "vue";
 
 const { images } = defineProps<{ images: { src: string; alt: string }[] }>();
 
-const transitionLengthMs = 350;
+const transitionLengthMs = 250;
 
 const currentSlide = ref(0);
 
@@ -52,49 +52,61 @@ const currentImage = computed(() => images[currentSlide.value]);
 const prevImage = computed(() => images[prevIndex.value]);
 const nextImage = computed(() => images[nextIndex.value]);
 
+const eventToTouch = (event: TouchEvent) => {
+  const { touches, changedTouches } = event;
+  const touch = touches[0] ?? changedTouches[0];
+  if (!touch) {
+    console.warn("no data available from touch start event");
+    return;
+  }
+  return touch;
+};
+
+let swipeStarted: boolean | undefined = undefined;
+let firstMove = true;
 let lastPointerDownY = -1;
 let lastPointerDownX = -1;
 const onTouchStart = (event: TouchEvent) => {
-  const { touches, changedTouches } = event;
-  const touch = touches[0] ?? changedTouches[0];
-  if (!touch) {
-    console.warn("no data available from touch start event");
-    return;
+  swipeStarted = undefined;
+  const touch = eventToTouch(event);
+  if (touch) {
+    lastPointerDownX = touch.clientX;
+    lastPointerDownY = touch.clientY;
   }
-  lastPointerDownX = touch.clientX;
-  lastPointerDownY = touch.clientY;
 };
 
 const onTouchMove = (event: TouchEvent) => {
-  const { touches, changedTouches } = event;
-  const touch = touches[0] ?? changedTouches[0];
-  if (!touch) {
-    console.warn("no data available from touch start event");
-    return;
-  }
-
-  if (
-    Math.abs(touch.clientX - lastPointerDownX) >
-    Math.abs(touch.clientY - lastPointerDownY)
-  ) {
-    event.preventDefault();
+  const touch = eventToTouch(event);
+  if (touch) {
+    const dx = touch.clientX - lastPointerDownX;
+    if (firstMove && swipeStarted === undefined) {
+      if (Math.abs(dx) > Math.abs(touch.clientY - lastPointerDownY)) {
+        event.preventDefault();
+        swipeStarted = true;
+      } else {
+        swipeStarted = false;
+      }
+      firstMove = false;
+    } else if (swipeStarted === true && Math.abs(dx) > 200) {
+      if (dx < 0) {
+        goToNext();
+      } else {
+        goToPrev();
+      }
+      swipeStarted = undefined;
+    }
   }
 };
 
 const onTouchEnd = (event: TouchEvent) => {
-  const { touches, changedTouches } = event;
-  const touch = touches[0] ?? changedTouches[0];
-  if (!touch) {
-    console.warn("no data available from touch end event");
-    return;
-  }
-  if (Math.abs(touch.clientY - lastPointerDownY) > 50) {
-    return;
-  }
-  if (touch.clientX < lastPointerDownX - 10) {
-    goToNext();
-  } else if (touch.clientX > lastPointerDownX + 10) {
-    goToPrev();
+  const touch = eventToTouch(event);
+  firstMove = true;
+  if (touch && swipeStarted === true) {
+    if (touch.clientX < lastPointerDownX - 10) {
+      goToNext();
+    } else if (touch.clientX > lastPointerDownX + 10) {
+      goToPrev();
+    }
   }
 };
 </script>
@@ -130,7 +142,7 @@ const onTouchEnd = (event: TouchEvent) => {
   height: 325px;
   margin: 20px auto;
   position: relative;
-  background: white;
+  background: transparent;
   border-radius: 15px;
   overflow: hidden;
 }
@@ -168,10 +180,10 @@ const onTouchEnd = (event: TouchEvent) => {
 }
 
 .prev {
-  left: 10px;
+  left: 5px;
 }
 
 .next {
-  right: 10px;
+  right: 5px;
 }
 </style>
