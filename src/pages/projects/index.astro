@@ -49,6 +49,14 @@ const allProjects = await Promise.all(
 );
 ---
 
+<style is:global>
+  :root {
+    --main-bg: url(/paper-bg.jpg) no-repeat center / cover fixed;
+    --content-pane-bg: white;
+    --shadow-color: rgb(219, 219, 219);
+  }
+</style>
+
 <Island title="What Have I Done?" titleLink="/projects/" image="circuit.png">
   <PageMeta
     slot="head"
@@ -59,13 +67,9 @@ const allProjects = await Promise.all(
   <Fragment slot="island">
     <ProjectsIslandContent client:load>
       <Fragment slot="text">
-        <p class="my-2">
+        <p class="my-3">
           This is a question we must all ask ourselves from time to time, and this is the
           page where I'm recording my answers.
-        </p>
-        <p class="my-2">
-          Herein lie descriptions of various projects I've created or worked on for fun,
-          for school, or in a more-or-less professional capacity.
         </p>
       </Fragment>
       <Fragment slot="toc">
@@ -85,13 +89,12 @@ const allProjects = await Promise.all(
       >
     </ProjectsIslandContent>
   </Fragment>
-  <div class="my-8 md:my-10">
+  <div class="my-8">
     {
       allProjects.map(async (p, i) => {
         const { Content } = await p.render();
         return (
           <Fragment>
-            {i !== 0 && <hr class="w-full my-2 border-t-2 border-white" />}
             <ProjectItem entry={p}>
               {"images" in p && !!p.images?.length && (
                 <ImageSlideshow

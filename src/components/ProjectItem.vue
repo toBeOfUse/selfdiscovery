@@ -1,6 +1,10 @@
 <template>
   <div
-    class="flex flex-col items-center mx-auto p-3 md:p-5 md:pt-2 bg-slate-50 first:rounded-t-xl last:rounded-b-xl"
+    class="flex flex-col items-center sm:mx-auto mb-8 mx-[-0.5rem] p-5 md:p-7 md:pt-4 first:rounded-t-xl last:rounded-b-xl"
+    :class="{
+      'shadow-transparent md:shadow-[--shadow-color] shadow-slightly-up': !standalone,
+    }"
+    style="background: var(--content-pane-bg)"
   >
     <div :id="entry.slug" class="flex flex-col items-center w-full sm:w-auto pb-2 gap-2">
       <span class="text-center">

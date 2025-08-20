@@ -35,6 +35,12 @@ const style = Astro.props.bgImage
   </body>
 </html>
 
+<style is:global>
+  body {
+    background: var(--main-bg);
+  }
+</style>
+
 <script>
   // this halts animated svgs if the user has operating system settings that
   // disable animations

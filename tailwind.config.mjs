@@ -6,6 +6,9 @@ import defaultTheme from "tailwindcss/defaultTheme";
 export default {
   content: ["./src/**/*.{astro,html,md,mdx,ts,tsx,vue}", "./assets/*.{html.svg,scss}"],
   theme: {
+    boxShadow: {
+      'slightly-up': '1px 1px 6px -1px var(--tw-shadow-color)'
+    },
     extend: {
       screens: {
         xs: "450px",

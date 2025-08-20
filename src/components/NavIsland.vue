@@ -15,7 +15,7 @@ const onAnimationFinish = () => {
 
 <template>
   <div
-    class="flex flex-col shadow-dark text-center rounded-lg border border-black bg-[#ffffff33] overflow-hidden mb-4"
+    class="flex flex-col shadow-[--shadow-color] shadow-slightly-up text-center rounded-lg bg-[#ffffff33] overflow-hidden mb-4"
   >
     <template v-if="image && imageLink">
       <a :href="imageLink">

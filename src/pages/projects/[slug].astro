@@ -22,6 +22,14 @@ const images = await Promise.all(
 );
 ---
 
+<style is:global>
+  :root {
+    --main-bg: url(/paper-bg.jpg) no-repeat center / cover fixed;
+    --content-pane-bg: white;
+    --shadow-color: rgb(219, 219, 219);
+  }
+</style>
+
 <Island title={entry.data.title} titleLink="/projects/" image="circuit.png">
   <PageMeta
     title={entry.data.title}
