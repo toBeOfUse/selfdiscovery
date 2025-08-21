@@ -132,8 +132,8 @@ const onTouchEnd = (event: TouchEvent) => {
       :alt="nextImage.alt"
     />
 
-    <button class="nav-btn prev" @click="goToPrev">❮</button>
-    <button class="nav-btn next" @click="goToNext">❯</button>
+    <button class="nav-btn left-[-5px] md:left-[10px]" @click="goToPrev">❮</button>
+    <button class="nav-btn right-[-5px] md:right-[10px]" @click="goToNext">❯</button>
   </div>
 </template>
 
@@ -178,13 +178,5 @@ const onTouchEnd = (event: TouchEvent) => {
 
 .nav-btn:hover {
   background: white;
-}
-
-.prev {
-  left: 10px;
-}
-
-.next {
-  right: 10px;
 }
 </style>
