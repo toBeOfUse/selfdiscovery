@@ -139,11 +139,11 @@ const onTouchEnd = (event: TouchEvent) => {
 
 <style scoped>
 .slideshow-container {
-  height: 325px;
+  width: 100%;
+  aspect-ratio: 5 / 3;
   margin: 20px auto;
   position: relative;
   background: transparent;
-  border-radius: 15px;
   overflow: hidden;
 }
 
@@ -152,6 +152,7 @@ const onTouchEnd = (event: TouchEvent) => {
   height: 100%;
   object-fit: contain;
   display: block;
+  margin: 0 auto;
 }
 
 .transitions-active {
@@ -180,10 +181,10 @@ const onTouchEnd = (event: TouchEvent) => {
 }
 
 .prev {
-  left: 5px;
+  left: 10px;
 }
 
 .next {
-  right: 5px;
+  right: 10px;
 }
 </style>

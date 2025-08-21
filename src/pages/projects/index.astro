@@ -39,7 +39,7 @@ const allProjects = await Promise.all(
         e.data.images.map(async (i) => {
           const metadata = await imageAsset("projects" + i.url);
           const optimizedImage = await getImage({ src: metadata, quality: 95 });
-          return { metadata, optimizedImage };
+          return { ...i, metadata, optimizedImage };
         })
       );
       return { ...e, images };
@@ -51,9 +51,9 @@ const allProjects = await Promise.all(
 
 <style is:global>
   :root {
-    --main-bg: url(/paper-bg.jpg) no-repeat center / cover fixed;
+    --main-bg: #fcfcfc;
     --content-pane-bg: white;
-    --shadow-color: rgb(219, 219, 219);
+    --shadow-color: rgb(186, 186, 186);
   }
 </style>
 
@@ -101,7 +101,7 @@ const allProjects = await Promise.all(
                   client:load
                   images={p.images.map((i) => ({
                     src: i.optimizedImage.src,
-                    alt: i.metadata.alt ?? "",
+                    alt: i.metadata.alt ?? i.alt ?? "",
                   }))}
                 />
               )}

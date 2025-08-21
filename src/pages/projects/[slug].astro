@@ -5,6 +5,7 @@ import Island from "../../layouts/Island.astro";
 import { getCollection } from "astro:content";
 import ImageSlideshow from "../../components/ImageSlideshow.vue";
 import { imageAsset } from "../../images";
+import { getImage } from "astro:assets";
 
 export async function getStaticPaths() {
   const projects = await getCollection("projects");
@@ -18,15 +19,19 @@ const { entry } = Astro.props;
 const { Content, remarkPluginFrontmatter } = await entry.render();
 const description = entry.data.description || remarkPluginFrontmatter.description;
 const images = await Promise.all(
-  entry.data.images?.map((i) => imageAsset("projects" + i.url)) ?? []
+  entry.data.images?.map(async (i) => {
+    const metadata = await imageAsset("projects" + i.url);
+    const optimizedImage = await getImage({ src: metadata, quality: 100 });
+    return { ...i, metadata, optimizedImage };
+  }) ?? []
 );
 ---
 
 <style is:global>
   :root {
-    --main-bg: url(/paper-bg.jpg) no-repeat center / cover fixed;
+    --main-bg: #fcfcfc;
     --content-pane-bg: white;
-    --shadow-color: rgb(219, 219, 219);
+    --shadow-color: rgb(186, 186, 186);
   }
 </style>
 
@@ -47,7 +52,10 @@ const images = await Promise.all(
         !!entry.data.images?.length && (
           <ImageSlideshow
             client:load
-            images={images.map((i) => ({ ...i, alt: i.alt ?? "" }))}
+            images={images.map((i) => ({
+              src: i.optimizedImage.src,
+              alt: i.metadata.alt ?? i.alt ?? "",
+            }))}
           />
         )
       }
