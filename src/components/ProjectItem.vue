@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex flex-col items-center sm:mx-auto mb-8 mx-[-0.5rem] p-5 md:p-7 md:pt-4 md:first:rounded-t-xl md:last:rounded-b-xl shadow-transparent md:shadow-[--shadow-color] shadow-slightly-up border-y border-slate-300"
+    class="flex flex-col items-center sm:mx-auto mb-8 p-5 md:p-7 md:pt-4 md:first:rounded-t-xl md:last:rounded-b-xl shadow-transparent md:shadow-[--shadow-color] shadow-slightly-up border-y border-slate-300"
     :class="{ 'md:rounded-xl': forceRounded }"
     style="background: var(--content-pane-bg)"
   >
