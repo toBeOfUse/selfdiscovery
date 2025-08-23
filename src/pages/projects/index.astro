@@ -82,7 +82,7 @@ const HighlightsContent = (await highlights.render()).Content;
             <ul class="text-left pl-4">
               {allProjects.map((p) => (
                 <li class="my-1">
-                  <a href={`/projects#${p.slug}`}>
+                  <a href={`#${p.slug}`}>
                     <span class="underline">{p.data.title}</span> ({p.data.date})
                   </a>
                 </li>
