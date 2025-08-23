@@ -1,3 +1,8 @@
+<!--
+image slideshow component that loops pictures over and over again.
+for best results, supply images with a 3:2 aspect ratio.
+-->
+
 <script setup lang="ts">
 import { computed, nextTick, ref } from "vue";
 
@@ -132,15 +137,15 @@ const onTouchEnd = (event: TouchEvent) => {
       :alt="nextImage.alt"
     />
 
-    <button class="nav-btn left-[-5px] md:left-[10px]" @click="goToPrev">❮</button>
-    <button class="nav-btn right-[-5px] md:right-[10px]" @click="goToNext">❯</button>
+    <button class="nav-btn left-3" @click="goToPrev">❮</button>
+    <button class="nav-btn right-3" @click="goToNext">❯</button>
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .slideshow-container {
   width: 100%;
-  aspect-ratio: 5 / 3;
+  aspect-ratio: 3 / 2;
   margin: 20px auto;
   position: relative;
   background: transparent;
@@ -174,6 +179,11 @@ const onTouchEnd = (event: TouchEvent) => {
   display: flex;
   align-items: center;
   justify-content: center;
+  @media (max-width: 640px) {
+    font-size: 15px;
+    width: 25px;
+    height: 25px;
+  }
 }
 
 .nav-btn:hover {

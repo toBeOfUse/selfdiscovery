@@ -4,7 +4,11 @@ date: Spring 2024
 images:
   - url: /khe.io.jpg
     alt: 'A screenshot of Firefox open to a website that is displaying a black-and-white photo of a solar eclipse. The text superimposed over the center of the eclipse reads: "KHE; Take 24 hours out of your schedule on April 20th-21st, 2024 to make something amazing." There is a button below the text that says "Register Now."'
+  - url: /khe-staff.jpg
+    alt: ""
   - url: /hacksu-website.jpg
+    alt: ""
+  - url: /hacksu-staff.jpg
     alt: ""
 github_link: https://github.com/hacksu/khe-revengeance
 description: khe.io was the website for the Kent Hack Enough hackathon; I worked on it for the 2024 edition of the event.
