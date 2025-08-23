@@ -1,12 +1,10 @@
 <template>
   <div
-    class="flex flex-col items-center sm:mx-auto mb-8 mx-[-0.5rem] p-5 md:p-7 md:pt-4 first:rounded-t-xl last:rounded-b-xl"
-    :class="{
-      'shadow-transparent md:shadow-[--shadow-color] shadow-slightly-up': !standalone,
-    }"
+    class="flex flex-col items-center sm:mx-auto mb-8 mx-[-0.5rem] p-5 md:p-7 md:pt-4 first:rounded-t-xl last:rounded-b-xl shadow-transparent md:shadow-[--shadow-color] shadow-slightly-up"
+    :class="{ 'rounded-xl': forceRounded }"
     style="background: var(--content-pane-bg)"
   >
-    <div :id="entry.slug" class="flex flex-col items-center w-full sm:w-auto pb-2 gap-2">
+    <div :id="entry.slug" class="flex flex-col items-center w-full sm:w-auto gap-2">
       <span class="text-center">
         <h2 v-if="meta.date" class="text-sm inline">{{ meta.date }}</h2>
         <span v-if="meta.date && (meta.live_link || meta.github_link)"> • </span>
@@ -58,11 +56,10 @@ import type { CollectionEntry } from "astro:content";
 import { computed } from "vue";
 import Image from "./Image.vue";
 
-// TODO: directional quotation marks?
-
 const props = defineProps<{
   entry: CollectionEntry<"projects">;
   standalone?: boolean;
+  forceRounded?: boolean;
 }>();
 
 const meta = props.entry.data;

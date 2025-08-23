@@ -9,8 +9,9 @@ import ImageSlideshow from "../../components/ImageSlideshow.vue";
 import { imageAsset } from "../../images";
 import { getImage } from "astro:assets";
 
-const allProjects = await Promise.all(
+const projectData = await Promise.all(
   [
+    "highlights",
     "townchest",
     "hacksu-lessons",
     "khe-io",
@@ -47,6 +48,9 @@ const allProjects = await Promise.all(
     return e;
   })
 );
+
+const [highlights, ...allProjects] = projectData;
+const HighlightsContent = (await highlights.render()).Content;
 ---
 
 <style is:global>
@@ -60,7 +64,7 @@ const allProjects = await Promise.all(
 <Island title="What Have I Done?" titleLink="/projects/" image="circuit.png">
   <PageMeta
     slot="head"
-    title="Projects - Mitch's Website"
+    title="Projects"
     description="Stuff I've made."
     image="circuit.png"
   />
@@ -90,11 +94,14 @@ const allProjects = await Promise.all(
     </ProjectsIslandContent>
   </Fragment>
   <div class="my-8">
-    {
-      allProjects.map(async (p, i) => {
-        const { Content } = await p.render();
-        return (
-          <Fragment>
+    <ProjectItem forceRounded entry={highlights}>
+      <HighlightsContent />
+    </ProjectItem>
+    <div>
+      {
+        allProjects.map(async (p, i) => {
+          const { Content } = await p.render();
+          return (
             <ProjectItem entry={p}>
               {"images" in p && !!p.images?.length && (
                 <ImageSlideshow
@@ -107,9 +114,9 @@ const allProjects = await Promise.all(
               )}
               <Content />
             </ProjectItem>
-          </Fragment>
-        );
-      })
-    }
+          );
+        })
+      }
+    </div>
   </div>
 </Island>

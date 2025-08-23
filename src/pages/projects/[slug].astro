@@ -21,7 +21,7 @@ const description = entry.data.description || remarkPluginFrontmatter.descriptio
 const images = await Promise.all(
   entry.data.images?.map(async (i) => {
     const metadata = await imageAsset("projects" + i.url);
-    const optimizedImage = await getImage({ src: metadata, quality: 100 });
+    const optimizedImage = await getImage({ src: metadata, quality: 95 });
     return { ...i, metadata, optimizedImage };
   }) ?? []
 );

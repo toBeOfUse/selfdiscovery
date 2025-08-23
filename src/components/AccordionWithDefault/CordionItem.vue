@@ -33,7 +33,7 @@ const isOpen = computed(() => openItem.value === id);
 
 const itemHeight = ref(props._isDefault ? -1 : 0);
 
-const transitionDuration = 200;
+const transitionDuration = 100;
 
 const transitionInProcess = ref(false);
 
