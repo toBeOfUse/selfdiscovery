@@ -10,7 +10,7 @@ links:
 images:
   - url: /word-clock.png
     alt: A browser window showing a grid of pixellated words in dark blue letters on a black background. Highlighted in white are the words "Quarter Past Twelve AM"
-  - url: /doa-comment-tracker.png
+  - url: /doa-comment-tracker.jpg
     alt: A web page with a heading reading "Dumbing of Age Patreon Posts. This page takes the information you can already get by scrolling through the Patreon feed (whether you're subscribed or not) and makes it more sortable and kinda searchable." Below that, a table showing a series of links with columns for comments and likes.
   - url: /corn.jpg
     alt: A 3D model of a corncob with some kernels missing. A mouse cursor hovers over an intact kernel. "4.13% eaten," says a status bar at the top.

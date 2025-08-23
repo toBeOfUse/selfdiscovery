@@ -37,7 +37,7 @@
       v-if="meta.image"
       :assetPath="'projects' + meta.image"
       :alt="meta.image_alt"
-      class="my-2 project-image"
+      class="my-4 project-image"
     />
     <iframe
       v-else-if="meta.iframe"
