@@ -93,30 +93,32 @@ const HighlightsContent = (await highlights.render()).Content;
       >
     </ProjectsIslandContent>
   </Fragment>
-  <div class="my-4 md:my-8">
-    <ProjectItem forceRounded entry={highlights}>
+  <div class="pt-2 md:py-8 flex flex-col items-center gap-8">
+    <ProjectItem roundedTop roundedBottom entry={highlights}>
       <HighlightsContent />
     </ProjectItem>
-    <div>
-      {
-        allProjects.map(async (p, i) => {
-          const { Content } = await p.render();
-          return (
-            <ProjectItem entry={p}>
-              {"images" in p && !!p.images?.length && (
-                <ImageSlideshow
-                  client:load
-                  images={p.images.map((i) => ({
-                    src: i.optimizedImage.src,
-                    alt: i.metadata.alt ?? i.alt ?? "",
-                  }))}
-                />
-              )}
-              <Content />
-            </ProjectItem>
-          );
-        })
-      }
-    </div>
+    {
+      allProjects.map(async (p, i) => {
+        const { Content } = await p.render();
+        return (
+          <ProjectItem
+            roundedTop={i == 0}
+            roundedBottom={i == allProjects.length - 1}
+            entry={p}
+          >
+            {"images" in p && !!p.images?.length && (
+              <ImageSlideshow
+                client:load
+                images={p.images.map((i) => ({
+                  src: i.optimizedImage.src,
+                  alt: i.metadata.alt ?? i.alt ?? "",
+                }))}
+              />
+            )}
+            <Content />
+          </ProjectItem>
+        );
+      })
+    }
   </div>
 </Island>

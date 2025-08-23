@@ -46,8 +46,8 @@ const images = await Promise.all(
     <p class="my-2">{description}</p>
     <a href={"/projects/#" + entry.slug} class="underline">(back to all projects)</a>
   </div>
-  <div class="my-12">
-    <ProjectItem entry={entry} :standalone="true">
+  <div class="pt-2 md:py-8">
+    <ProjectItem roundedTop roundedBottom entry={entry} :standalone="true">
       {
         !!entry.data.images?.length && (
           <ImageSlideshow

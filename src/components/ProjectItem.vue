@@ -1,7 +1,7 @@
 <template>
   <div
-    class="flex flex-col items-center sm:mx-auto mb-8 p-5 md:p-7 md:pt-4 md:first:rounded-t-xl md:last:rounded-b-xl shadow-transparent md:shadow-[--shadow-color] shadow-slightly-up border-y border-slate-300"
-    :class="{ 'md:rounded-xl': forceRounded }"
+    class="flex flex-col items-center p-5 md:p-7 md:pt-4 shadow-transparent md:shadow-[--shadow-color] shadow-slightly-up border-y border-slate-300"
+    :class="{ 'md:rounded-t-xl': roundedTop, 'md:rounded-b-xl': roundedBottom }"
     style="background: var(--content-pane-bg)"
   >
     <div
@@ -63,7 +63,8 @@ import Image from "./Image.vue";
 const props = defineProps<{
   entry: CollectionEntry<"projects">;
   standalone?: boolean;
-  forceRounded?: boolean;
+  roundedTop?: boolean;
+  roundedBottom?: boolean;
 }>();
 
 const meta = props.entry.data;
