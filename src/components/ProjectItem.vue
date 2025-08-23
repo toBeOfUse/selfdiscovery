@@ -1,10 +1,14 @@
 <template>
   <div
-    class="flex flex-col items-center sm:mx-auto mb-8 mx-[-0.5rem] p-5 md:p-7 md:pt-4 first:rounded-t-xl last:rounded-b-xl shadow-transparent md:shadow-[--shadow-color] shadow-slightly-up"
-    :class="{ 'rounded-xl': forceRounded }"
+    class="flex flex-col items-center sm:mx-auto mb-8 mx-[-0.5rem] p-5 md:p-7 md:pt-4 md:first:rounded-t-xl md:last:rounded-b-xl shadow-transparent md:shadow-[--shadow-color] shadow-slightly-up border-y border-slate-300"
+    :class="{ 'md:rounded-xl': forceRounded }"
     style="background: var(--content-pane-bg)"
   >
-    <div :id="entry.slug" class="flex flex-col items-center w-full sm:w-auto gap-2">
+    <div
+      v-if="entry.data.title"
+      :id="entry.slug"
+      class="flex flex-col items-center w-full sm:w-auto gap-2"
+    >
       <span class="text-center">
         <h2 v-if="meta.date" class="text-sm inline">{{ meta.date }}</h2>
         <span v-if="meta.date && (meta.live_link || meta.github_link)"> • </span>
@@ -45,7 +49,7 @@
       style="height: 60vh"
       loading="lazy"
     />
-    <div class="project-post leading-relaxed" :class="{ '-mt-2': noMainVisual }">
+    <div class="project-post leading-relaxed">
       <slot />
     </div>
   </div>
