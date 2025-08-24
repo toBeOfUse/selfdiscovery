@@ -2,8 +2,15 @@
 title: Multiplayer NYT Spelling Bee
 date: November 2021 - July 2022
 github_link: https://github.com/toBeOfUse/bee-engine
-iframe: https://mitch.website/spellingbeegallery/
-iframe_title: A series of graphics that each contain seven letters orbiting around one central letter.
+images:
+  - url: /bee/blueprint.png
+    alt: ""
+  - url: /bee/dice.png
+    alt: ""
+  - url: /bee/earth.png
+    alt: ""
+  - url: /bee/cereal.png
+    alt: ""
 description: A project to bring the New York Times Spelling Bee puzzle to Discord.
 ---
 

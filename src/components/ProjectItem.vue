@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex flex-col items-center p-5 md:p-7 md:pt-4 shadow-transparent md:shadow-[--shadow-color] shadow-slightly-up border-y border-slate-300"
+    class="flex flex-col items-center p-4 md:p-5 md:pt-4 shadow-transparent md:shadow-[--shadow-color] shadow-slightly-up border-y border-slate-300"
     :class="{ 'md:rounded-t-xl': roundedTop, 'md:rounded-b-xl': roundedBottom }"
     style="background: var(--content-pane-bg)"
   >
