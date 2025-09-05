@@ -3,7 +3,6 @@ import Post from "../../components/Post.astro";
 import Island from "../../layouts/Island.astro";
 
 import { getCollection } from "astro:content";
-import { imageAsset } from "../../images";
 import PageMeta from "../../components/PageMeta.astro";
 import BlogPostIslandContent from "../../components/BlogPostIslandContent.vue";
 
@@ -20,7 +19,20 @@ const { entry } = Astro.props;
 const { headings } = await entry.render();
 ---
 
-<Island title="Type Type Type" titleLink="/blog" image="typewriter.png" imageLink="/blog">
+<style is:global>
+  :root {
+    --main-bg: #faf9f5;
+    --content-pane-bg: white;
+    --shadow-color: rgb(100, 100, 100);
+  }
+</style>
+
+<Island
+  title={entry.data.title}
+  titleLink="/blog"
+  image="typewriter.png"
+  imageLink="/blog"
+>
   <div slot="island" class="text-left">
     <BlogPostIslandContent entryMeta={entry.data} headings={headings} client:load />
   </div>

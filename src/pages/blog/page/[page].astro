@@ -6,7 +6,6 @@ import { getCollection } from "astro:content";
 import PageMeta from "../../../components/PageMeta.astro";
 import BlogIslandContent from "../../../components/BlogIslandContent.vue";
 import type { GetStaticPaths } from "astro";
-import FleuronArrow from "../../../components/FleuronArrow.astro";
 
 export const getStaticPaths = (async ({ paginate }) => {
   const posts = await getCollection("blog", (entry) => !entry.data.unlisted);
@@ -60,14 +59,7 @@ const {
   <div class="flex flex-col">
     {
       currentPagePosts.map(async (p, i) => {
-        return (
-          <>
-            {i !== 0 && (
-              <hr class="block md:hidden my-2 mx-2 border-t-2 border-gray-300" />
-            )}
-            <Post entry={p} />
-          </>
-        );
+        return <Post entry={p} />;
       })
     }
     <div class="flex justify-between w-full mb-6 px-2 md:px-0">

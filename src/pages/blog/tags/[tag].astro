@@ -4,7 +4,6 @@ import Island from "../../../layouts/Island.astro";
 
 import { getCollection } from "astro:content";
 import PageMeta from "../../../components/PageMeta.astro";
-import { imageAsset } from "../../../images";
 
 // TODO: paginate (similar to /blog/page/[page].astro)
 export async function getStaticPaths() {
@@ -26,9 +25,15 @@ function pluralize(count: number, singular: string, plural?: string) {
   if (count === 1) return singular;
   return plural ?? singular + "s";
 }
-
-const bg = await imageAsset("bg-field.jpg");
 ---
+
+<style is:global>
+  :root {
+    --main-bg: #faf9f5;
+    --content-pane-bg: white;
+    --shadow-color: rgb(100, 100, 100);
+  }
+</style>
 
 <Island
   title={"Tagged: " + Astro.params.tag}
@@ -45,7 +50,7 @@ const bg = await imageAsset("bg-field.jpg");
   <div slot="island">
     <p class="my-8">
       There {pluralize(posts.length, "is", "are")}
-      {posts.length}
+      {" " + posts.length + " "}
       {pluralize(posts.length, "post")} tagged "{Astro.params.tag}."
     </p>
     <!-- TODO: probably show tag accordion here too -->
@@ -57,14 +62,7 @@ const bg = await imageAsset("bg-field.jpg");
   <div class="flex flex-col">
     {
       firstPage.map(async (p, i) => {
-        return (
-          <Fragment>
-            {i !== 0 && (
-              <hr class="block md:hidden my-3 mx-2 border-t-2 border-gray-400" />
-            )}
-            <Post entry={p} />
-          </Fragment>
-        );
+        return <Post entry={p} />;
       })
     }
   </div>

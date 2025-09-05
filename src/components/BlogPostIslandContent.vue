@@ -39,7 +39,7 @@ for (const heading of props.headings) {
 <template>
   <Cordion>
     <CordionDefaultItem>
-      <div class="text-center flex flex-col gap-4">
+      <div class="text-center flex flex-col gap-4 py-4">
         <p>{{ entryMeta.tagline }}</p>
       </div>
     </CordionDefaultItem>
