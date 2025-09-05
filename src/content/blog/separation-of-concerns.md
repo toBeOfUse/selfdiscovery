@@ -11,7 +11,7 @@ The term "separation of concerns" gives you an easy way to throw a wrench into a
 
 A one point, in the world of web development, it was easy to tell which part of the code was which, because each concern was addressed by a different language. The HTML created the content, the CSS established the styling, and the JavaScript added the interactivity:
 
-<img src="../../../assets/posts/separation-of-concerns/html-css-js.svg" style="width: 95%; height: auto; margin: 0 auto" />
+![](../../../assets/posts/separation-of-concerns/html-css-js.svg)
 
 <!-- more -->
 
@@ -21,7 +21,7 @@ The idea was that all of this code would kind of stand alone, so you could have 
 
 In a modern JavaScript framework like React, content, styling, and interactivity are all mixed together:
 
-<img src="../../../assets/posts/separation-of-concerns/react-component.svg" style="width: 95%; height: auto; margin: 0 auto" />
+![](../../../assets/posts/separation-of-concerns/react-component.svg)
 
 Does this make things less organized? Well, kind of. Technical concerns are no longer separated. Instead, code is structured according _logical_ concerns, i.e. by which parts of the UI do what: the code for the search boxes is grouped into one component, and the code for the image carousels is grouped into a different component; instead of the content for the image carousels being in HTML, and the styling of the image carousels being in CSS, and the code that makes the whole thing interactive being somewhere else in a .js file.
 
