@@ -52,3 +52,9 @@ The increasing componentization of web development definitely makes each individ
 However: the reason that this is possible is that technical concerns can be abstracted away, i.e. covered up by layers of frameworks and compilers until you don't really have to think about them anymore. Logical concerns cannot be abstracted away. That's not how this works. If you do not understand how to use React server components, you can probably trial-and-error your way through it; if you don't understand how an image carousel is supposed to work, you simply will not be able to make one.
 
 The point is: logical concerns are important, and I'm looking forward to going insane.
+
+## Alternatives to the phrase "Separation of Concerns"
+
+- The [single responsibility principle](https://en.wikipedia.org/wiki/Single-responsibility_principle): "Gather together the things that change for the same reasons. Separate those things that change for different reasons." This is a little more specific than "separation of concerns."
+- _Modularity_ is achieved when logical concerns each get a part of your code and each part presents a clear interface to the other parts. I think this is neat.
+- If you can see your whole app as a map in your head, you can draw logical borders and divide it up into different parts. This is the simplest solution.
