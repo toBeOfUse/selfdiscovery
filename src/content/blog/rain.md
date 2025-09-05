@@ -2,7 +2,7 @@
 title: Rain
 tagline: Whither weather?
 date: 2025-03-31
-tags: ["personal", "nonfiction"]
+tags: ["personal", "history"]
 ---
 
 Back when I worked on the farm, when it rained, it mattered. I have a lot of memories of ducking into a barn, or into the truck, or going all the way back to the house for an early lunch just because the rain had come.

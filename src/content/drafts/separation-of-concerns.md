@@ -4,6 +4,8 @@ publish_date: 2024-09-18
 description: This post is about two fundamental axes of code organization in programming projects.
 ---
 
+<!-- a much more condensed version of this post is now published, but i'm keeping this content here for historical purposes -->
+
 "Separation of concerns" is one of those literary, smart-sounding terms that indicates some principle that programmers are supposed to follow. Unfortunately, as with closely-related terms like "modularity" or "encapsulation," it's easier to come up with bad examples that obviously need some refactoring than it is to specify what it means to follow these principles correctly.
 
 If you create an app and it's one 10,000-line function, then you probably have not achieved much modularity, and your concerns are most likely not separated too well. But the nature of the good code that theoretically exists on the opposite end of the spectrum is harder to pin down. It's like trying to hammer out a universal definition of "beauty," or attempting to describe the mouthfeel of a Michelin star sushi roll. There are two main ways that I see "separation of concerns" applied, and unfortunately they're somewhat orthogonal to each other, and it's not obvious that either is "right."
