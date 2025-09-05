@@ -7,7 +7,6 @@ import PageMeta from "../../../components/PageMeta.astro";
 import BlogIslandContent from "../../../components/BlogIslandContent.vue";
 import type { GetStaticPaths } from "astro";
 import FleuronArrow from "../../../components/FleuronArrow.astro";
-import { imageAsset } from "../../../images";
 
 export const getStaticPaths = (async ({ paginate }) => {
   const posts = await getCollection("blog", (entry) => !entry.data.unlisted);
@@ -34,17 +33,17 @@ const {
   sortedTags,
   page: { data: currentPagePosts, url },
 } = Astro.props;
-
-const bg = await imageAsset("bg-field.jpg");
 ---
 
-<Island
-  title="Type Type Type"
-  titleLink="/blog"
-  image="typewriter.png"
-  imageLink="/blog"
-  bgImage={bg.src}
->
+<style is:global>
+  :root {
+    --main-bg: #faf9f5;
+    --content-pane-bg: white;
+    --shadow-color: rgb(100, 100, 100);
+  }
+</style>
+
+<Island title="Type Type Type" titleLink="/blog" image="typewriter.png" imageLink="/blog">
   <PageMeta
     slot="head"
     title="Self-Discovery"
@@ -76,7 +75,6 @@ const bg = await imageAsset("bg-field.jpg");
         href={url.prev ? (url.prev.endsWith("/1") ? "/blog" : url.prev) : "#"}
         class={"p-2 bg-gray-100 md:bg-white md:border-2" + (url.prev ? "" : " invisible")}
       >
-        <FleuronArrow direction="left" />
         <span class="underline">Previous</span>
       </a>
       <a
@@ -84,7 +82,6 @@ const bg = await imageAsset("bg-field.jpg");
         class={"p-2 bg-gray-100 md:bg-white md:border-2" + (url.next ? "" : " invisible")}
       >
         <span class="underline">Next</span>
-        <FleuronArrow />
       </a>
     </div>
   </div>

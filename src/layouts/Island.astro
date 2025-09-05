@@ -7,13 +7,12 @@ interface Props {
   titleLink?: string;
   image: string;
   imageLink?: string;
-  bgImage?: string;
 }
 
-const { title, titleLink, image, imageLink, bgImage } = Astro.props;
+const { title, titleLink, image, imageLink } = Astro.props;
 ---
 
-<Html bgImage={bgImage}>
+<Html>
   <slot name="head" slot="head" />
   <!-- this first div is the container for the two content areas of this layout;
   they're arranged side-by-side on desktop and above and below one another on

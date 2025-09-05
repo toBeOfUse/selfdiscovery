@@ -1,21 +1,3 @@
----
-interface Props {
-  bgImage?: string;
-}
-
-// 768px is tailwind's md breakpoint. this probably could be crammed into utility
-// classes, but that seems tortured?
-const style = Astro.props.bgImage
-  ? `
-@media (min-width: 768px) {
-  html {
-    background: #f9f9f9 url(${Astro.props.bgImage}) no-repeat center center fixed;
-    background-size: cover;
-  }
-}`
-  : "";
----
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -27,7 +9,6 @@ const style = Astro.props.bgImage
       src="https://u.mitch.website/script.js"
       data-website-id="6c592fe5-5646-40c9-be1b-8272071f5950"
       data-domains="mitch.website"></script>
-    <style set:html={style}></style>
     <slot name="head" />
   </head>
   <body>

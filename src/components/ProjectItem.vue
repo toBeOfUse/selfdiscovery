@@ -1,8 +1,7 @@
 <template>
   <div
-    class="flex flex-col items-center p-4 md:p-5 md:pt-4 shadow-transparent md:shadow-[--shadow-color] shadow-slightly-up border-y border-slate-300"
+    class="flex flex-col items-center p-4 md:p-5 md:pt-4 shadow-transparent md:shadow-[--shadow-color] shadow-slightly-up border-y border-slate-300 bg-[--content-pane-bg]"
     :class="{ 'md:rounded-t-xl': roundedTop, 'md:rounded-b-xl': roundedBottom }"
-    style="background: var(--content-pane-bg)"
   >
     <div
       v-if="entry.data.title"

@@ -18,17 +18,9 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 
 const { headings } = await entry.render();
-
-const bg = await imageAsset("bg-field.jpg");
 ---
 
-<Island
-  title="Type Type Type"
-  titleLink="/blog"
-  image="typewriter.png"
-  imageLink="/blog"
-  bgImage={bg.src}
->
+<Island title="Type Type Type" titleLink="/blog" image="typewriter.png" imageLink="/blog">
   <div slot="island" class="text-left">
     <BlogPostIslandContent entryMeta={entry.data} headings={headings} client:load />
   </div>
