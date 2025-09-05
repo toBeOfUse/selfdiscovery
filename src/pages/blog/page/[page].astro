@@ -65,13 +65,13 @@ const {
     <div class="flex justify-between w-full mb-6 px-2 md:px-0">
       <a
         href={url.prev ? (url.prev.endsWith("/1") ? "/blog" : url.prev) : "#"}
-        class={"p-2 bg-gray-100 md:bg-white md:border-2" + (url.prev ? "" : " invisible")}
+        class={"p-2 bg-gray-100 md:bg-white md:border" + (url.prev ? "" : " invisible")}
       >
         <span class="underline">Previous</span>
       </a>
       <a
         href={url.next ?? "#"}
-        class={"p-2 bg-gray-100 md:bg-white md:border-2" + (url.next ? "" : " invisible")}
+        class={"p-2 bg-gray-100 md:bg-white md:border" + (url.next ? "" : " invisible")}
       >
         <span class="underline">Next</span>
       </a>
