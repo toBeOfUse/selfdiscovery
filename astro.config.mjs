@@ -8,7 +8,6 @@ import robotsTxt from "astro-robots-txt";
 import sitemap from "@astrojs/sitemap";
 import { visit } from 'unist-util-visit'
 import { getDescription } from "./md-plugins/remark-readmore-description.mjs";
-import { addLabelsToFootnoteDefs } from "./md-plugins/remark-footnote-labels";
 
 const aiUserAgents = [
   "GPTBot",
@@ -35,13 +34,12 @@ export default defineConfig({
         })
         .concat([
           { userAgent: "Googlebot", allow: "/" },
-          { userAgent: "GPTBot", disallow: "*" },
         ]),
     }),
     sitemap(),
   ],
   markdown: {
-    remarkPlugins: [addLabelsToFootnoteDefs, getDescription],
+    remarkPlugins: [getDescription],
     rehypePlugins: [() => (tree) => {
       // abbreviated plugin to make external links open in new tabs
       // docs: https://unifiedjs.com/learn/guide/create-a-rehype-plugin/
