@@ -1,0 +1,50 @@
+---
+title: The Boundless Creativity of Enterprise SaaS
+tagline: Dysfunction at different levels of abstraction.
+date: 2026-02-06
+tags: ["work"]
+---
+
+Getting overwhelmed by emails is easy; millions are sent every second. They swim in the air around your phone, waiting to be let in; they're in the wires in your walls; undersea cables are flooded with them. The world-spanning network of machine-to-machine systems that allows you to receive autopay notifications for stuff you forgot you signed up for is complicated, but the piece of software known as "Outlook" makes it so that when you look at your computer, you just see emails. That list of emails is an "abstraction," which means "a version of something that's simplified to make it easier to fit in people's brains."
+
+You can think of emails as electronic signals propagating over cables (which is a low level of abstraction, of which I have very little understanding), as TCP traffic between machines using specific ports and mail transfer protocols (which is a slightly higher level of abstraction that I mostly get), or you can think of it as a bunch of new posts from Substack and Patreon, requests to donate to political campaigns, and alerts about outages from hosting providers (which is a quite high level of abstraction that I can easily use to understand my email inbox right now.)
+
+There's a strong tendency among a certain type of person to think of low levels of abstraction as "how things really work." And this produces tension when combined with another fact: companies are mostly led by people operating at very high levels of abstraction.
+
+<!-- more -->
+
+Satya Nadella cannot afford to spend much of his time worrying about "how email really works." If he thinks about email at all, he has to worry about the enterprise customers who want to use Outlook; the resources within Microsoft that have to go into maintaining it; and the relationship it has to the rest of the Microsoft 365 Copilot Suite. You know, the high-level concerns. Someone else will worry about the technical infrastructure and where you have to right-click to mark all of the emails in your inbox as read without actually reading them. If you look at [the memos that people in leadership positions at big companies send](https://sriramk.com/memos.html), it's mostly stuff like "will iOS support Adobe Flash" and "how the experience of buying a computer compares to the experience of buying a backhoe" and "how to save the Internet."
+
+Executive leadership at a technology company plays a fundamentally similar role to that of the director of a movie. A director will probably have lots of control over the script and the performances, but the details of things like costuming, lighting, and even shot composition are left to others, who will ideally take the director's high-level vision and fulfill it. Peter Jackson [gave a speech](https://www.youtube.com/shorts/FqT5jmTLPOc) to his design crew for the Lord of the Rings movies where he said that he needs them to think about their work as if they were depicting real events from history; as if everything needed to be accurate to that actual time period; and as if they were shooting on the locations where these events actually happened. To ask people to forget that they're working on a fantasy movie at all is to invoke an extremely high level of abstraction. What could go wrong?
+
+## The View From Up Top
+
+Here is an experience that I've participated in multiple times, and that I believe is [distressingly](https://matduggan.com/stop-trying-to-schedule-a-call-with-me/) [common](https://news.ycombinator.com/item?id=42669754#42670301):
+
+1. You're looking for a SaaS platform that will handle some boring thing that you don't want to build yourself, like storing a product catalog for an e-commerce platform.
+2. You pick one and have a long series of meetings with salespeople, sales engineers, and customer success experts. You see demos that showcase functionality that looks like it's exactly what you need.
+3. You sign a contract to pay huge piles of money for the platform, start to use it, and it sucks.
+
+At a high level of abstraction, the platform is exactly what you need. It has a fancy wizard for importing products; it organizes them by seller and by shipping method; and it makes the data available through an API for display on your site.
+
+At a slightly lower level of abstraction: the import wizard expects the product data to already be in a very specific spreadsheet format, so you usually have to implement your own conversion steps before uploading it; it can't handle dynamic shipping prices, so you need to build a separate integration for your site so that you can figure out what USPS will actually charge; and the API endpoints that expose product data have low rate limits, so that you need to store a secondary, cached copy of the product data in a separate database that you can access dynamically for display purposes.
+
+It eventually ends up very hard to look at the implementation level and figure out what value that platform is providing. At a high level, you can still say things like "it provides a single source of truth for our product catalog." However, at the implementation level, the data that directly gets displayed comes from a separate database, you have to augment it using a whole bunch of other services to make it useful, and you still have to worry about spreadsheet formats. The platform is disappointing, and it doesn't seem that much like having a single source of truth. Everything is anchored to high levels of abstraction, and the implementation has been neglected; it's as if Peter Jackson had asked the people working for him on Lord of the Rings to pretend they were depicting real historical events, and they'd literally stopped working on designing original costumes.
+
+The reason that software like this survives is that the decision to buy it is made at a very high level: the executive level. The demos look good, the features are (technically) there, and there are probably a bunch of other businesses that are using the software already. [What is there for an executive to say no to?](https://ludic.mataroa.blog/blog/brainwash-an-executive-today/) They're already picturing the next offsite retreat, where they'll be congratulated by their slightly more junior peers for solving business problems by applying software in a way that few others could.
+
+And it's just not that hard to market to people at that level. A friend and I have been working on [an app deployment framework](github.com/internet-golf/internet-golf) that would be easy to sell to vibe coders as "this lets you run your app on a server just like you run it locally," and it wouldn't be hard to create a simple example where that's true. Unfortunately, I need to figure out a bunch of stuff about secrets, environment variables, asynchronous API calls, and authorization before I can actually fulfill that promise for general use cases. "Make it as easy to run an app on a server as it is to run it locally" is a single line item on the executive-level bill of materials; it breaks down into a hundred lines when someone has to actually implement it. It's easy to see why not everyone bothers.
+
+## The View from Halfway Down
+
+Unfortunately, I do believe this: there is no "correct" level of abstraction to look at things with. Emails are both the electrons and the election fundraising pleas. There are levels of abstraction in the software business that completely obscure the software that you're actually selling, and those layers of abstraction are still important; not just to sell to enterprise customers, but to ever be useful to people.
+
+It's common for people, at least in tech, to try to start businesses with no real high-level idea of how things will work out; they just want to focus on building something. I've been to startup incubator pitch sessions where people stumble when asked about their revenue model, and just want to talk about their cool platform that lets people plan events or set up playdates for their pets or whatever. In my own professional experience, I've seen how easy it is for programmers to go down a rabbit hole of building "standard" functionality that the project they're working on doesn't actually need.
+
+It would be easy for the app deployment platform I'm working on to turn into something like Coolify, which is relatively close to the functionality of existing deployment options like Netlify or Vercel. Maybe it still will. Open source software, in general, is not great about having its own executive direction. That's why the most popular stuff in that category has always been things like clones of Photoshop and Microsoft Word. The high-level concerns are already taken care of, on a project like that; someone just needs to tackle the implementation, and there are plenty of people excited to do so. Getting a high-level vision right is tricky, and it usually requires a lot of leadership and politics to get people to align on a single direction.
+
+Also, the high-level vision and the mid-level implementation have to match each other. Even if your company has a unique, spectacular twist on the concept "Uber for dog-walking," in my experience, it's easy for the people working on the actual software to miss that and just implement whatever [Swifto](https://swifto.com/) was doing already.
+
+I find it useful to understand this in terms of _roles_; the executive role and the implementation role are both important. It's fairly difficult to do both, so it makes sense for some people to specialize. In software, the engineers will hate the executives for being out of touch and in the clouds and not understanding all the difficult problems they're solving for at the software level, and the executives will scorn the engineers for being petty and caring more about the technical aspects of a platform than who its customers will be and spending so much time on stuff that's not even central to the unique selling point of their product, and that's the way it is. Everyone's playing their role.
+
+Avoid enterprise SaaS when you can, though.
