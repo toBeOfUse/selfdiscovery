@@ -1,5 +1,5 @@
 ---
-title: The Boundless Creativity of Enterprise SaaS
+title: Why Enterprise SaaS is Like That
 tagline: Dysfunction at different levels of abstraction.
 date: 2026-02-06
 tags: ["work"]
