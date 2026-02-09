@@ -5,11 +5,11 @@ github_link: https://github.com/toBeOfUse/bee-engine
 images:
   - url: /bee/blueprint.png
     alt: ""
-  - url: /bee/dice.png
+  - url: /bee/cereal.png
     alt: ""
   - url: /bee/earth.png
     alt: ""
-  - url: /bee/cereal.png
+  - url: /bee/dice.png
     alt: ""
 description: A project to bring the New York Times Spelling Bee puzzle to Discord.
 ---
