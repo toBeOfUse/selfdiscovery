@@ -4,7 +4,7 @@ date: July 2022
 image: /perspective_demo.jpg
 image_alt: An image of Times Square open in a custom viewer, with the billboards covered by a variety of other images. There are controls that allow one to name the project and save and edit the overlay images, which have full perspective.
 github_link: https://github.com/toBeOfUse/aaffine/
-live_link: https://mitch.website/perspective/
+# live_link: https://mitch.website/perspective/
 ---
 
 I created an app that lets you place images in perspective in 3D space without actually needing 3D models and a 3D world.

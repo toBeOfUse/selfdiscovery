@@ -2,7 +2,7 @@
 date: June 2021
 title: Minecraft Map Collage
 github_link: https://github.com/toBeOfUse/minecraft-map-frame
-live_link: https://mitch.website/minecraft/
+# live_link: https://mitch.website/minecraft/
 image: /minecraft-map.jpg
 image_alt: A detailed pixel-art map of a small forest and village with an irregularly-shaped black outline. Outside of the outline, a lower-resolution faded map is visible. In a box on the top right has controls such as "Zoom Way Out" as well as a listing of some coordinates.
 ---

@@ -2,7 +2,7 @@
 title: Corn Simulator
 date: November 2021
 github_link: https://github.com/toBeOfUse/corn
-live_link: https://3d.corncob.world/
+# live_link: https://3d.corncob.world/
 image: /corn.jpg
 image_alt: A 3D model of a corncob with some kernels missing. A mouse cursor hovers over an intact kernel. "4.13% eaten," says a status bar at the top.
 ---
