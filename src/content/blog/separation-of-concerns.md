@@ -41,7 +41,7 @@ Here's a simple example of over-organization that I always go back to:
 
 ![](../../../assets/posts/separation-of-concerns/phone-folder.jpg)
 
-It's actually pretty easy to come up with methods of organization that actively make your life more difficult. The classic way that this would happen in web development is that the CSS for a page would end up mirroring the HTML for a page, with specific CSS classes that matched specific HTML `<div>`s, and so when you changed something in the HTML, you would have to immediately go over to the CSS and change the corresponding CSS there. This phenomenon is one of the things that [motivated the Tailwind guy to create Tailwind](https://adamwathan.me/css-utility-classes-and-separation-of-concerns/), and it's clearly not a thing when CSS is defined using utility classes or inline styles inside JSX components.
+It’s actually pretty easy to come up with methods of organization that actively make your life more difficult. The classic way that this would happen in web development is that the CSS would be separated from the HTML for a page, but it would end up mirroring the HTML exactly, with specific CSS classes that matched specific HTML `<div>`s; this meant that when you changed something in the HTML, you would have to immediately go over to the CSS and change the corresponding CSS there. This phenomenon is one of the things that [motivated the Tailwind guy to create Tailwind](https://adamwathan.me/css-utility-classes-and-separation-of-concerns/), and it's clearly not a thing when CSS is defined using utility classes or inline styles inside JSX components.
 
 ## The Insanity Clause
 
@@ -57,4 +57,4 @@ The point is: logical concerns are important, and I'm looking forward to going i
 
 - The [single responsibility principle](https://en.wikipedia.org/wiki/Single-responsibility_principle): "Gather together the things that change for the same reasons. Separate those things that change for different reasons." This is a little more specific than "separation of concerns."
 - _Modularity_ is achieved when logical concerns each get a part of your code and each part presents a clear interface to the other parts. I think this is neat.
-- If you can see your whole app as a map in your head, you can draw logical borders and divide it up into different parts. This is the simplest solution.
+- If you can see your whole app as a map in your head, you can draw logical borders and divide it up into different parts. This is the simplest solution, as long as you can see apps as maps in your head. (Have I mentioned the insanity?)
