@@ -3,6 +3,8 @@ title: Multiplayer NYT Spelling Bee
 date: November 2021 - July 2022
 github_link: https://github.com/toBeOfUse/bee-engine
 images:
+  - url: /bee/spelling-bee-context.png
+    alt: ""
   - url: /bee/blueprint.png
     alt: ""
   - url: /bee/cereal.png
