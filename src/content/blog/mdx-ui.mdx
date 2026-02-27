@@ -1,0 +1,78 @@
+---
+title: "MDX UI: Components specifically for Markdown"
+tagline: Standard, useful components for when you're writing stuff.
+date: 2026-02-24
+tags: ["computers"]
+---
+
+import { MdxAccordion, MdxInfo, MdxWarning, MdxCard, MdxCardSet, MdxPopover, MdxTabs } from '@tobeofuse/mdx-ui';
+
+content
+
+<MdxAccordion client:load>
+
+**Click to expand**
+
+Here is some hidden content revealed by the accordion.
+
+</MdxAccordion>
+
+<MdxInfo client:load>
+
+Heads up!
+
+This is an informational alert rendered from Markdown.
+
+</MdxInfo>
+
+<MdxWarning client:load>
+
+Watch out!
+
+This is a warning alert rendered from Markdown.
+
+</MdxWarning>
+
+<MdxTabs client:load>
+
+# Tab A
+
+Content for the first tab.
+
+# Tab B
+
+Content for the second tab.
+
+</MdxTabs>
+
+<MdxCard client:load>
+
+Card Heading
+
+This is the card content.
+
+</MdxCard>
+
+<MdxCardSet client:load>
+
+# Card One
+
+Content for the first card.
+
+# Card Two
+
+Content for the second card.
+
+# Card Three
+
+Content for the third card.
+
+</MdxCardSet>
+
+<MdxPopover client:load>
+
+Click me
+
+This content appears inside a popover.
+
+</MdxPopover>

@@ -1,3 +1,5 @@
+@import "@tobeofuse/mdx-ui/dist/main.css";
+
 @mixin content {
   & h2 {
     @apply text-xl;

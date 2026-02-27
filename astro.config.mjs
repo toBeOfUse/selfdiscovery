@@ -3,11 +3,14 @@ import { defineConfig } from "astro/config";
 
 import tailwind from "@astrojs/tailwind";
 import vue from "@astrojs/vue";
+import react from "@astrojs/react";
 import robotsTxt from "astro-robots-txt";
 
 import sitemap from "@astrojs/sitemap";
 import { visit } from 'unist-util-visit'
 import { getDescription } from "./md-plugins/remark-readmore-description.mjs";
+
+import mdx from "@astrojs/mdx";
 
 const aiUserAgents = [
   "GPTBot",
@@ -21,23 +24,18 @@ const aiUserAgents = [
 // https://astro.build/config
 export default defineConfig({
   site: "https://mitch.website",
-  integrations: [
-    tailwind(),
-    vue(),
-    robotsTxt({
-      policy: aiUserAgents
-        .map((userAgent) => {
-          // jsdoc types suck
-          /** @type {import("astro-robots-txt").PolicyItem} */
-          const policy = { userAgent, disallow: "/" };
-          return policy;
-        })
-        .concat([
-          { userAgent: "Googlebot", allow: "/" },
-        ]),
-    }),
-    sitemap(),
-  ],
+  integrations: [tailwind(), vue(), react({ experimentalReactChildren: true }), robotsTxt({
+    policy: aiUserAgents
+      .map((userAgent) => {
+        // jsdoc types suck
+        /** @type {import("astro-robots-txt").PolicyItem} */
+        const policy = { userAgent, disallow: "/" };
+        return policy;
+      })
+      .concat([
+        { userAgent: "Googlebot", allow: "/" },
+      ]),
+  }), sitemap(), mdx()],
   markdown: {
     remarkPlugins: [getDescription],
     rehypePlugins: [() => (tree) => {
@@ -68,6 +66,9 @@ export default defineConfig({
       rollupOptions: {
         external: ["astro.config.mjs"],
       },
+    },
+    ssr: {
+      noExternal: ["@tobeofuse/mdx-ui"]
     },
     optimizeDeps: {
       exclude: ["astro.config.mjs"],

@@ -3,6 +3,8 @@ import type { CollectionEntry } from "astro:content";
 import { formatDate } from "../date";
 import Image from "./Image.vue";
 import { experimental_AstroContainer } from "astro/container";
+import mdxRenderer from "@astrojs/mdx/server.js";
+import reactRenderer from "@astrojs/react/server.js";
 import FleuronArrow from "./FleuronArrow.astro";
 
 interface Props {
@@ -20,6 +22,12 @@ let introHtml = "";
 let hasMore = false;
 if (!props.standalone) {
   const container = await experimental_AstroContainer.create();
+  container.addServerRenderer({ name: "@astrojs/mdx", renderer: mdxRenderer });
+  container.addServerRenderer({ name: "@astrojs/react", renderer: reactRenderer });
+  container.addClientRenderer({
+    name: "@astrojs/react",
+    entrypoint: "@astrojs/react/client.js",
+  });
   introHtml = await container.renderToString(Content);
   const MORE_MARKER = "<!-- more -->";
   const readMorePos = introHtml.indexOf(MORE_MARKER);
