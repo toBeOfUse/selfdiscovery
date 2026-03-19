@@ -29,12 +29,14 @@ if (!props.standalone) {
     entrypoint: "@astrojs/react/client.js",
   });
   introHtml = await container.renderToString(Content);
+  if (meta.title === "MDX UI: Components specifically for Markdown")
+    console.log(introHtml);
   const MORE_MARKER = "<!-- more -->";
   const readMorePos = introHtml.indexOf(MORE_MARKER);
-  if (readMorePos != -1) {
-    introHtml = introHtml.slice(0, readMorePos);
-    hasMore = true;
-  }
+  // if (readMorePos != -1) {
+  //   introHtml = introHtml.slice(0, readMorePos);
+  //   hasMore = true;
+  // }
 }
 ---
 

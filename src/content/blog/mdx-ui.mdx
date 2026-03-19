@@ -1,13 +1,17 @@
 ---
 title: "MDX UI: Components specifically for Markdown"
-tagline: Standard, useful components for when you're writing stuff.
+tagline: Standard components that are useful when you're writing stuff.
 date: 2026-02-24
 tags: ["computers"]
 ---
 
 import { MdxAccordion, MdxInfo, MdxWarning, MdxCard, MdxCardSet, MdxPopover, MdxTabs } from '@tobeofuse/mdx-ui';
+import { TestButton } from '../../components/TestButton';
 
 content
+
+<TestButton client:load />
+
 
 <MdxAccordion client:load>
 
